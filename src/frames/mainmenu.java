@@ -41,6 +41,7 @@ public class mainmenu extends javax.swing.JFrame {
         btnusuarios = new javax.swing.JButton();
         btncuenta = new javax.swing.JButton();
         btnseguridad = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("framemenu"); // NOI18N
@@ -113,6 +114,8 @@ public class mainmenu extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("REQUISICIONES");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -120,12 +123,14 @@ public class mainmenu extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btninventario)
+                    .addComponent(btnseguridad))
+                .addGap(150, 150, 150)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnseguridad)
+                        .addComponent(jButton1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btninventario)
-                        .addGap(150, 150, 150)
                         .addComponent(btnusuarios)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                         .addComponent(btncuenta)
@@ -144,7 +149,9 @@ public class mainmenu extends javax.swing.JFrame {
                             .addComponent(btninventario)
                             .addComponent(btnusuarios))))
                 .addGap(197, 197, 197)
-                .addComponent(btnseguridad)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnseguridad)
+                    .addComponent(jButton1))
                 .addContainerGap(223, Short.MAX_VALUE))
         );
 
@@ -241,6 +248,7 @@ public class mainmenu extends javax.swing.JFrame {
     private javax.swing.JButton btnminimizar;
     private javax.swing.JButton btnseguridad;
     private javax.swing.JButton btnusuarios;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
