@@ -41,7 +41,7 @@ public class inventario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnescaner = new javax.swing.JToggleButton();
         jLabel3 = new javax.swing.JLabel();
-        jComboBoxlineas = new javax.swing.JComboBox<>();
+        jComboBoxlineas = new javax.swing.JComboBox<String>();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnlimpiar = new javax.swing.JButton();
@@ -114,7 +114,7 @@ public class inventario extends javax.swing.JFrame {
         jLabel3.setText("Linea");
 
         jComboBoxlineas.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBoxlineas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 Aceites, grasas y combustibles", "2", "3 Seguridad", "4 Baleros, chumaceras y otros", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15 Material para construccion", "16 Material para laboratorio", "17", "18", "19", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35 Cargos directos" }));
+        jComboBoxlineas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1 Aceites, grasas y combustibles", "2", "3 Seguridad", "4 Baleros, chumaceras y otros", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15 Material para construccion", "16 Material para laboratorio", "17", "18", "19", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35 Cargos directos" }));
 
         jButton1.setText("jButton1");
 
@@ -205,6 +205,7 @@ public class inventario extends javax.swing.JFrame {
 
         btnregresar.setBackground(new java.awt.Color(102, 102, 102));
         btnregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/005-keyboard-left-arrow-button.png"))); // NOI18N
+        btnregresar.setBorderPainted(false);
         btnregresar.setContentAreaFilled(false);
         btnregresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

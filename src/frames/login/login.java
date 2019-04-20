@@ -5,6 +5,14 @@
  */
 package frames.login;
 
+import clases.MyConnection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author appleapple
@@ -16,7 +24,7 @@ public class login extends javax.swing.JFrame {
      */
     public login() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);       
     }
 
     /**
@@ -58,13 +66,10 @@ public class login extends javax.swing.JFrame {
             }
         });
 
-        btningresar.setBackground(new java.awt.Color(255, 170, 0));
-        btningresar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btningresar.setForeground(new java.awt.Color(255, 255, 255));
+        btningresar.setBackground(new java.awt.Color(204, 204, 204));
+        btningresar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btningresar.setForeground(new java.awt.Color(255, 174, 51));
         btningresar.setText("INGRESAR");
-        btningresar.setBorderPainted(false);
-        btningresar.setDefaultCapable(false);
-        btningresar.setFocusPainted(false);
         btningresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btningresarActionPerformed(evt);
@@ -77,6 +82,7 @@ public class login extends javax.swing.JFrame {
         btncerrar.setBorderPainted(false);
         btncerrar.setContentAreaFilled(false);
         btncerrar.setFocusPainted(false);
+        btncerrar.setOpaque(true);
         btncerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncerrarActionPerformed(evt);
@@ -149,7 +155,53 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_btncerrarActionPerformed
 
     private void btningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btningresarActionPerformed
-        // TODO add your handling code here:
+       
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String uname = txtusuario.getText();
+        String pass = String.valueOf(txtpass.getPassword());
+        String query = "SELECT * FROM `usuarios` WHERE `nombre` =? AND `contrasena` =?";
+        
+            try {
+                ps = MyConnection.getConnection().prepareStatement(query);
+            } catch (SQLException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        try {
+            ps.setString(1, uname);
+        } catch (SQLException ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            ps.setString(2, pass);
+        } catch (SQLException ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        try {
+            if(rs.next())
+            {
+                frames.mainmenu mf = new frames.mainmenu();
+                mf.setVisible(true);
+                mf.pack();
+                mf.setLocationRelativeTo(null);
+                
+                
+                this.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Usuario o Contrasena incorrecta"+"\n\n"+"Recuerda Mayusculas y Minusculas", "Acceso Denegado", 2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_btningresarActionPerformed
 
@@ -203,7 +255,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField txtpass;
-    private javax.swing.JTextField txtusuario;
+    public static javax.swing.JPasswordField txtpass;
+    public static javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 }

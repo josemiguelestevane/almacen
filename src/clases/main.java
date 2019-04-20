@@ -8,6 +8,7 @@ package clases;
 
 
 import frames.login.login;
+import clases.conector;
 
 /**
  *
@@ -19,7 +20,7 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        // TODO code application logic here        
     login principal=new login();
     principal.setVisible(true);
     }

@@ -52,7 +52,9 @@ public class mainmenu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
         btnminimizar.setBackground(new java.awt.Color(102, 102, 102));
+        btnminimizar.setForeground(new java.awt.Color(51, 51, 51));
         btnminimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/004-minimize.png"))); // NOI18N
+        btnminimizar.setBorderPainted(false);
         btnminimizar.setContentAreaFilled(false);
         btnminimizar.setFocusPainted(false);
         btnminimizar.addActionListener(new java.awt.event.ActionListener() {
@@ -63,6 +65,7 @@ public class mainmenu extends javax.swing.JFrame {
 
         btncerrar.setBackground(new java.awt.Color(102, 102, 102));
         btncerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/003-cross-symbol.png"))); // NOI18N
+        btncerrar.setBorderPainted(false);
         btncerrar.setContentAreaFilled(false);
         btncerrar.setFocusPainted(false);
         btncerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -86,7 +89,7 @@ public class mainmenu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnminimizar)
                     .addComponent(btncerrar))
                 .addContainerGap(21, Short.MAX_VALUE))
