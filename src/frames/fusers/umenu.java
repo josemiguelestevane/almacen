@@ -5,7 +5,12 @@
  */
 package frames.fusers;
 
+import clases.MyConnection;
+import frames.login.login;
 import frames.login.login2;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -140,6 +145,11 @@ public class umenu extends javax.swing.JFrame {
         jLabel5.setText("Departamento");
 
         txtmnombre.setEditable(false);
+        txtmnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtmnombreActionPerformed(evt);
+            }
+        });
 
         txtmusuario.setEditable(false);
 
@@ -322,6 +332,10 @@ public class umenu extends javax.swing.JFrame {
     private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnregresarActionPerformed
+
+    private void txtmnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmnombreActionPerformed
+        MyConnection.getConnection();
+    }//GEN-LAST:event_txtmnombreActionPerformed
 
     /**
      * @param args the command line arguments
