@@ -8,8 +8,10 @@ import javax.imageio.ImageIO;
 import com.spire.barcode.BarCodeGenerator;
 import com.spire.barcode.BarCodeType;
 import com.spire.barcode.BarcodeSettings;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
 
 /**
  *
@@ -36,22 +38,27 @@ public class codigo extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         btnregresar = new javax.swing.JButton();
+        jDialog1 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         btnregresar1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         canvas1 = new java.awt.Canvas();
+        btnexportar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tcodigo = new javax.swing.JTextField();
         btngenerar = new javax.swing.JButton();
         tdescripcion = new javax.swing.JTextField();
-        calmacen = new javax.swing.JComboBox<>();
+        calmacen = new javax.swing.JComboBox<String>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         tlocalidad = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        cstatus = new javax.swing.JComboBox<String>();
+        btnlimpiar = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -82,10 +89,22 @@ public class codigo extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
 
         jPanel4.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -132,21 +151,40 @@ public class codigo extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(153, 255, 255));
 
+        canvas1.setBackground(new java.awt.Color(255, 255, 255));
+        canvas1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+
+        btnexportar.setBackground(new java.awt.Color(255, 255, 255));
+        btnexportar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnexportar.setForeground(new java.awt.Color(255, 153, 0));
+        btnexportar.setText("EXPORTAR");
+        btnexportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnexportarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnexportar)
+                .addGap(79, 79, 79))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnexportar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
         );
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -174,7 +212,7 @@ public class codigo extends javax.swing.JFrame {
 
         calmacen.setBackground(new java.awt.Color(255, 255, 255));
         calmacen.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        calmacen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D", "E" }));
+        calmacen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C", "D", "E" }));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setText("Almacen");
@@ -183,6 +221,45 @@ public class codigo extends javax.swing.JFrame {
         jLabel5.setText("Localidad");
 
         tlocalidad.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel6.setText("Status");
+
+        cstatus.setBackground(new java.awt.Color(255, 255, 255));
+        cstatus.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cstatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "OBSOLETO", "LENTO MOVIMIENTO", "CONTINUO" }));
+        cstatus.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cstatusItemStateChanged(evt);
+            }
+        });
+        cstatus.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                cstatusCaretPositionChanged(evt);
+            }
+        });
+        cstatus.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cstatusPropertyChange(evt);
+            }
+        });
+        cstatus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cstatusKeyPressed(evt);
+            }
+        });
+
+        btnlimpiar.setBackground(new java.awt.Color(255, 255, 255));
+        btnlimpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnlimpiar.setForeground(new java.awt.Color(255, 153, 0));
+        btnlimpiar.setText("LIMPIAR");
+        btnlimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnlimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -195,21 +272,27 @@ public class codigo extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(calmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tlocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(491, 491, 491)
-                        .addComponent(btngenerar))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(calmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tlocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btngenerar))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(476, 476, 476)
                         .addComponent(jLabel2)))
@@ -226,29 +309,34 @@ public class codigo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addComponent(jLabel2)
-                        .addGap(59, 59, 59)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(42, 42, 42)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(tdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(calmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btngenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(59, 59, 59)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addGap(42, 42, 42)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(tdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(calmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel5))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(tlocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                        .addComponent(btngenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(tlocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(cstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(76, 76, 76)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -275,12 +363,14 @@ public class codigo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnregresar1ActionPerformed
 
     private void btngenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngenerarActionPerformed
-        BarcodeSettings settings = new BarcodeSettings();
+        
+                BarcodeSettings settings = new BarcodeSettings();
         String text = tcodigo.getText();
         int number = Integer.parseInt(text);
         String des = tdescripcion.getText();
         String loc = tlocalidad.getText();
-        String alm = calmacen.getName();
+        String alm = calmacen.getItemAt(calmacen.getSelectedIndex());
+        
         //set barcode type
         settings.setType(BarCodeType.Code_128);      
         //set barcode data
@@ -293,18 +383,81 @@ public class codigo extends javax.swing.JFrame {
         settings.hasBorder(false);
         //create BarCodeGenerator object based on settings
         BarCodeGenerator barCodeGenerator = new BarCodeGenerator(settings);
-        //generate image data and store in BufferedImage instance
+        //generate image data and store in BufferedImage instance        
         BufferedImage bufferedImage = barCodeGenerator.generateImage();
-        try {
-            //save to .png file format
-            
-            ImageIO.write(bufferedImage, "png",  new File("/Users/appleapple/Desktop/CODE128.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(codigo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         
-        System.out.println("Complete!");
+        canvas1.getGraphics().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+        
+        canvas1.getGraphics().drawImage(bufferedImage, 0, -19-6, rootPane);
+        canvas1.getGraphics().drawString(des, 4, 10);
+        canvas1.getGraphics().drawString("Almacen "+alm, 4, 110);
+        canvas1.getGraphics().drawString("Localidad "+loc, 4, 140);        
+        
     }//GEN-LAST:event_btngenerarActionPerformed
+
+    private void cstatusCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_cstatusCaretPositionChanged
+    
+    }//GEN-LAST:event_cstatusCaretPositionChanged
+
+    private void cstatusPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cstatusPropertyChange
+    Color cc;
+    
+        if (cstatus.getSelectedIndex() == 0)
+                {     
+                cc = new Color(255, 170, 0); }
+        else
+        {if (cstatus.getSelectedIndex() == 1)
+                {     
+                cc = new Color(0, 255, 0); }
+        else{cc = new Color(255, 255, 255);}
+                        };
+                        
+        canvas1.setBackground(cc);    // TODO add your handling code here:
+    }//GEN-LAST:event_cstatusPropertyChange
+
+    private void cstatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cstatusKeyPressed
+    Color cc;
+    
+        if (cstatus.getSelectedIndex() == 0)
+                {     
+                cc = new Color(255, 170, 0); }
+        else
+        {if (cstatus.getSelectedIndex() == 1)
+                {     
+                cc = new Color(0, 255, 0); }
+        else{cc = new Color(255, 255, 255);}
+                        };
+                        
+        canvas1.setBackground(cc);    // TODO add your handling code here:
+    }//GEN-LAST:event_cstatusKeyPressed
+
+    private void cstatusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cstatusItemStateChanged
+    Color cc;
+    java.awt.event.ActionEvent e1;
+    
+    
+        if (cstatus.getSelectedIndex() == 0)
+                {     
+                cc = new Color(255, 170, 0); }
+        else
+        {if (cstatus.getSelectedIndex() == 1)
+                {     
+                cc = new Color(0, 255, 0); }
+        else{cc = new Color(255, 255, 255);}
+                        };
+                        
+        canvas1.setBackground(cc);
+        
+        
+       
+    }//GEN-LAST:event_cstatusItemStateChanged
+
+    private void btnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnlimpiarActionPerformed
+
+    private void btnexportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexportarActionPerformed
+    jDialog1.setVisible(true);
+    }//GEN-LAST:event_btnexportarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -342,16 +495,21 @@ public class codigo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnexportar;
     private javax.swing.JButton btngenerar;
+    private javax.swing.JButton btnlimpiar;
     private javax.swing.JButton btnregresar;
     private javax.swing.JButton btnregresar1;
     private javax.swing.JComboBox<String> calmacen;
     private java.awt.Canvas canvas1;
+    private javax.swing.JComboBox<String> cstatus;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
