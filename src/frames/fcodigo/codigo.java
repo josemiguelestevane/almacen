@@ -8,13 +8,30 @@ import javax.imageio.ImageIO;
 import com.spire.barcode.BarCodeGenerator;
 import com.spire.barcode.BarCodeType;
 import com.spire.barcode.BarcodeSettings;
+import java.awt.Button;
+import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.image.RenderedImage;
+import java.beans.EventHandler;
 import java.io.FileWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.WritableImage;
+import javafx.stage.FileChooser;
+import javax.swing.GroupLayout.Group;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -55,12 +72,12 @@ public class codigo extends javax.swing.JFrame {
         tcodigo = new javax.swing.JTextField();
         btngenerar = new javax.swing.JButton();
         tdescripcion = new javax.swing.JTextField();
-        calmacen = new javax.swing.JComboBox<String>();
+        calmacen = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         tlocalidad = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        cstatus = new javax.swing.JComboBox<String>();
+        cstatus = new javax.swing.JComboBox<>();
         btnlimpiar = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
@@ -152,7 +169,7 @@ public class codigo extends javax.swing.JFrame {
             .addGap(0, 61, Short.MAX_VALUE)
         );
 
-        jPanel5.setBackground(new java.awt.Color(153, 255, 255));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         canvas1.setBackground(new java.awt.Color(255, 255, 255));
         canvas1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -200,6 +217,7 @@ public class codigo extends javax.swing.JFrame {
         jLabel3.setText("Descipcion");
 
         tcodigo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tcodigo.setText("254785");
 
         btngenerar.setBackground(new java.awt.Color(255, 255, 255));
         btngenerar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -212,10 +230,12 @@ public class codigo extends javax.swing.JFrame {
         });
 
         tdescripcion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tdescripcion.setText("Miguel");
+        tdescripcion.setToolTipText("");
 
         calmacen.setBackground(new java.awt.Color(255, 255, 255));
         calmacen.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        calmacen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C", "D", "E" }));
+        calmacen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D", "E" }));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setText("Almacen");
@@ -224,13 +244,14 @@ public class codigo extends javax.swing.JFrame {
         jLabel5.setText("Localidad");
 
         tlocalidad.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tlocalidad.setText("Miguel Auza");
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel6.setText("Status");
 
         cstatus.setBackground(new java.awt.Color(255, 255, 255));
         cstatus.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cstatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "OBSOLETO", "LENTO MOVIMIENTO", "CONTINUO" }));
+        cstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "OBSOLETO", "LENTO MOVIMIENTO", "CONTINUO" }));
         cstatus.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cstatusItemStateChanged(evt);
@@ -390,10 +411,12 @@ public class codigo extends javax.swing.JFrame {
         BufferedImage bufferedImage = barCodeGenerator.generateImage();
         canvas1.getGraphics().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
         
-        canvas1.getGraphics().drawImage(bufferedImage, 0, -19-6, rootPane);
+        canvas1.getGraphics().drawImage(bufferedImage, 0, -10, rootPane);
         canvas1.getGraphics().drawString(des, 4, 10);
         canvas1.getGraphics().drawString("Almacen "+alm, 4, 110);
-        canvas1.getGraphics().drawString("Localidad "+loc, 4, 140);        
+        canvas1.getGraphics().drawString("Localidad "+loc, 4, 140); 
+        
+        
         
     }//GEN-LAST:event_btngenerarActionPerformed
 
@@ -456,41 +479,40 @@ public class codigo extends javax.swing.JFrame {
 
     private void btnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarActionPerformed
         // TODO add your handling code here:
+        tcodigo.setText(null);
+        tdescripcion.setText(null);
+        tlocalidad.setText(null);
     }//GEN-LAST:event_btnlimpiarActionPerformed
 
     private void btnexportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexportarActionPerformed
-    try
- {
-  String nombre="";
-  JFileChooser file=new JFileChooser();
-  file.showSaveDialog(this);
-  File guarda =file.getSelectedFile();
- 
-  if(guarda !=null)
-  {
-   /*guardamos el archivo y le damos el formato directamente,
-    * si queremos que se guarde en formato doc lo definimos como .doc*/
-    FileWriter  save=new FileWriter(guarda+".txt");
-    
-    save.write("");
-    save.close();
-    JOptionPane.showMessageDialog(null,
-         "El archivo se a guardado Exitosamente",
-             "Información",JOptionPane.INFORMATION_MESSAGE);
-    }
- }
-  catch(IOException ex)
-  {
-   JOptionPane.showMessageDialog(null,
-        "Su archivo no se ha guardado",
-           "Advertencia",JOptionPane.WARNING_MESSAGE);
-  }
+   
+                /*FileChooser fileChooser = new FileChooser();
+                
+                //Set extension filter
+                FileChooser.ExtensionFilter extFilter = 
+                        new FileChooser.ExtensionFilter("png files (*.png)", "*.png");
+                fileChooser.getExtensionFilters().add(extFilter);
+              
+                //Show save file dialog
+                File file= new File();
+                
+                if(file != null){
+                    try {
+                        WritableImage writableImage = new WritableImage(canvas1.getWidth(),canvas1.getHeight());
+                        canvas1.snapshot(null, writableImage);
+                        RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
+                        ImageIO.write(renderedImage, "png", file);
+                    } catch (IOException ex) {
+                        Logger.getLogger(canvas1.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            
+            */
+       
  
     }//GEN-LAST:event_btnexportarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
