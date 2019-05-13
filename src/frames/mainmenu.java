@@ -8,7 +8,8 @@ package frames;
 import frames.fcodigo.codigo;
 import frames.finventario.inventario;
 import frames.frequi.requisicion;
-import frames.fseguridad.seguridad;
+import frames.fseguridad.empresas;
+import frames.fseguridad.PSM;
 import frames.fusers.umenu;
 
 /**
@@ -210,9 +211,9 @@ public class mainmenu extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btncodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnrequi, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnrequi, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btncodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59))
         );
 
@@ -236,8 +237,8 @@ public class mainmenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnseguridadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnseguridadActionPerformed
-        seguridad s=new seguridad();
-        s.setVisible(true);
+        empresas e=new empresas();
+        e.setVisible(true);
     }//GEN-LAST:event_btnseguridadActionPerformed
 
     private void btninventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btninventarioActionPerformed
