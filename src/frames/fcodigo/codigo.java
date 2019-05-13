@@ -22,6 +22,7 @@ import java.awt.event.WindowEvent;
 import java.awt.image.RenderedImage;
 import java.beans.EventHandler;
 import java.io.FileWriter;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
@@ -31,6 +32,12 @@ import javax.swing.GroupLayout.Group;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 /**
@@ -79,6 +86,7 @@ public class codigo extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         cstatus = new javax.swing.JComboBox<>();
         btnlimpiar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -285,6 +293,13 @@ public class codigo extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -296,7 +311,12 @@ public class codigo extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btngenerar))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,11 +332,9 @@ public class codigo extends javax.swing.JFrame {
                                     .addComponent(calmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tlocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btngenerar))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(181, 181, 181)
+                                .addComponent(jButton1))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(476, 476, 476)
                         .addComponent(jLabel2)))
@@ -327,10 +345,9 @@ public class codigo extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -360,7 +377,9 @@ public class codigo extends javax.swing.JFrame {
                                     .addComponent(jLabel6)
                                     .addComponent(cstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(76, 76, 76)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -512,7 +531,37 @@ public class codigo extends javax.swing.JFrame {
  
     }//GEN-LAST:event_btnexportarActionPerformed
 
-    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (this.tcodigo.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(rootPane, "Debe Ingresar el codigo", "¡Atención!", 1);
+
+        } else if (this.tdescripcion.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(rootPane, "Debe Ingresar la descripcion", "¡Atención!", 1);
+
+        } else if (this.tlocalidad.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(rootPane, "Debe Ingresar la localidad", "¡Atención!", 1);
+
+        } else {
+        try {
+
+                    
+                    String dir = "/Users/appleapple/NetBeansProjects/almacen/src/frames/fcodigo/barcode.jrxml";
+                    JasperReport reporteJasper = JasperCompileManager.compileReport(dir);
+                    JasperPrint mostrarReporte = JasperFillManager.fillReport(reporteJasper, null);
+                    JasperViewer.viewReport(mostrarReporte);
+
+                } catch (JRException ex) {
+                    Logger.getLogger(codigo.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(rootPane, "Etiqueta generada con Exito");
+                }
+
+                
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -554,6 +603,7 @@ public class codigo extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> calmacen;
     private java.awt.Canvas canvas1;
     private javax.swing.JComboBox<String> cstatus;
+    private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
