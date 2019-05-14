@@ -32,12 +32,16 @@
 				<reportElement x="-18" y="0" width="294" height="1" uuid="a5679834-01a0-428d-ad57-aa37ccc2977e"/>
 			</line>
 			<textField>
-				<reportElement x="0" y="1" width="260" height="34" uuid="4e93ca0a-c705-4581-907e-2bd8a3148d59"/>
+				<reportElement x="88" y="0" width="153" height="34" uuid="4e93ca0a-c705-4581-907e-2bd8a3148d59"/>
 				<textElement>
 					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{descripcion}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="0" y="15" width="76" height="20" uuid="775631f1-35f7-42b7-aaa1-620ee20bb633"/>
+				<text><![CDATA[DESCRIPCION]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>

@@ -1,6 +1,7 @@
 
 package frames.fcodigo;
 
+import clases.metodos;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -23,6 +24,7 @@ import java.awt.image.RenderedImage;
 import java.beans.EventHandler;
 import java.io.FileWriter;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
@@ -32,6 +34,7 @@ import javax.swing.GroupLayout.Group;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -407,34 +410,12 @@ public class codigo extends javax.swing.JFrame {
 
     private void btngenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngenerarActionPerformed
         
-                BarcodeSettings settings = new BarcodeSettings();
+        BarcodeSettings settings = new BarcodeSettings();
         String text = tcodigo.getText();
         int number = Integer.parseInt(text);
         String des = tdescripcion.getText();
         String loc = tlocalidad.getText();
         String alm = calmacen.getItemAt(calmacen.getSelectedIndex());
-        
-        //set barcode type
-        settings.setType(BarCodeType.Code_128);      
-        //set barcode data
-        settings.setData2D("CODIGO "+text+"\n"+"DESCRIPCION:"+tdescripcion);
-        //set the display text
-        settings.setData(text);    
-        //show text on bottom
-        settings.setShowTextOnBottom(true);
-        //set the border invisible
-        settings.hasBorder(false);
-        //create BarCodeGenerator object based on settings
-        BarCodeGenerator barCodeGenerator = new BarCodeGenerator(settings);
-        //generate image data and store in BufferedImage instance        
-        BufferedImage bufferedImage = barCodeGenerator.generateImage();
-        canvas1.getGraphics().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
-        
-        canvas1.getGraphics().drawImage(bufferedImage, 0, -10, rootPane);
-        canvas1.getGraphics().drawString(des, 4, 10);
-        canvas1.getGraphics().drawString("Almacen "+alm, 4, 110);
-        canvas1.getGraphics().drawString("Localidad "+loc, 4, 140); 
-        
         
         
     }//GEN-LAST:event_btngenerarActionPerformed
@@ -532,36 +513,11 @@ public class codigo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnexportarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (this.tcodigo.getText().isEmpty()) {
-
-            JOptionPane.showMessageDialog(rootPane, "Debe Ingresar el codigo", "¡Atención!", 1);
-
-        } else if (this.tdescripcion.getText().isEmpty()) {
-
-            JOptionPane.showMessageDialog(rootPane, "Debe Ingresar la descripcion", "¡Atención!", 1);
-
-        } else if (this.tlocalidad.getText().isEmpty()) {
-
-            JOptionPane.showMessageDialog(rootPane, "Debe Ingresar la localidad", "¡Atención!", 1);
-
-        } else {
-        try {
-
-                    
-                    String dir = "/Users/appleapple/NetBeansProjects/almacen/src/frames/fcodigo/barcode.jrxml";
-                    JasperReport reporteJasper = JasperCompileManager.compileReport(dir);
-                    JasperPrint mostrarReporte = JasperFillManager.fillReport(reporteJasper, null);
-                    JasperViewer.viewReport(mostrarReporte);
-
-                } catch (JRException ex) {
-                    Logger.getLogger(codigo.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(rootPane, "Etiqueta generada con Exito");
-                }
-
-                
+        generaretiqyeta();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    }
+       
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -592,6 +548,33 @@ public class codigo extends javax.swing.JFrame {
                 new codigo().setVisible(true);
             }
         });
+    }
+    
+    public void generaretiqyeta(){
+        
+        try{
+            Object [] opciones = {"Acptar", "Cancelar"};
+            int eleccion = JOptionPane.showOptionDialog(null,"se generara el reporte", "desea continuar?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"aceptar");
+            
+            if(eleccion ==JOptionPane.YES_OPTION){
+            String master= System.getProperty("/Users/appleapple/NetBeansProjects/almacen/src/frames/fcodigo/barcode.jasper");
+            HashMap parametros = new HashMap();
+            parametros.put("descripcion",tdescripcion.getText());
+            parametros.put("codigo",tcodigo.getText());
+            parametros.put("codigo",tcodigo.getText());
+            parametros.put("almacen",calmacen.getSelectedIndex());
+            
+            
+            JasperPrint informe=JasperFillManager.fillReport(master, parametros, new JREmptyDataSource());
+            JasperViewer.viewReport(informe, false);
+            
+            }else{
+                
+            }
+            
+        } catch (JRException ex) {
+            Logger.getLogger(codigo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
