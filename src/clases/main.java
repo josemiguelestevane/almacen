@@ -8,7 +8,7 @@ package clases;
 
 
 import frames.login.login;
-import clases.conector;
+import clases.MyConnection;
 
 /**
  *

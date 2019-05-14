@@ -8,9 +8,11 @@ package frames.fusers;
 import clases.MyConnection;
 import frames.login.login;
 import frames.login.login2;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -40,7 +42,7 @@ public class umenu extends javax.swing.JFrame {
         btnminimizar = new javax.swing.JButton();
         btnregresar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablausuarios = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -55,9 +57,12 @@ public class umenu extends javax.swing.JFrame {
         btnuregistro = new javax.swing.JButton();
         btnubuscar = new javax.swing.JButton();
         btnueditar = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -103,33 +108,36 @@ public class umenu extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jTable1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablausuarios.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tablausuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null}
+                {null, null}
             },
             new String [] {
-                "Usuarios"
+                "USUARIOS", "DEPARTAMENTO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
+        tablausuarios.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tablausuarios);
+        if (tablausuarios.getColumnModel().getColumnCount() > 0) {
+            tablausuarios.getColumnModel().getColumn(0).setResizable(false);
+            tablausuarios.getColumnModel().getColumn(1).setResizable(false);
         }
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 0)));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("Perfil");
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -262,6 +270,19 @@ public class umenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel5.setBackground(new java.awt.Color(255, 153, 0));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 64, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -274,7 +295,8 @@ public class umenu extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,7 +309,8 @@ public class umenu extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(0, 101, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -336,7 +359,23 @@ public class umenu extends javax.swing.JFrame {
     private void txtmnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmnombreActionPerformed
         MyConnection.getConnection();
     }//GEN-LAST:event_txtmnombreActionPerformed
+    public void mostrarusuarios() { 
+        
+        DefaultTableModel modelo = new DefaultTableModel();               
+        ResultSet rs = MyConnection.getTabla("select nombre,departamento from usuarios");
+        modelo.setColumnIdentifiers(new Object[]{"USUARIOS","DEPARTAMENTO"});
+        try {
+            while (rs.next()) {
+                // añade los resultado a al modelo de tabla
+                modelo.addRow(new Object[]{rs.getString("nombre"),rs.getString("departamento")});
+            }            
+            // asigna el modelo a la tabla
+            tablausuarios.setModel(modelo);            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
+    }
     /**
      * @param args the command line arguments
      */
@@ -388,8 +427,9 @@ public class umenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable tablausuarios;
     private javax.swing.JTextField txtmdepartamento;
     private javax.swing.JTextField txtmnombre;
     private javax.swing.JTextField txtmusuario;

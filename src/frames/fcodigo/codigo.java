@@ -36,11 +36,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
+
 
 
 /**
@@ -82,12 +81,12 @@ public class codigo extends javax.swing.JFrame {
         tcodigo = new javax.swing.JTextField();
         btngenerar = new javax.swing.JButton();
         tdescripcion = new javax.swing.JTextField();
-        calmacen = new javax.swing.JComboBox<>();
+        calmacen = new javax.swing.JComboBox<String>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         tlocalidad = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        cstatus = new javax.swing.JComboBox<>();
+        cstatus = new javax.swing.JComboBox<String>();
         btnlimpiar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -228,7 +227,7 @@ public class codigo extends javax.swing.JFrame {
         jLabel3.setText("Descipcion");
 
         tcodigo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tcodigo.setText("254785");
+        tcodigo.setText("GCHASDGCDHS");
 
         btngenerar.setBackground(new java.awt.Color(255, 255, 255));
         btngenerar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -246,7 +245,7 @@ public class codigo extends javax.swing.JFrame {
 
         calmacen.setBackground(new java.awt.Color(255, 255, 255));
         calmacen.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        calmacen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D", "E" }));
+        calmacen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C", "D", "E" }));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setText("Almacen");
@@ -262,7 +261,7 @@ public class codigo extends javax.swing.JFrame {
 
         cstatus.setBackground(new java.awt.Color(255, 255, 255));
         cstatus.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "OBSOLETO", "LENTO MOVIMIENTO", "CONTINUO" }));
+        cstatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "OBSOLETO", "LENTO MOVIMIENTO", "CONTINUO" }));
         cstatus.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cstatusItemStateChanged(evt);
@@ -557,12 +556,11 @@ public class codigo extends javax.swing.JFrame {
             int eleccion = JOptionPane.showOptionDialog(null,"se generara el reporte", "desea continuar?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"aceptar");
             
             if(eleccion ==JOptionPane.YES_OPTION){
-            String master= System.getProperty("/Users/appleapple/NetBeansProjects/almacen/src/frames/fcodigo/barcode.jasper");
+            String master= System.getProperty("/Users/Estevane/NetBeansProjects/almacen/src/frames/fcodigo/newReport.jasper");
             HashMap parametros = new HashMap();
-            parametros.put("descripcion",tdescripcion.getText());
-            parametros.put("codigo",tcodigo.getText());
-            parametros.put("codigo",tcodigo.getText());
-            parametros.put("almacen",calmacen.getSelectedIndex());
+            parametros.put("parameter1",tdescripcion.getText());
+            parametros.put("parameter2",tcodigo.getText());
+            parametros.put("parameter3",tlocalidad.getText());
             
             
             JasperPrint informe=JasperFillManager.fillReport(master, parametros, new JREmptyDataSource());

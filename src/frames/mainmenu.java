@@ -5,12 +5,15 @@
  */
 package frames;
 
+import clases.MyConnection;
 import frames.fcodigo.codigo;
 import frames.finventario.inventario;
 import frames.frequi.requisicion;
 import frames.fseguridad.empresas;
 import frames.fseguridad.PSM;
 import frames.fusers.umenu;
+import java.sql.ResultSet;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -249,6 +252,7 @@ public class mainmenu extends javax.swing.JFrame {
     private void btncuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncuentaActionPerformed
         umenu um= new umenu();
         um.setVisible(true);
+        um.mostrarusuarios();
     }//GEN-LAST:event_btncuentaActionPerformed
 
     private void btncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncerrarActionPerformed
@@ -270,7 +274,7 @@ public class mainmenu extends javax.swing.JFrame {
         requisicion r=new requisicion();
         r.setVisible(true);
     }//GEN-LAST:event_btnrequiActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
