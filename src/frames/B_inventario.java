@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Frames;
+package frames;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,6 +20,7 @@ public class B_inventario extends javax.swing.JFrame {
     public B_inventario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -40,10 +42,14 @@ public class B_inventario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnescaner = new javax.swing.JToggleButton();
         jLabel3 = new javax.swing.JLabel();
-        jComboBoxlineas = new javax.swing.JComboBox<String>();
+        jComboBoxlineas = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        codigo = new javax.swing.JTextPane();
+        jLabel4 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         btnregresar = new javax.swing.JButton();
@@ -59,16 +65,7 @@ public class B_inventario extends javax.swing.JFrame {
 
         jtablecodigos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Codigo", "Conteo"
@@ -121,7 +118,7 @@ public class B_inventario extends javax.swing.JFrame {
         jComboBoxlineas.setBackground(new java.awt.Color(255, 255, 255));
         jComboBoxlineas.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jComboBoxlineas.setForeground(new java.awt.Color(102, 102, 102));
-        jComboBoxlineas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01 Aceites, grasas y combustibles", "02 Acero y brocas de barrenacion ", "03 Seguridad", "04 Baleros, chumaceras y otros", "05 Bandas industriales, automotrices y otras", "06 Bola y reactivo", "07 Empaquetadoras", "08", "09 Ferreteria", "10 Filtros", "11 Herramientas", "12 Llantas y camaras", "13", "14 Material electrico", "15 Material para construccion", "16 Material para laboratorio", "17", "18 Mangueras y conexiones", "19 Papeleria y articulos de oficina ", "20 Refacciones equipo diesel", "21 Refacciones automotrices", "22 Refacciones perforadoras", "23 Refacciones planta beneficio", "24 Refacciones lamparas mineras", "25 Refacciones compresores", "26 Refacciones maquina perforacion", "27 Refacciones para bombas", "28", "29 Soldura", "30 Tornilleria y otros", "31 Tuberias y conexiones", "32", "33", "34", "35 Cargos directos" }));
+        jComboBoxlineas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01 Aceites, grasas y combustibles", "02 Acero y brocas de barrenacion ", "03 Seguridad", "04 Baleros, chumaceras y otros", "05 Bandas industriales, automotrices y otras", "06 Bola y reactivo", "07 Empaquetadoras", "08", "09 Ferreteria", "10 Filtros", "11 Herramientas", "12 Llantas y camaras", "13", "14 Material electrico", "15 Material para construccion", "16 Material para laboratorio", "17", "18 Mangueras y conexiones", "19 Papeleria y articulos de oficina ", "20 Refacciones equipo diesel", "21 Refacciones automotrices", "22 Refacciones perforadoras", "23 Refacciones planta beneficio", "24 Refacciones lamparas mineras", "25 Refacciones compresores", "26 Refacciones maquina perforacion", "27 Refacciones para bombas", "28", "29 Soldura", "30 Tornilleria y otros", "31 Tuberias y conexiones", "32", "33", "34", "35 Cargos directos" }));
 
         jButton1.setText("jButton1");
 
@@ -131,6 +128,17 @@ public class B_inventario extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Fecha");
+
+        jButton3.setText("jButton3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jScrollPane2.setViewportView(codigo);
+
+        jLabel4.setText("a");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -159,8 +167,18 @@ public class B_inventario extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnescaner, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(168, 168, 168))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addGap(408, 408, 408))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnescaner, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,7 +200,13 @@ public class B_inventario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jLabel2))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(37, 37, 37)
                 .addComponent(btnescaner)
                 .addGap(34, 34, 34))
         );
@@ -267,16 +291,17 @@ public class B_inventario extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(19, 19, 19))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -296,10 +321,7 @@ public class B_inventario extends javax.swing.JFrame {
 
     private void btnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarActionPerformed
           DefaultTableModel modelo1= (DefaultTableModel)jtablecodigos.getModel();          
-      
-
-
-
+          modelo1.setRowCount(0);
     }//GEN-LAST:event_btnlimpiarActionPerformed
 
     private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
@@ -314,6 +336,99 @@ public class B_inventario extends javax.swing.JFrame {
     private void btnescanerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnescanerMouseClicked
         
     }//GEN-LAST:event_btnescanerMouseClicked
+
+    public int getIndextt(String search) {
+    DefaultTableModel modelo= (DefaultTableModel)jtablecodigos.getModel();
+    
+    int outIndex = -1;
+    for (int i = 0; i < modelo.getRowCount(); i++) {
+        String ss = (String) modelo.getValueAt(i, 0);
+        System.out.println(ss);
+        
+        if (ss.equals(search)) {
+            outIndex = i;
+        }
+    }
+
+    return outIndex;
+
+}
+    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        DefaultTableModel modelo= (DefaultTableModel)jtablecodigos.getModel();
+        
+        if(codigo.getText().equals("")==false){
+        
+        boolean encontrado=false;
+        
+        if(modelo.getRowCount()>0){
+            
+          int j = getIndextt(codigo.getText()); 
+          
+          System.out.println(j);
+          
+          if(j == -1){
+              if(codigo.getText().charAt(0) == 'L'){
+                  String nombre;
+                  nombre = JOptionPane.showInputDialog("¿Cual es la cantidad de litros?");
+                  
+                  double litros = Double.parseDouble(nombre);
+                  
+                  String cadena = String.valueOf(litros);
+                  
+                  modelo.addRow(new Object[]{codigo.getText(),cadena});
+                  encontrado=true;
+                  
+                  
+                  
+                  
+              }else{
+              modelo.addRow(new Object[]{codigo.getText(),"1"});
+              encontrado=true;}
+               
+          }else{
+          
+              String ss2 = (String) modelo.getValueAt(j, 1);
+              String ss1 = (String) modelo.getValueAt(j, 0);
+              
+              if(ss1.charAt(0) == 'L'){
+                  String nombre;
+                  nombre = JOptionPane.showInputDialog("¿Cual es la cantidad de litros?");
+                  
+                  double litros = Double.parseDouble(nombre);
+                  double litrosex = Double.parseDouble(ss2);
+                  
+                  litros=litros + litrosex;
+                  
+                  String cadena = String.valueOf(litros);
+                  
+                  modelo.setValueAt(cadena, j, 1);
+                  
+                  encontrado=true;
+         
+                  
+              }else
+              {
+                  int contador=Integer.parseInt(ss2);
+          
+              contador++;
+            
+              modelo.setValueAt(String.valueOf(contador), j, 1);
+              encontrado=true;
+              }
+              
+              
+              
+          }
+            
+        }else {
+            modelo.addRow(new Object[]{codigo.getText(),"1"});
+          }
+        }
+        codigo.setText("");
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,20 +500,24 @@ public class B_inventario extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnescaner;
     private javax.swing.JButton btnlimpiar;
     private javax.swing.JButton btnregresar;
+    private javax.swing.JTextPane codigo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBoxlineas;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jtablecodigos;
     // End of variables declaration//GEN-END:variables
 }
