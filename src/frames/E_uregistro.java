@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Frames;
+package frames;
 
 import Clases.Clase_MyConnection;
 import Clases.Clase_Metodos;
@@ -48,7 +48,7 @@ public class E_uregistro extends javax.swing.JFrame {
         talias = new javax.swing.JTextField();
         tcontrasena = new javax.swing.JPasswordField();
         btnregistrar = new javax.swing.JButton();
-        tdepartamento = new javax.swing.JComboBox<String>();
+        tdepartamento = new javax.swing.JComboBox<>();
         tcontra = new javax.swing.JTextField();
         tdepa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -102,7 +102,7 @@ public class E_uregistro extends javax.swing.JFrame {
             }
         });
 
-        tdepartamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "COMPRAS Y ALMACEN", "CONTABILIDAD", "EXPLORACION", "SEGURIDAD" }));
+        tdepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COMPRAS Y ALMACEN", "CONTABILIDAD", "EXPLORACION", "SEGURIDAD" }));
 
         jScrollPane1.setViewportView(tid);
 

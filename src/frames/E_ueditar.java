@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Frames;
+package frames;
 
 /**
  *
@@ -37,7 +37,7 @@ public class E_ueditar extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        SELECCIONAR = new javax.swing.JComboBox<String>();
+        SELECCIONAR = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -78,7 +78,7 @@ public class E_ueditar extends javax.swing.JFrame {
 
         jButton2.setText("ACTUALIZAR");
 
-        SELECCIONAR.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "COMPRAS Y ALMACEN", "CONTABILIDAD", "EXPLORACION", "SEGURIDAD" }));
+        SELECCIONAR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COMPRAS Y ALMACEN", "CONTABILIDAD", "EXPLORACION", "SEGURIDAD" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

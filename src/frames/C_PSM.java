@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Frames;
+package frames;
 
 import Clases.Clase_MyConnection;
 import java.sql.ResultSet;
@@ -308,7 +308,7 @@ public class C_PSM extends javax.swing.JFrame {
     private void btnelimiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnelimiarActionPerformed
         
     }//GEN-LAST:event_btnelimiarActionPerformed
-private void mostrar() {        
+    public void mostrar() {        
         DefaultTableModel modelo = new DefaultTableModel();               
         ResultSet rs = Clase_MyConnection.getTabla("select codigo,descripcion,fisico, dif from PSM");
         modelo.setColumnIdentifiers(new Object[]{"CODIGO", "DESCRIPION","DISPONIBLE","CONTEO"});

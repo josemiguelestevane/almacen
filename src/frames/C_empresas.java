@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Frames;
+package frames;
 
 /**
  *
@@ -178,6 +178,8 @@ public class C_empresas extends javax.swing.JFrame {
     private void btnPSMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPSMActionPerformed
         C_PSM p= new C_PSM();
         p.setVisible(true);
+        p.mostrar();
+        
     }//GEN-LAST:event_btnPSMActionPerformed
 
     /**

@@ -223,7 +223,7 @@ public class A01_login extends javax.swing.JFrame {
         try {
             if(rs.next())
             {
-                Frames.A_mainmenu mf = new Frames.A_mainmenu();
+                frames.A_mainmenu mf = new frames.A_mainmenu();
                 mf.setVisible(true);
                 mf.pack();
                 mf.setLocationRelativeTo(null);

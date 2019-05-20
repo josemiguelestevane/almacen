@@ -1,39 +1,19 @@
 
 package Codigo;
 
-import Clases.Clase_Metodos;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import com.spire.barcode.BarCodeGenerator;
-import com.spire.barcode.BarCodeType;
 import com.spire.barcode.BarcodeSettings;
-import java.awt.Button;
-import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.image.RenderedImage;
-import java.beans.EventHandler;
-import java.io.FileWriter;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.WritableImage;
-import javafx.stage.FileChooser;
-import javax.swing.GroupLayout.Group;
-import javax.swing.JDialog;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 
 
 
@@ -508,7 +488,11 @@ public class D_codigo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnexportarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       // generaretiqyeta();
+        try {
+            generaretiqyeta();
+        } catch (JRException ex) {
+            Logger.getLogger(D_codigo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
        
@@ -548,32 +532,36 @@ public class D_codigo extends javax.swing.JFrame {
         });
     }
     
-    /*public void generaretiqyeta(){
+    public void generaretiqyeta() throws JRException{
         
-        try{
+        
             Object [] opciones = {"Acptar", "Cancelar"};
             int eleccion = JOptionPane.showOptionDialog(null,"se generara el reporte", "desea continuar?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"aceptar");
             
             if(eleccion ==JOptionPane.YES_OPTION){
-            String master= System.getProperty("/Users/Estevane/NetBeansProjects/almacen/src/frames/fcodigo/newReport.jasper");
+            
             HashMap parametros = new HashMap();
-            parametros.put("parameter1",tdescripcion.getText());
-            parametros.put("parameter2",tcodigo.getText());
-            parametros.put("parameter3",tlocalidad.getText());
+            parametros.put("field1",tdescripcion.getText());
+            parametros.put("field2",tcodigo.getText());
+            parametros.put("field3",tlocalidad.getText());
             
             
-            JasperPrint informe=JasperFillManager.fillReport(master, parametros, new JREmptyDataSource());
-            JasperViewer.viewReport(informe, false);
+            JasperReport reporte; // Instaciamos el objeto reporte
+            String path = "/Users/appleapple/NetBeansProjects/almacen/src/frames/fcodigo/newReport.jasper"; //Ponemos la localizacion del reporte creado
             
-            }else{
-                
-            }
+            try{
             
-        } catch (JRException ex) {
-            Logger.getLogger(D_codigo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-*/
+            JRDataSource jrDataSource = new JREmptyDataSource();
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(path,null,jrDataSource);
+
+            JasperExportManager.exportReportToPdfFile(jasperPrint,"/Users/Estevane/");
+           
+            }catch (Exception e) {
+               System.out.println("NO SE PUEDE CREAR");
+             }
+    }}
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnexportar;
     private javax.swing.JButton btngenerar;

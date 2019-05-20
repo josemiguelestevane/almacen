@@ -1,5 +1,5 @@
 
-package Frames;
+package frames;
 
 /**
  *

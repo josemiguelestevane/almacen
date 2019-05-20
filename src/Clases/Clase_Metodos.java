@@ -5,7 +5,7 @@
  */
 package Clases;
 
-import Frames.E_uregistro;
+import frames.E_uregistro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
