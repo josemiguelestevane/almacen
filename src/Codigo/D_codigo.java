@@ -561,6 +561,9 @@ public class D_codigo extends javax.swing.JFrame {
                System.out.println("NO SE PUEDE CREAR");
              }
     }}
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnexportar;

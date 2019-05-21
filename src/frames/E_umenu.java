@@ -221,6 +221,7 @@ public class E_umenu extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         btnuregistro.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnuregistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/001-add-button.png"))); // NOI18N
         btnuregistro.setText("NUEVO");
         btnuregistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

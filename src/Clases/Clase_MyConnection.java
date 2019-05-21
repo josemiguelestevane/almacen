@@ -8,6 +8,7 @@ package Clases;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -19,9 +20,10 @@ public class Clase_MyConnection {
      
         Connection con = null;
         try {
-            String url = "jdbc:sqlite:/Users/Estevane/Desktop/sql/spr.db";
+            String url = "jdbc:sqlite:/Users/appleapple/Desktop/sql/spr.db";
             // crea la coneccion con la base de datos
             con = DriverManager.getConnection(url);
+            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -52,5 +54,20 @@ public class Clase_MyConnection {
         catch(Exception e){ System.out.print(e.toString());}
         return usuarios;
     }    
-    
+    public boolean actualizarDatos(String user, String pass){
+        Connection cn=getConnection();
+        Statement st;
+        boolean realizado;
+        
+        
+        try{
+            st=cn.createStatement();
+            st.execute("UPDATE usuarios SET contrasena='"+pass+"' WHERE nombre="+user+";");
+            realizado = true;
+        }catch (SQLException e) {
+            realizado=false;
+            System.out.println(e.getMessage());
+        }
+        return realizado;
+    }
 }
