@@ -9,6 +9,9 @@ import frames.C_PSM;
 import frames.E_ubuscar;
 import frames.E_uregistro;
 import static frames.E_uregistro.tcontrasena;
+import static frames.F_requisicion.cantidadtxt;
+import static frames.F_requisicion.descripciontxt;
+import static frames.F_requisicion.unidadtxt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,7 +52,7 @@ public class Clase_Metodos {
         
         JOptionPane.showMessageDialog(null, "SE HA REGISTRADO UN NUEVO USUARIO", "Operación Exitosa",
                 JOptionPane.INFORMATION_MESSAGE);
-        
+            
     }else{
         
         JOptionPane.showMessageDialog(null, "No se ha podido realizar la actualización de los datos\n"
@@ -80,7 +83,7 @@ public class Clase_Metodos {
         
         JOptionPane.showMessageDialog(null, "El registro se realizó con éxito", "Operación Exitosa. por favor actualice",
                 JOptionPane.INFORMATION_MESSAGE);
-        
+           
         }else{
         
         JOptionPane.showMessageDialog(null, "No se ha podido realizar la operacion\n"
@@ -108,7 +111,8 @@ public class Clase_Metodos {
                 modelo.addRow(new Object[]{rs.getString("nombre"),rs.getString("correo"),rs.getString("departamento")});
             }            
             // asigna el modelo a la tabla
-            u.tablabuscarU.setModel(modelo);            
+            u.tablabuscarU.setModel(modelo); 
+            
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -125,7 +129,7 @@ public class Clase_Metodos {
         
         JOptionPane.showMessageDialog(null, "El registro se elimino con éxito, por favor actualice", "Operación Exitosa. ",
                 JOptionPane.INFORMATION_MESSAGE);
-        
+                
         }else{
         
         JOptionPane.showMessageDialog(null, "No se ha podido realizar la operacion\n"
@@ -138,6 +142,65 @@ public class Clase_Metodos {
             }
     
         }
+    }
+    
+    public void eliminarREQ(String fechatxt,String dptotxt,String reqtxt,String tcantidadtxt,String unidadtxt,String descripciontxt)throws SQLException{ 
+    int confirmar = JOptionPane.showConfirmDialog(null, "¿esta seguro que desea eliminar un dato?");
+    if(confirmar == JOptionPane.YES_OPTION){
+    try( Connection con = Clase_MyConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement("delete from REQUISICIONES where Rreq = ?")){
+            ps.setString(1, reqtxt);
+            if(ps.executeUpdate()> 0){
+        
+        JOptionPane.showMessageDialog(null, "El registro se elimino con éxito, por favor actualice", "Operación Exitosa. ",
+                JOptionPane.INFORMATION_MESSAGE);
+                
+        }else{
+        
+        JOptionPane.showMessageDialog(null, "No se ha podido realizar la operacion\n"
+                + "Inténtelo nuevamente.", "Error en la operación",
+                JOptionPane.ERROR_MESSAGE);
+        
+        }
+    }   catch(SQLException e){  
+        System.out.println(e.getMessage());
+            }
+    
+        }
+    }
+    
+    public void nuevoREQ(String fechatxt,String dptotxt,Object departamentotxt,String reqtxt,String tcantidadtxt,Object estatustxt,String unidadtxt,String descripciontxt)throws SQLException{ 
+    int confirmar = JOptionPane.showConfirmDialog(null, "¿Desea agregar un nuevo dato de requicicion?");
+    if(confirmar == JOptionPane.YES_OPTION){
+        
+    try( Connection con = Clase_MyConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO REQUISICIONES " + "VALUES (?,?,?,?,?,?,?,?)")){
+    ps.setString(1, fechatxt);
+    ps.setString(2, dptotxt);
+    ps.setObject(3, departamentotxt);
+    ps.setString(4, reqtxt);
+    ps.setString(5, tcantidadtxt);
+    ps.setObject(6, estatustxt);
+    ps.setString(7, unidadtxt);
+    ps.setString(8, descripciontxt);
+    if(ps.executeUpdate()> 0){
+        
+        JOptionPane.showMessageDialog(null, "El registro de requicicion se realizó con éxito!!, por favor actualice", "Operación Exitosa. ",
+                JOptionPane.INFORMATION_MESSAGE);
+                
+        }else{
+        
+        JOptionPane.showMessageDialog(null, "No se ha podido realizar la operacion\n"
+                + "Inténtelo nuevamente.", "Error en la operación",
+                JOptionPane.ERROR_MESSAGE);
+        
+        }
+    }   catch(SQLException e){  
+        System.out.println(e.getMessage());
+            }
+    
+        }
+    
     }
 }
 //"select * from usuarios where nombre = ?"

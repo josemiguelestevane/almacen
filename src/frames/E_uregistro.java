@@ -102,6 +102,11 @@ public class E_uregistro extends javax.swing.JFrame {
 
         tdepartamento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tdepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COMPRAS Y ALMACEN", "CONTABILIDAD", "EXPLORACION", "SEGURIDAD" }));
+        tdepartamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tdepartamentoActionPerformed(evt);
+            }
+        });
 
         tcontrasena2.setForeground(new java.awt.Color(255, 153, 0));
         tcontrasena2.setText("jPasswordField1");
@@ -263,6 +268,10 @@ public class E_uregistro extends javax.swing.JFrame {
     private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnregresarActionPerformed
+
+    private void tdepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdepartamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tdepartamentoActionPerformed
     
         
     public static void main(String args[]) {
