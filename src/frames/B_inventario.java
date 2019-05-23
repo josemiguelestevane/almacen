@@ -5,6 +5,7 @@
  */
 package frames;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,13 +14,16 @@ import javax.swing.table.DefaultTableModel;
  * @author appleapple
  */
 public class B_inventario extends javax.swing.JFrame {
-
+    
+    DefaultTableModel modelo;
     /**
      * Creates new form menu
      */
     public B_inventario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        modelo= (DefaultTableModel)jtablecodigos.getModel();
+        modelo.addRow(new Object[]{codigo.getText(),""});
         
     }
 
@@ -38,7 +42,7 @@ public class B_inventario extends javax.swing.JFrame {
         jtablecodigos = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBoxlineas = new javax.swing.JComboBox<>();
+        jComboBoxlineas = new javax.swing.JComboBox<String>();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
@@ -51,6 +55,7 @@ public class B_inventario extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         btnregresar = new javax.swing.JButton();
         btnlimpiar = new javax.swing.JButton();
+        btnlimpiar1 = new javax.swing.JButton();
 
         jButton4.setText("jButton4");
 
@@ -76,10 +81,22 @@ public class B_inventario extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jtablecodigos.setEnabled(false);
+        jtablecodigos.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                scanner(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
+        jtablecodigos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                enter(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtablecodigos);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setName("nuevo"); // NOI18N
 
         jLabel3.setBackground(new java.awt.Color(102, 102, 102));
         jLabel3.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
@@ -89,7 +106,7 @@ public class B_inventario extends javax.swing.JFrame {
         jComboBoxlineas.setBackground(new java.awt.Color(255, 255, 255));
         jComboBoxlineas.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jComboBoxlineas.setForeground(new java.awt.Color(102, 102, 102));
-        jComboBoxlineas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01 Aceites, grasas y combustibles", "02 Acero y brocas de barrenacion ", "03 Seguridad", "04 Baleros, chumaceras y otros", "05 Bandas industriales, automotrices y otras", "06 Bola y reactivo", "07 Empaquetadoras", "08", "09 Ferreteria", "10 Filtros", "11 Herramientas", "12 Llantas y camaras", "13", "14 Material electrico", "15 Material para construccion", "16 Material para laboratorio", "17", "18 Mangueras y conexiones", "19 Papeleria y articulos de oficina ", "20 Refacciones equipo diesel", "21 Refacciones automotrices", "22 Refacciones perforadoras", "23 Refacciones planta beneficio", "24 Refacciones lamparas mineras", "25 Refacciones compresores", "26 Refacciones maquina perforacion", "27 Refacciones para bombas", "28", "29 Soldura", "30 Tornilleria y otros", "31 Tuberias y conexiones", "32", "33", "34", "35 Cargos directos" }));
+        jComboBoxlineas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01 Aceites, grasas y combustibles", "02 Acero y brocas de barrenacion ", "03 Seguridad", "04 Baleros, chumaceras y otros", "05 Bandas industriales, automotrices y otras", "06 Bola y reactivo", "07 Empaquetadoras", "08", "09 Ferreteria", "10 Filtros", "11 Herramientas", "12 Llantas y camaras", "13", "14 Material electrico", "15 Material para construccion", "16 Material para laboratorio", "17", "18 Mangueras y conexiones", "19 Papeleria y articulos de oficina ", "20 Refacciones equipo diesel", "21 Refacciones automotrices", "22 Refacciones perforadoras", "23 Refacciones planta beneficio", "24 Refacciones lamparas mineras", "25 Refacciones compresores", "26 Refacciones maquina perforacion", "27 Refacciones para bombas", "28", "29 Soldura", "30 Tornilleria y otros", "31 Tuberias y conexiones", "32", "33", "34", "35 Cargos directos" }));
 
         jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
         jDateChooser1.setForeground(new java.awt.Color(153, 153, 153));
@@ -186,7 +203,7 @@ public class B_inventario extends javax.swing.JFrame {
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(40, 40, 40)
                 .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 153, 0));
@@ -195,7 +212,7 @@ public class B_inventario extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 889, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,7 +222,6 @@ public class B_inventario extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
 
         btnregresar.setBackground(new java.awt.Color(102, 102, 102));
-        btnregresar.setIcon(new javax.swing.ImageIcon("/Users/appleapple/NetBeansProjects/almacen/src/icn/005-keyboard-left-arrow-button.png")); // NOI18N
         btnregresar.setBorderPainted(false);
         btnregresar.setContentAreaFilled(false);
         btnregresar.addActionListener(new java.awt.event.ActionListener() {
@@ -234,11 +250,20 @@ public class B_inventario extends javax.swing.JFrame {
         btnlimpiar.setBackground(new java.awt.Color(255, 255, 255));
         btnlimpiar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnlimpiar.setForeground(new java.awt.Color(255, 153, 0));
-        btnlimpiar.setIcon(new javax.swing.ImageIcon("/Users/appleapple/NetBeansProjects/almacen/src/icn/002-eraser.png")); // NOI18N
         btnlimpiar.setText("LIMPIAR");
         btnlimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnlimpiarActionPerformed(evt);
+            }
+        });
+
+        btnlimpiar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnlimpiar1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnlimpiar1.setForeground(new java.awt.Color(255, 153, 0));
+        btnlimpiar1.setText("NUEVO");
+        btnlimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnlimpiar1ActionPerformed(evt);
             }
         });
 
@@ -252,18 +277,22 @@ public class B_inventario extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(17, 17, 17)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(87, 87, 87)))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(37, 37, 37)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(218, 218, 218)
+                    .addComponent(btnlimpiar1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(548, Short.MAX_VALUE)))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,15 +302,22 @@ public class B_inventario extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(27, 27, 27)
                         .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addContainerGap(460, Short.MAX_VALUE)
+                    .addComponent(btnlimpiar1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(126, 126, 126)))
         );
+
+        btnlimpiar1.getAccessibleContext().setAccessibleName("NUEVO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -298,12 +334,13 @@ public class B_inventario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarActionPerformed
-          DefaultTableModel modelo1= (DefaultTableModel)jtablecodigos.getModel();          
-          modelo1.setRowCount(0);
+          //DefaultTableModel modelo1= (DefaultTableModel)jtablecodigos.getModel();          
+          modelo.setRowCount(0);
+          
     }//GEN-LAST:event_btnlimpiarActionPerformed
 
     public int getIndextt(String search) {
-    DefaultTableModel modelo= (DefaultTableModel)jtablecodigos.getModel();
+    //DefaultTableModel modelo= (DefaultTableModel)jtablecodigos.getModel();
     
     int outIndex = -1;
     for (int i = 0; i < modelo.getRowCount(); i++) {
@@ -320,7 +357,7 @@ public class B_inventario extends javax.swing.JFrame {
 }
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        DefaultTableModel modelo= (DefaultTableModel)jtablecodigos.getModel();
+        //DefaultTableModel modelo= (DefaultTableModel)jtablecodigos.getModel();
         
         if(codigo.getText().equals("")==false){
         
@@ -484,6 +521,26 @@ public class B_inventario extends javax.swing.JFrame {
        jTextArea1.setText(codigo.getText());  
     }//GEN-LAST:event_codigoInputMethodTextChanged
 
+    private void enter(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_enter
+        // TODO add your handling code here:
+        
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            //JOptionPane.showMessageDialog(rootPane, "Enter");
+             //modelo.addRow(new Object[]{codigo.getText(),"1"});
+        }
+    }//GEN-LAST:event_enter
+
+    private void scanner(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_scanner
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_scanner
+
+    private void btnlimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiar1ActionPerformed
+        // TODO add your handling code here:
+        
+        modelo.addRow(new Object[]{"",""});
+    }//GEN-LAST:event_btnlimpiar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -552,6 +609,7 @@ public class B_inventario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnlimpiar;
+    private javax.swing.JButton btnlimpiar1;
     private javax.swing.JButton btnregresar;
     private javax.swing.JTextPane codigo;
     private javax.swing.JButton jButton3;

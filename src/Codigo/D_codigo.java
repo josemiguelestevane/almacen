@@ -3,7 +3,12 @@ package Codigo;
 
 import com.spire.barcode.BarcodeSettings;
 import java.awt.Color;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.net.URL;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -14,6 +19,8 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 
@@ -492,6 +499,8 @@ public class D_codigo extends javax.swing.JFrame {
             generaretiqyeta();
         } catch (JRException ex) {
             Logger.getLogger(D_codigo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(D_codigo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -532,31 +541,32 @@ public class D_codigo extends javax.swing.JFrame {
         });
     }
     
-    public void generaretiqyeta() throws JRException{
+    public void generaretiqyeta() throws JRException, FileNotFoundException{
         
         
-            Object [] opciones = {"Acptar", "Cancelar"};
+            Object [] opciones = {"Aceptar", "Cancelar"};
             int eleccion = JOptionPane.showOptionDialog(null,"se generara el reporte", "desea continuar?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"aceptar");
             
             if(eleccion ==JOptionPane.YES_OPTION){
             
-            HashMap parametros = new HashMap();
-            parametros.put("field1",tdescripcion.getText());
-            parametros.put("field2",tcodigo.getText());
-            parametros.put("field3",tlocalidad.getText());
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("parameter1", tcodigo.getText());
+ 
+            JasperReport report; // Instaciamos el objeto reporte
             
-            
-            JasperReport reporte; // Instaciamos el objeto reporte
-            String path = "/Users/appleapple/NetBeansProjects/almacen/src/frames/fcodigo/newReport.jasper"; //Ponemos la localizacion del reporte creado
-            
+            FileInputStream fos=new FileInputStream("/Users/Estevane/NetBeansProjects/almacen/src/Codigo/newReport.jasper");
             try{
+            report=(JasperReport)JRLoader.loadObject(fos);
             
             JRDataSource jrDataSource = new JREmptyDataSource();
 
-            //filledReport = JasperFillManager.fillReport(reporte, parametros, new JREmptyDataSource(1));
-
-            //JasperExportManager.exportReportToPdfFile(jasperPrint,"/Users/Estevane/");
-           
+            JasperPrint jp=JasperFillManager.fillReport(report,parametros,jrDataSource);
+            
+            
+            JasperViewer jv= new JasperViewer(jp);
+            
+            jv.setVisible(true);
+            jv.setTitle("codigo");
             }catch (Exception e) {
                System.out.println("NO SE PUEDE CREAR");
              }
