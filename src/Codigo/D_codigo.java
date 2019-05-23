@@ -553,9 +553,9 @@ public class D_codigo extends javax.swing.JFrame {
             
             JRDataSource jrDataSource = new JREmptyDataSource();
 
-            JasperPrint jasperPrint = JasperFillManager.fillReport(path,null,jrDataSource);
+            //filledReport = JasperFillManager.fillReport(reporte, parametros, new JREmptyDataSource(1));
 
-            JasperExportManager.exportReportToPdfFile(jasperPrint,"/Users/Estevane/");
+            //JasperExportManager.exportReportToPdfFile(jasperPrint,"/Users/Estevane/");
            
             }catch (Exception e) {
                System.out.println("NO SE PUEDE CREAR");

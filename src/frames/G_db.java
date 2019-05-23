@@ -5,10 +5,10 @@
  */
 package frames;
 
+import Base_de_datos.FuncionesBD;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -16,12 +16,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author appleapple
  */
 public class G_db extends javax.swing.JFrame {
-
     /**
      * Creates new form G_db
      */
     public G_db() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -42,6 +42,7 @@ public class G_db extends javax.swing.JFrame {
         btnrespaldar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -62,7 +63,7 @@ public class G_db extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(575, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnregresar)
                 .addGap(24, 24, 24))
         );
@@ -108,11 +109,14 @@ public class G_db extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(164, 164, 164)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnrespaldar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(163, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(btnrespaldar)))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,15 +132,12 @@ public class G_db extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,28 +168,32 @@ public class G_db extends javax.swing.JFrame {
     }//GEN-LAST:event_btnregresarActionPerformed
 
     private void btnrespaldarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrespaldarActionPerformed
+        FuncionesBD javaIOUtils = new FuncionesBD();
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
-            "Archivos sql", "sql");
-        chooser.setFileFilter(filter);
+            "Archivos db", "db");
         String userHome = System.getProperty( "user.home" );
         chooser.setCurrentDirectory(new File(userHome));
-        chooser.setAcceptAllFileFilterUsed(false);
         int retrival = chooser.showSaveDialog(null);
+        chooser.setAcceptAllFileFilterUsed(true);
+        
         if (retrival == JFileChooser.APPROVE_OPTION) {
             try {
-                String archivoSql = chooser.getSelectedFile()+".sql";
-                if (!archivoSql.contains(".sql")) {
-                    archivoSql = archivoSql + ".sql";
-                }
-                //FuncionesBD resp = new FuncionesBD(adminBD.getConectarBD().getBd(), 
-                        //adminBD.getConectarBD().getUsuario(),
-                        //adminBD.getConectarBD().getContrasena(), archivoSql);
-               // resp.backupDB();
+                String toFile = chooser.getSelectedFile()+".db";
+                String fromFile= "/Users/appleapple/Desktop/sql/spr.db";
+               
+                    boolean result = javaIOUtils.backupBD(fromFile, toFile);
+                    if(result=true){
+                        JOptionPane.showMessageDialog(null,"Completo!, La base de datos se ha respaldado correctamente");
+                    }else{
+                    
+                    JOptionPane.showMessageDialog(null,"Error! No se ha podido respaldar la base de datos");
+                    }
+               
             } catch (Exception ex) {
-                System.err.println("Error guardando archivo: " +ex.getMessage());
+                
             }
-        }
+        } 
     }//GEN-LAST:event_btnrespaldarActionPerformed
    
     /**

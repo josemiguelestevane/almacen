@@ -5,21 +5,12 @@
  */
 package Clases;
 
-import frames.C_PSM;
 import frames.E_ubuscar;
-import frames.E_uregistro;
-import static frames.E_uregistro.tcontrasena;
-import static frames.F_requisicion.cantidadtxt;
-import static frames.F_requisicion.descripciontxt;
-import static frames.F_requisicion.unidadtxt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.accessibility.AccessibleContext;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 

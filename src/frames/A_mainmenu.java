@@ -5,11 +5,7 @@
  */
 package frames;
 
-import Clases.Clase_MyConnection;
 import Codigo.D_codigo;
-import java.awt.Dimension;
-import java.sql.ResultSet;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -50,7 +46,7 @@ public class A_mainmenu extends javax.swing.JFrame {
         btncodigo = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnBD = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("framemenu"); // NOI18N
@@ -167,10 +163,15 @@ public class A_mainmenu extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/data-storage-device.png"))); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 153, 0));
-        jButton1.setText("BASE DE DATOS");
+        btnBD.setBackground(new java.awt.Color(255, 255, 255));
+        btnBD.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnBD.setForeground(new java.awt.Color(255, 153, 0));
+        btnBD.setText("BASE DE DATOS");
+        btnBD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBDActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -194,7 +195,7 @@ public class A_mainmenu extends javax.swing.JFrame {
                     .addComponent(btncuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel6)
-                    .addComponent(jButton1))
+                    .addComponent(btnBD))
                 .addGap(62, 62, 62))
         );
         jPanel2Layout.setVerticalGroup(
@@ -223,7 +224,7 @@ public class A_mainmenu extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnrequi, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btncodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBD, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(119, 119, 119))
         );
 
@@ -267,7 +268,7 @@ public class A_mainmenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btncerrarActionPerformed
 
     private void btnminimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnminimizarActionPerformed
-        // TODO add your handling code here:
+        
         this.setExtendedState(1);
     }//GEN-LAST:event_btnminimizarActionPerformed
 
@@ -277,11 +278,16 @@ public class A_mainmenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btncodigoActionPerformed
 
     private void btnrequiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrequiActionPerformed
-        // TODO add your handling code here:
+        
         F_requisicion r=new F_requisicion();
         r.setVisible(true);
         r.mostrarREQ();
     }//GEN-LAST:event_btnrequiActionPerformed
+
+    private void btnBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBDActionPerformed
+        G_db b=new G_db();
+        b.setVisible(true);
+    }//GEN-LAST:event_btnBDActionPerformed
     
     /**
      * @param args the command line arguments
@@ -320,6 +326,7 @@ public class A_mainmenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBD;
     private javax.swing.JButton btncerrar;
     private javax.swing.JButton btncodigo;
     private javax.swing.JButton btncuenta;
@@ -327,7 +334,6 @@ public class A_mainmenu extends javax.swing.JFrame {
     private javax.swing.JButton btnminimizar;
     private javax.swing.JButton btnrequi;
     private javax.swing.JButton btnseguridad;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

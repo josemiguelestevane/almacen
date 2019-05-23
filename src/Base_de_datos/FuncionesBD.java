@@ -5,46 +5,42 @@
  */
 package Base_de_datos;
 
-import java.awt.HeadlessException;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import javax.swing.JOptionPane;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  *
  * @author appleapple
  */
 public class FuncionesBD {
-    private static String archivo;
     
-    
-    public FuncionesBD(String archSql){
-        
-        archivo = archSql;
-    }
-    
-    public static boolean backupDB() {
-        File file = new File(archivo);
-        String path = file.getPath();
-        if (!path.contains(".sql")) {
-            file = new File(path + ".sql");
-        }
-        String executeCmd = "sqlite3 sample.db .dump > Respaldo.bak" + file.getPath();
-        Process runtimeProcess;
-        try {
-            runtimeProcess = Runtime.getRuntime().exec(executeCmd);
-            int processComplete = runtimeProcess.waitFor();
-            if (processComplete == 0) {
-                JOptionPane.showMessageDialog(null, "Respaldo de la Base de Datos exitoso.","Respaldo",JOptionPane.INFORMATION_MESSAGE);
-                runtimeProcess.destroy();
+    public boolean backupBD(String fromFile, String toFile) {
+        File origin = new File(fromFile);
+        File destination = new File(toFile);
+        if (origin.exists()) {
+            try {
+                InputStream in = new FileInputStream(origin);
+                OutputStream out = new FileOutputStream(destination);
+                // se usa un buffer para la copia 
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = in.read(buf)) > 0) {
+                    out.write(buf, 0, len);
+                }
+                in.close();
+                out.close();
                 return true;
-            } else {
-                JOptionPane.showMessageDialog(null, "Error: revise contraseña, base de datos, usuario o la conexión al servidor.","Respaldo",JOptionPane.ERROR_MESSAGE);
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+                return false;
             }
-        } catch (IOException | InterruptedException | HeadlessException ex) {
-            System.err.println("Error respaldo: "+ex.getMessage());
+        } else {
+            return false;
+    
         }
-
-        return false;
     }
 }
