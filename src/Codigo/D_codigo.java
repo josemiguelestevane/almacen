@@ -471,7 +471,7 @@ public class D_codigo extends javax.swing.JFrame {
             parametros.put("parameter6", tcodigo.getText());
             JasperReport report; // Instaciamos el objeto reporte
             
-            FileInputStream fos=new FileInputStream("/Users/appleapple/NetBeansProjects/almacen/src/Codigo/newReport.jasper");
+            FileInputStream fos=new FileInputStream("/Users/Estevane/NetBeansProjects/almacen/src/Codigo/newReport.jasper");
             try{
             report=(JasperReport)JRLoader.loadObject(fos);
             
