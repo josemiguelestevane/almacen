@@ -55,23 +55,21 @@ public class D_codigo extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         btnregresar1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        canvas1 = new java.awt.Canvas();
-        btnexportar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        tcodigo = new javax.swing.JTextField();
-        btngenerar = new javax.swing.JButton();
-        tdescripcion = new javax.swing.JTextField();
-        calmacen = new javax.swing.JComboBox<String>();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        tlocalidad = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        cstatus = new javax.swing.JComboBox<String>();
         btnlimpiar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        tcodigo = new javax.swing.JTextField();
+        tdescripcion = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        calmacen = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        tlocalidad = new javax.swing.JTextField();
+        tunidad = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        btngenerar = new javax.swing.JButton();
+        btngreen = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -162,55 +160,127 @@ public class D_codigo extends javax.swing.JFrame {
             .addGap(0, 61, Short.MAX_VALUE)
         );
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-
-        canvas1.setBackground(new java.awt.Color(255, 255, 255));
-        canvas1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-
-        btnexportar.setBackground(new java.awt.Color(255, 255, 255));
-        btnexportar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        btnexportar.setForeground(new java.awt.Color(255, 153, 0));
-        btnexportar.setText("EXPORTAR");
-        btnexportar.addActionListener(new java.awt.event.ActionListener() {
+        btnlimpiar.setBackground(new java.awt.Color(255, 255, 255));
+        btnlimpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnlimpiar.setForeground(new java.awt.Color(255, 153, 0));
+        btnlimpiar.setText("LIMPIAR");
+        btnlimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnexportarActionPerformed(evt);
+                btnlimpiarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnexportar)
-                .addGap(79, 79, 79))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnexportar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
-        );
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2), "GENERAR ETIQUETA ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18), new java.awt.Color(255, 153, 0))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel2.setText("GENERAR CODIGO");
-
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel1.setText("Codigo");
-
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel3.setText("Descipcion");
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel5.setText("Localidad");
 
         tcodigo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tcodigo.setText("GCHASDGCDHS");
+
+        tdescripcion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tdescripcion.setToolTipText("");
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel1.setText("Codigo");
+
+        calmacen.setBackground(new java.awt.Color(255, 255, 255));
+        calmacen.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        calmacen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D", "E" }));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setText("Descipcion");
+
+        tlocalidad.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tlocalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tlocalidadActionPerformed(evt);
+            }
+        });
+
+        tunidad.setBackground(new java.awt.Color(255, 255, 255));
+        tunidad.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tunidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PIEZA", "LITRO", "METRO", "PULGADA", "GALON", "BOTE", "CUBETA", "KILO", " " }));
+        tunidad.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                tunidadItemStateChanged(evt);
+            }
+        });
+        tunidad.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                tunidadCaretPositionChanged(evt);
+            }
+        });
+        tunidad.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tunidadPropertyChange(evt);
+            }
+        });
+        tunidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tunidadKeyPressed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel4.setText("Almacen");
+
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel6.setText("Unidad");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(calmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tlocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tunidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(tdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(calmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(tlocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(tunidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(99, Short.MAX_VALUE))
+        );
 
         btngenerar.setBackground(new java.awt.Color(255, 255, 255));
         btngenerar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -222,68 +292,18 @@ public class D_codigo extends javax.swing.JFrame {
             }
         });
 
-        tdescripcion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tdescripcion.setText("Miguel");
-        tdescripcion.setToolTipText("");
-
-        calmacen.setBackground(new java.awt.Color(255, 255, 255));
-        calmacen.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        calmacen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C", "D", "E" }));
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel4.setText("Almacen");
-
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel5.setText("Localidad");
-
-        tlocalidad.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tlocalidad.setText("Miguel Auza");
-
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel6.setText("Status");
-
-        cstatus.setBackground(new java.awt.Color(255, 255, 255));
-        cstatus.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cstatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "OBSOLETO", "LENTO MOVIMIENTO", "CONTINUO" }));
-        cstatus.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cstatusItemStateChanged(evt);
-            }
-        });
-        cstatus.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-                cstatusCaretPositionChanged(evt);
-            }
-        });
-        cstatus.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                cstatusPropertyChange(evt);
-            }
-        });
-        cstatus.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cstatusKeyPressed(evt);
-            }
-        });
-
-        btnlimpiar.setBackground(new java.awt.Color(255, 255, 255));
-        btnlimpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        btnlimpiar.setForeground(new java.awt.Color(255, 153, 0));
-        btnlimpiar.setText("LIMPIAR");
-        btnlimpiar.addActionListener(new java.awt.event.ActionListener() {
+        btngreen.setBackground(new java.awt.Color(255, 255, 255));
+        btngreen.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btngreen.setForeground(new java.awt.Color(255, 153, 0));
+        btngreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/recycle.png"))); // NOI18N
+        btngreen.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
+        btngreen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnlimpiarActionPerformed(evt);
+                btngreenActionPerformed(evt);
             }
         });
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/Sin título.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -294,36 +314,22 @@ public class D_codigo extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btngenerar))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(calmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tlocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(181, 181, 181)
-                                .addComponent(jButton1))))
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel7))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(476, 476, 476)
-                        .addComponent(jLabel2)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                        .addGap(15, 15, 15)
+                        .addComponent(btngreen, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(81, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(btngenerar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(121, 121, 121))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,40 +337,17 @@ public class D_codigo extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(37, 37, 37)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btngenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(59, 59, 59)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addGap(42, 42, 42)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(tdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(calmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(tlocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(28, 28, 28)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(cstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(76, 76, 76)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(72, 72, 72)
+                        .addComponent(jLabel7)))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btngenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btngreen, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -392,72 +375,16 @@ public class D_codigo extends javax.swing.JFrame {
 
     private void btngenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngenerarActionPerformed
         
-        BarcodeSettings settings = new BarcodeSettings();
-        String text = tcodigo.getText();
-        int number = Integer.parseInt(text);
-        String des = tdescripcion.getText();
-        String loc = tlocalidad.getText();
-        String alm = calmacen.getItemAt(calmacen.getSelectedIndex());
+       try {
+            generaretiqyeta();
+        } catch (JRException ex) {
+            Logger.getLogger(D_codigo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(D_codigo.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
     }//GEN-LAST:event_btngenerarActionPerformed
-
-    private void cstatusCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_cstatusCaretPositionChanged
-    
-    }//GEN-LAST:event_cstatusCaretPositionChanged
-
-    private void cstatusPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cstatusPropertyChange
-    Color cc;
-    
-        if (cstatus.getSelectedIndex() == 0)
-                {     
-                cc = new Color(255, 170, 0); }
-        else
-        {if (cstatus.getSelectedIndex() == 1)
-                {     
-                cc = new Color(0, 255, 0); }
-        else{cc = new Color(255, 255, 255);}
-                        };
-                        
-        canvas1.setBackground(cc);    // TODO add your handling code here:
-    }//GEN-LAST:event_cstatusPropertyChange
-
-    private void cstatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cstatusKeyPressed
-    Color cc;
-    
-        if (cstatus.getSelectedIndex() == 0)
-                {     
-                cc = new Color(255, 170, 0); }
-        else
-        {if (cstatus.getSelectedIndex() == 1)
-                {     
-                cc = new Color(0, 255, 0); }
-        else{cc = new Color(255, 255, 255);}
-                        };
-                        
-        canvas1.setBackground(cc);    // TODO add your handling code here:
-    }//GEN-LAST:event_cstatusKeyPressed
-
-    private void cstatusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cstatusItemStateChanged
-    Color cc;
-    java.awt.event.ActionEvent e1;
-    
-    
-        if (cstatus.getSelectedIndex() == 0)
-                {     
-                cc = new Color(255, 170, 0); }
-        else
-        {if (cstatus.getSelectedIndex() == 1)
-                {     
-                cc = new Color(0, 255, 0); }
-        else{cc = new Color(255, 255, 255);}
-                        };
-                        
-        canvas1.setBackground(cc);
-        
-        
-       
-    }//GEN-LAST:event_cstatusItemStateChanged
 
     private void btnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarActionPerformed
         // TODO add your handling code here:
@@ -466,43 +393,29 @@ public class D_codigo extends javax.swing.JFrame {
         tlocalidad.setText(null);
     }//GEN-LAST:event_btnlimpiarActionPerformed
 
-    private void btnexportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexportarActionPerformed
-   
-                /*FileChooser fileChooser = new FileChooser();
-                
-                //Set extension filter
-                FileChooser.ExtensionFilter extFilter = 
-                        new FileChooser.ExtensionFilter("png files (*.png)", "*.png");
-                fileChooser.getExtensionFilters().add(extFilter);
-              
-                //Show save file dialog
-                File file= new File();
-                
-                if(file != null){
-                    try {
-                        WritableImage writableImage = new WritableImage(canvas1.getWidth(),canvas1.getHeight());
-                        canvas1.snapshot(null, writableImage);
-                        RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
-                        ImageIO.write(renderedImage, "png", file);
-                    } catch (IOException ex) {
-                        Logger.getLogger(canvas1.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            
-            */
-       
- 
-    }//GEN-LAST:event_btnexportarActionPerformed
+    private void tunidadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tunidadKeyPressed
+           // TODO add your handling code here:
+    }//GEN-LAST:event_tunidadKeyPressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            generaretiqyeta();
-        } catch (JRException ex) {
-            Logger.getLogger(D_codigo.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(D_codigo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void tunidadPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tunidadPropertyChange
+           // TODO add your handling code here:
+    }//GEN-LAST:event_tunidadPropertyChange
+
+    private void tunidadCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_tunidadCaretPositionChanged
+
+    }//GEN-LAST:event_tunidadCaretPositionChanged
+
+    private void tunidadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tunidadItemStateChanged
+        
+    }//GEN-LAST:event_tunidadItemStateChanged
+
+    private void tlocalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tlocalidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tlocalidadActionPerformed
+
+    private void btngreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngreenActionPerformed
+        JOptionPane.showMessageDialog(null,"POR FAVOR UTILICE HOJAS RECICLADAS PARA CREAR LAS ETIQUETAS.\n \n ¿Sabes por qué es tan importante reciclar el papel?\n Para empezar, se trata de un tipo de material que usamos con muchísima frecuencia.\n Leemos el periódico, ojeamos una revista, consultamos nuestra agenda para ver el orden del día,\n guardamos la compra en una bolsa de papel, recogemos las cartas y folletos publicitarios de nuestro buzón… \n El papel, sin duda es una material que está presente a diario en nuestra vida\n" + " Por lo que reciclarlo es de vital importancia para que pueda ser recuperado y empleado de nuevo pero transformado en otro producto.\n" + " El consumo de energía baja considerablemente cuando reciclamos\n se reduce entre un 40% y un 64% de energía cuando el papel es reciclado con respecto a cuando se fabrica con pasta no reciclada.\n Además, reciclar papel influye en la reducción de la contaminación, un 35% menos de contaminación de agua y un 74% menos de contaminación de aire.");
+    }//GEN-LAST:event_btngreenActionPerformed
 
        
     
@@ -545,16 +458,20 @@ public class D_codigo extends javax.swing.JFrame {
         
         
             Object [] opciones = {"Aceptar", "Cancelar"};
-            int eleccion = JOptionPane.showOptionDialog(null,"se generara el reporte", "desea continuar?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"aceptar");
+            int eleccion = JOptionPane.showOptionDialog(null,"Se generaran las etiquetas", "Desea continuar?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"aceptar");
             
             if(eleccion ==JOptionPane.YES_OPTION){
             
             Map<String, Object> parametros = new HashMap<>();
-            parametros.put("parameter1", tcodigo.getText());
- 
+            parametros.put("parameter1", tdescripcion.getText());
+            parametros.put("parameter2", tcodigo.getText());
+            parametros.put("parameter3", calmacen.getSelectedItem());
+            parametros.put("parameter4", tlocalidad.getText());
+            parametros.put("parameter5", tunidad.getSelectedItem());
+            parametros.put("parameter6", tcodigo.getText());
             JasperReport report; // Instaciamos el objeto reporte
             
-            FileInputStream fos=new FileInputStream("/Users/Estevane/NetBeansProjects/almacen/src/Codigo/newReport.jasper");
+            FileInputStream fos=new FileInputStream("/Users/appleapple/NetBeansProjects/almacen/src/Codigo/newReport.jasper");
             try{
             report=(JasperReport)JRLoader.loadObject(fos);
             
@@ -572,33 +489,31 @@ public class D_codigo extends javax.swing.JFrame {
              }
     }}
     
-    
+   
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnexportar;
     private javax.swing.JButton btngenerar;
+    private javax.swing.JButton btngreen;
     private javax.swing.JButton btnlimpiar;
     private javax.swing.JButton btnregresar;
     private javax.swing.JButton btnregresar1;
     private javax.swing.JComboBox<String> calmacen;
-    private java.awt.Canvas canvas1;
-    private javax.swing.JComboBox<String> cstatus;
-    private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JTextField tcodigo;
     private javax.swing.JTextField tdescripcion;
     private javax.swing.JTextField tlocalidad;
+    private javax.swing.JComboBox<String> tunidad;
     // End of variables declaration//GEN-END:variables
 }
