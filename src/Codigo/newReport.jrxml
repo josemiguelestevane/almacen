@@ -1,21 +1,267 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="539" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="28" uuid="4237dbcd-ca1d-4c06-9c2c-8f6ab9410635">
-	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="64"/>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="parameter2" class="java.lang.String"/>
+	<parameter name="parameter3" class="java.lang.String"/>
+	<parameter name="parameter4" class="java.lang.String"/>
+	<parameter name="parameter5" class="java.lang.String"/>
+	<parameter name="parameter6" class="java.lang.String"/>
 	<title>
-		<band height="504" splitType="Stretch">
+		<band height="786" splitType="Stretch">
 			<image>
-				<reportElement x="0" y="-24" width="121" height="193" uuid="b3e14205-9a27-41d3-be0b-d42eaa87ce6b"/>
-				<imageExpression><![CDATA["/Users/appleapple/Desktop/Etiqueta.png"]]></imageExpression>
+				<reportElement x="0" y="0" width="167" height="263" uuid="b3e14205-9a27-41d3-be0b-d42eaa87ce6b"/>
+				<imageExpression><![CDATA["/Users/appleapple/NetBeansProjects/almacen/src/icn/Etiqueta.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="0" y="148" width="121" height="193" uuid="4374374d-2b36-4b06-9e10-7f5241ab224e"/>
-				<imageExpression><![CDATA["/Users/appleapple/Desktop/Etiqueta.png"]]></imageExpression>
+				<reportElement x="0" y="249" width="167" height="263" uuid="7bc497bf-d1ba-4fbe-a025-df63f04fe857"/>
+				<imageExpression><![CDATA["/Users/appleapple/NetBeansProjects/almacen/src/icn/Etiqueta.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="0" y="326" width="121" height="178" uuid="ea9b9c24-dfdd-4e74-95de-9ff80e039057"/>
-				<imageExpression><![CDATA["/Users/appleapple/Desktop/Etiqueta.png"]]></imageExpression>
+				<reportElement x="0" y="496" width="167" height="263" uuid="4937a68f-4029-49f2-b2ec-0685ab2528cf"/>
+				<imageExpression><![CDATA["/Users/appleapple/NetBeansProjects/almacen/src/icn/Etiqueta.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="167" y="0" width="167" height="263" uuid="cd0e79cd-7377-4352-ae69-96ccf0377936"/>
+				<imageExpression><![CDATA["/Users/appleapple/NetBeansProjects/almacen/src/icn/Etiqueta.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="334" y="0" width="167" height="263" uuid="d81398ce-b61b-4a41-955b-3e2c958f7b1f"/>
+				<imageExpression><![CDATA["/Users/appleapple/NetBeansProjects/almacen/src/icn/Etiqueta.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="167" y="249" width="167" height="263" uuid="9ad17ed8-776e-4420-8f95-35d4dd96985d"/>
+				<imageExpression><![CDATA["/Users/appleapple/NetBeansProjects/almacen/src/icn/Etiqueta.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="334" y="249" width="167" height="263" uuid="cf1324ef-545f-43d1-a9ad-adf5dfb57853"/>
+				<imageExpression><![CDATA["/Users/appleapple/NetBeansProjects/almacen/src/icn/Etiqueta.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="167" y="496" width="167" height="263" uuid="7facb3cb-cb15-4b49-b809-ddb3cce0439c"/>
+				<imageExpression><![CDATA["/Users/appleapple/NetBeansProjects/almacen/src/icn/Etiqueta.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="334" y="496" width="167" height="263" uuid="a0889023-24a5-497a-b4d3-b9ad050a0004"/>
+				<imageExpression><![CDATA["/Users/appleapple/NetBeansProjects/almacen/src/icn/Etiqueta.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="10" y="58" width="147" height="20" uuid="b10910b1-c783-4561-83a8-f1c4527d5aae"/>
+				<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="78" width="77" height="18" uuid="31e133a5-4be9-406c-a6a5-daee0ec752a5"/>
+				<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="96" width="77" height="20" uuid="13b4ddb3-9dd6-463c-aa18-d92d9600b5f5"/>
+				<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="143" width="77" height="15" uuid="fc085b78-77c6-4c11-bd4a-f954c490b0d3"/>
+				<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="116" width="77" height="14" uuid="63b92cdd-2332-48d9-97e6-e0f71ffe23ed"/>
+				<textFieldExpression><![CDATA[$P{parameter4}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="33" y="175" width="115" height="60" uuid="84b4d3ca-ffa0-4f41-a633-3fc12d23e0d2"/>
+				<imageExpression><![CDATA[new java.net.URL("https://www.mbcestore.com.mx/generador/image.php?code="+$P{parameter2}+"&style=165&type=C128A&width=175&height=115&xres=1&font=3")]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="178" y="58" width="138" height="20" uuid="e21c5268-8bea-4fee-8b6d-db7dae7eee18"/>
+				<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="347" y="58" width="138" height="20" uuid="05bdaefb-35ff-4f60-acea-2aeeba5ab895"/>
+				<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="310" width="138" height="20" uuid="9fea4ddb-ff7d-49ea-a7b6-528cb59efe54"/>
+				<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="310" width="138" height="20" uuid="54e122ac-f1d7-4e91-9aed-c2f61aee877b"/>
+				<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="347" y="310" width="138" height="20" uuid="c0e4245f-172c-47bf-9bbf-8f44d16bc4a6"/>
+				<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="555" width="138" height="20" uuid="4ba3e36a-e61d-49bb-a753-d7d077d7395c"/>
+				<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="555" width="138" height="20" uuid="d6d5585c-4b6d-435e-9e98-1dc3894d9e9c"/>
+				<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="347" y="555" width="138" height="20" uuid="dff85afe-0cf6-4d97-a785-3ce2a4147371"/>
+				<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="78" width="77" height="18" uuid="07da5c56-6fb3-4fff-a078-002259056fde"/>
+				<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="96" width="77" height="20" uuid="39cea394-71a3-449e-b28c-fa5631338580"/>
+				<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="143" width="77" height="15" uuid="c6d895a0-7f39-4010-804e-82a8925fdf66"/>
+				<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="116" width="77" height="14" uuid="fc7534a5-12a0-4add-8e53-ebf23e0c2204"/>
+				<textFieldExpression><![CDATA[$P{parameter4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="78" width="77" height="18" uuid="ab1e20d3-722e-4b5a-9702-9566d0c69f8b"/>
+				<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="96" width="77" height="20" uuid="459edec0-af98-40c8-a2d6-f0c119719e9f"/>
+				<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="143" width="77" height="15" uuid="b0f47ab1-8102-49e1-85e4-5838042365e1"/>
+				<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="116" width="77" height="14" uuid="086b1df4-2034-41c4-a9ac-d91552751c13"/>
+				<textFieldExpression><![CDATA[$P{parameter4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="367" width="77" height="14" uuid="f0e1a3b5-4365-41b5-a792-41fe96d094c3"/>
+				<textFieldExpression><![CDATA[$P{parameter4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="394" width="77" height="15" uuid="ffdb00bd-8b6e-46d3-8e1c-6620c8ccd099"/>
+				<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="347" width="77" height="20" uuid="2a4f8dcd-d269-4af9-8896-9c39f46fd4ec"/>
+				<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="329" width="77" height="18" uuid="2ab8098d-0b51-4b7a-a46e-17f758730425"/>
+				<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="367" width="77" height="14" uuid="1a8fc7ee-32c4-40f7-b765-99750c8df97d"/>
+				<textFieldExpression><![CDATA[$P{parameter4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="394" width="77" height="15" uuid="6a7a4a3b-4b4c-4570-988b-8c315ef366c4"/>
+				<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="347" width="77" height="20" uuid="b032837d-d63e-49b3-a582-8436406bf699"/>
+				<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="329" width="77" height="18" uuid="c5a130ee-fe78-437a-a043-cc532325e65a"/>
+				<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="329" width="77" height="18" uuid="8d5978ef-f6ed-4056-a436-e6f84a25e6bb"/>
+				<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="347" width="77" height="20" uuid="796a1882-3b41-4e6b-b203-0d6ff86ccf1a"/>
+				<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="394" width="77" height="15" uuid="897ae51d-8cdc-4e85-8597-bd25a29fadf0"/>
+				<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="367" width="77" height="14" uuid="1ca9dd56-a6b0-46d9-ae15-76099fb2c771"/>
+				<textFieldExpression><![CDATA[$P{parameter4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="614" width="77" height="14" uuid="d18fdc43-1e10-4665-af23-c88620a8a4e9"/>
+				<textFieldExpression><![CDATA[$P{parameter4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="641" width="77" height="15" uuid="9773f419-4986-4d12-a746-8a9ccb668669"/>
+				<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="594" width="77" height="20" uuid="d15a63ff-1f79-4c92-a971-c0aa91cc7309"/>
+				<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="576" width="77" height="18" uuid="c21f5fc2-17e1-470e-8ac6-0e781996d034"/>
+				<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="576" width="77" height="18" uuid="72ff1f2b-4597-426e-864a-33d77a36bc32"/>
+				<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="594" width="77" height="20" uuid="b634e313-660c-47c9-a9cf-7a41a129e0c4"/>
+				<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="641" width="77" height="15" uuid="d5642d41-99ba-4fce-aac8-984aa58aeafa"/>
+				<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="614" width="77" height="14" uuid="d8c870ac-0327-4629-b9e9-0af3766de7d5"/>
+				<textFieldExpression><![CDATA[$P{parameter4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="614" width="77" height="14" uuid="c169f762-2bab-490c-9022-76677e31eb21"/>
+				<textFieldExpression><![CDATA[$P{parameter4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="641" width="77" height="15" uuid="4a5adee2-05a1-403d-a4da-10ffe465f8bc"/>
+				<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="594" width="77" height="20" uuid="74a59aba-7a6b-414e-9904-56cdde91c520"/>
+				<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="576" width="77" height="18" uuid="e7ae1ef8-8c6e-485a-9f99-543dffb98106"/>
+				<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="201" y="175" width="115" height="60" uuid="40692c6d-c620-47df-9a5c-3eba3fc95797"/>
+				<imageExpression><![CDATA[new java.net.URL("https://www.mbcestore.com.mx/generador/image.php?code="+$P{parameter2}+"&style=165&type=C128A&width=175&height=115&xres=1&font=3")]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="359" y="175" width="115" height="60" uuid="76d7537c-409e-4309-8293-c229e5a6396c"/>
+				<imageExpression><![CDATA[new java.net.URL("https://www.mbcestore.com.mx/generador/image.php?code="+$P{parameter2}+"&style=165&type=C128A&width=175&height=115&xres=1&font=3")]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="19" y="422" width="115" height="60" uuid="fc433a9f-37a1-4905-b9bc-36ca5ddf5be5"/>
+				<imageExpression><![CDATA[new java.net.URL("https://www.mbcestore.com.mx/generador/image.php?code="+$P{parameter2}+"&style=165&type=C128A&width=175&height=115&xres=1&font=3")]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="190" y="422" width="115" height="60" uuid="12422de7-3dac-4577-9a05-8f2900606fac"/>
+				<imageExpression><![CDATA[new java.net.URL("https://www.mbcestore.com.mx/generador/image.php?code="+$P{parameter2}+"&style=165&type=C128A&width=175&height=115&xres=1&font=3")]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="359" y="422" width="115" height="60" uuid="0a43bb50-9688-453f-98ff-2cebf89cb4ac"/>
+				<imageExpression><![CDATA[new java.net.URL("https://www.mbcestore.com.mx/generador/image.php?code="+$P{parameter2}+"&style=165&type=C128A&width=175&height=115&xres=1&font=3")]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="33" y="672" width="115" height="60" uuid="81128145-559d-411b-88b7-0da268f42225"/>
+				<imageExpression><![CDATA[new java.net.URL("https://www.mbcestore.com.mx/generador/image.php?code="+$P{parameter2}+"&style=165&type=C128A&width=175&height=115&xres=1&font=3")]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="190" y="672" width="115" height="60" uuid="269a07d4-744f-4525-a8c4-e14ee647a32d"/>
+				<imageExpression><![CDATA[new java.net.URL("https://www.mbcestore.com.mx/generador/image.php?code="+$P{parameter2}+"&style=165&type=C128A&width=175&height=115&xres=1&font=3")]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="359" y="672" width="115" height="60" uuid="78883b8f-38e9-45e9-863e-bec11398b477"/>
+				<imageExpression><![CDATA[new java.net.URL("https://www.mbcestore.com.mx/generador/image.php?code="+$P{parameter2}+"&style=165&type=C128A&width=175&height=115&xres=1&font=3")]]></imageExpression>
 			</image>
 		</band>
 	</title>
