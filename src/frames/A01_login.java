@@ -7,7 +7,7 @@ package Frames;
  */
 
 
-import Clases.Clase_MyConnection;
+import Base_de_datos.Clase_MyConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

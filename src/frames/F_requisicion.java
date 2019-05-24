@@ -1,17 +1,14 @@
 
 package frames;
 
-import Clases.Clase_Metodos;
-import Clases.Clase_MyConnection;
-import static frames.C_PSM.tcodigoPSM;
+import Base_de_datos.BD_REQ;
+import Clases.Clase_REQ;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.RowFilter;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -46,7 +43,7 @@ public class F_requisicion extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        comboFiltroreq = new javax.swing.JComboBox<>();
+        comboFiltroreq = new javax.swing.JComboBox<String>();
         txtFiltro = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         btnmostar = new javax.swing.JButton();
@@ -59,7 +56,7 @@ public class F_requisicion extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         fechatxt = new javax.swing.JTextField();
-        estatustxt = new javax.swing.JComboBox<>();
+        estatustxt = new javax.swing.JComboBox<String>();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -68,12 +65,13 @@ public class F_requisicion extends javax.swing.JFrame {
         dptotxt = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         descripciontxt = new javax.swing.JTextArea();
-        departamentotxt = new javax.swing.JComboBox<>();
+        departamentotxt = new javax.swing.JComboBox<String>();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         btnnuevo = new javax.swing.JButton();
         btnelimiar = new javax.swing.JButton();
         btnlimpar = new javax.swing.JButton();
+        btnmodificar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -122,7 +120,7 @@ public class F_requisicion extends javax.swing.JFrame {
         comboFiltroreq.setBackground(new java.awt.Color(255, 255, 255));
         comboFiltroreq.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         comboFiltroreq.setForeground(new java.awt.Color(102, 102, 102));
-        comboFiltroreq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FECHA", "DPTO", "DEPARTAMENTO", "REQ", "CANTIDAD", "ESTATUS", "UNIDAD", "DESCRIPCION" }));
+        comboFiltroreq.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "FECHA", "DPTO", "DEPARTAMENTO", "REQ", "CANTIDAD", "ESTATUS", "UNIDAD", "DESCRIPCION" }));
         comboFiltroreq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboFiltroreqActionPerformed(evt);
@@ -263,7 +261,7 @@ public class F_requisicion extends javax.swing.JFrame {
         });
 
         estatustxt.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        estatustxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ABIERTA", "CERRADA" }));
+        estatustxt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ABIERTA", "CERRADA" }));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
@@ -289,7 +287,7 @@ public class F_requisicion extends javax.swing.JFrame {
         descripciontxt.setRows(5);
         jScrollPane2.setViewportView(descripciontxt);
 
-        departamentotxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EXP", "PB", "SEG", "MM", "RH", "COM", " " }));
+        departamentotxt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "EXP", "PB", "SEG", "MM", "RH", "COM", " " }));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
@@ -405,6 +403,13 @@ public class F_requisicion extends javax.swing.JFrame {
             }
         });
 
+        btnmodificar.setText("MODIFICAR");
+        btnmodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmodificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -414,9 +419,11 @@ public class F_requisicion extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnnuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addComponent(btnmodificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnelimiar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(129, 129, 129)
+                        .addGap(43, 43, 43)
                         .addComponent(btnlimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(133, Short.MAX_VALUE))
@@ -430,7 +437,8 @@ public class F_requisicion extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnnuevo)
                     .addComponent(btnelimiar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnlimpar))
+                    .addComponent(btnlimpar)
+                    .addComponent(btnmodificar))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
@@ -535,19 +543,22 @@ public class F_requisicion extends javax.swing.JFrame {
     }//GEN-LAST:event_fechatxtActionPerformed
 
     private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
-        Clase_Metodos m =new Clase_Metodos();
+        BD_REQ m =new BD_REQ();
+        Clase_REQ req;
         try {
-            m.nuevoREQ(fechatxt.getText(),dptotxt.getText(),departamentotxt.getSelectedItem(),reqtxt.getText(),cantidadtxt.getText(),estatustxt.getSelectedItem(),unidadtxt.getText(),descripciontxt.getText());
+            req=new Clase_REQ(fechatxt.getText(),dptotxt.getText(),departamentotxt.getSelectedItem(),reqtxt.getText(),cantidadtxt.getText(),estatustxt.getSelectedItem(),unidadtxt.getText(),descripciontxt.getText());
+            m.nuevoREQ(req);
         } catch (SQLException ex) {
             Logger.getLogger(C_PSM.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnnuevoActionPerformed
 
     private void btnelimiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnelimiarActionPerformed
-        Clase_Metodos m =new Clase_Metodos();
+        BD_REQ m =new BD_REQ();
+        Clase_REQ req;
         try {
-            m.eliminarREQ(fechatxt.getText(), dptotxt.getText(), reqtxt.getText(), cantidadtxt.getText()
-            ,unidadtxt.getText(),descripciontxt.getText());
+            m.eliminarREQ(reqtxt.getText());
+            
         } catch (SQLException ex) {
             Logger.getLogger(C_PSM.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -563,7 +574,9 @@ public class F_requisicion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnlimparActionPerformed
 
     private void btnmostarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmostarActionPerformed
-        mostrarREQ();
+     
+        BD_REQ m =new BD_REQ();
+        m.mostrarREQ();
     }//GEN-LAST:event_btnmostarActionPerformed
 
     private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
@@ -588,6 +601,17 @@ public class F_requisicion extends javax.swing.JFrame {
         unidadtxt.setText(String.valueOf(jTable1.getValueAt(seleccion,6)));
         descripciontxt.setText(String.valueOf(jTable1.getValueAt(seleccion,7)));
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
+        BD_REQ m =new BD_REQ();
+        Clase_REQ req;
+        try {
+            req=new Clase_REQ(fechatxt.getText(),dptotxt.getText(),departamentotxt.getSelectedItem(),reqtxt.getText(),cantidadtxt.getText(),estatustxt.getSelectedItem(),unidadtxt.getText(),descripciontxt.getText());
+            m.actualizarREQ(req);
+        } catch (SQLException ex) {
+            Logger.getLogger(C_PSM.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnmodificarActionPerformed
     
     public void filtro() {
         int columnaABuscar = 0;
@@ -618,27 +642,7 @@ public class F_requisicion extends javax.swing.JFrame {
         trsFiltro.setRowFilter(RowFilter.regexFilter(txtFiltro.getText(), columnaABuscar));
     }
     
-    public void mostrarREQ() {        
-        DefaultTableModel modelo = new DefaultTableModel();               
-        ResultSet rs = Clase_MyConnection.getTabla("select Rfecha,Rdpto,Rdepartamento,Rreq,"
-                + "Rcan,Restatus,Runidad, Rdescripcion from REQUISICIONES");
-        modelo.setColumnIdentifiers(new Object[]{"FECHA REQ", "DPTO","DEPARTAMENTO","REQ","CAN","ESTATUS","U.M","DESCRIPCION"});
-        try {
-            while (rs.next()) {
-                // añade los resultado a al modelo de tabla
-                modelo.addRow(new Object[]{rs.getString("Rfecha"), rs.getString("Rdpto")
-                , rs.getString("Rdepartamento"), rs.getString("Rreq"), rs.getString("Rcan"), rs.getString("Restatus")
-                , rs.getString("Runidad"), rs.getString("Rdescripcion")});
-            }            
-            // asigna el modelo a la tabla
-            jTable1.setModel(modelo);
-            
-            
-        } catch (Exception e) {
-            System.out.println(e);
-        }
 
-    }
     /**
      * @param args the command line arguments
      */
@@ -680,6 +684,7 @@ public class F_requisicion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnelimiar;
     private javax.swing.JButton btnlimpar;
+    private javax.swing.JButton btnmodificar;
     private javax.swing.JButton btnmostar;
     private javax.swing.JButton btnnuevo;
     private javax.swing.JButton btnregresar1;
@@ -711,7 +716,7 @@ public class F_requisicion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    public static javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     public static javax.swing.JTextField reqtxt;
     private javax.swing.JTextField txtFiltro;

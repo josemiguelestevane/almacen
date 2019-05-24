@@ -10,23 +10,23 @@ package Clases;
  * @author Estevane
  */
 public class Clase_PSM {
-    private int codigo;
+    private String codigo;
     private String descripcion;
-    private int disponible;
-    private int conteo;
+    private String disponible;
+    private String conteo;
 
-    public Clase_PSM(int codigo, String descripcion, int disponible, int conteo) {
+    public Clase_PSM(String codigo, String descripcion, String disponible, String conteo) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.disponible = disponible;
         this.conteo = conteo;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -38,20 +38,22 @@ public class Clase_PSM {
         this.descripcion = descripcion;
     }
 
-    public int getDisponible() {
+    public String getDisponible() {
         return disponible;
     }
 
-    public void setDisponible(int disponible) {
+    public void setDisponible(String disponible) {
         this.disponible = disponible;
     }
 
-    public int getConteo() {
+    public String getConteo() {
         return conteo;
     }
 
-    public void setConteo(int conteo) {
+    public void setConteo(String conteo) {
         this.conteo = conteo;
     }
+
+   
     
 }

@@ -5,6 +5,7 @@
  */
 package frames;
 
+import Base_de_datos.BD_REQ;
 import Codigo.D_codigo;
 
 /**
@@ -278,10 +279,11 @@ public class A_mainmenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btncodigoActionPerformed
 
     private void btnrequiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrequiActionPerformed
-        
+
         F_requisicion r=new F_requisicion();
         r.setVisible(true);
-        r.mostrarREQ();
+        BD_REQ m =new BD_REQ();
+        m.mostrarREQ();
     }//GEN-LAST:event_btnrequiActionPerformed
 
     private void btnBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBDActionPerformed

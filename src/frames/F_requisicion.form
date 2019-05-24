@@ -383,6 +383,9 @@
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTable1KeyPressed"/>
                       </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -410,9 +413,11 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="btnnuevo" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                  <Component id="btnmodificar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btnelimiar" min="-2" pref="132" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                   <Component id="btnlimpar" min="-2" pref="136" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
@@ -431,6 +436,7 @@
                               <Component id="btnnuevo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnelimiar" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                               <Component id="btnlimpar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnmodificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="64" max="32767" attributes="0"/>
                       </Group>
@@ -809,6 +815,14 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnlimparActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnmodificar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="MODIFICAR"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnmodificarActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

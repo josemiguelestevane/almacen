@@ -5,7 +5,7 @@
  */
 package frames;
 
-import Clases.Clase_MyConnection;
+import Base_de_datos.Clase_MyConnection;
 import Clases.Clase_Metodos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

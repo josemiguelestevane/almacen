@@ -5,6 +5,7 @@
  */
 package Clases;
 
+import Base_de_datos.Clase_MyConnection;
 import frames.E_ubuscar;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -58,38 +59,7 @@ public class Clase_Metodos {
     
     
     }}
-    
-    
-    public void nuevoPSM(String tcodigoPSM,String tdesPSM,String tdisPSM,String tconPSM)throws SQLException{ 
-    int confirmar = JOptionPane.showConfirmDialog(null, "¿Desea agregar un nuevo dato?");
-    if(confirmar == JOptionPane.YES_OPTION){
-        
-    try( Connection con = Clase_MyConnection.getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO PSM " + "VALUES (?,?,?,?)")){
-    ps.setString(1, tcodigoPSM);
-    ps.setString(2, tdesPSM);
-    ps.setString(3, tdisPSM);
-    ps.setString(4, tconPSM);
-    if(ps.executeUpdate()> 0){
-        
-        JOptionPane.showMessageDialog(null, "El registro se realizó con éxito", "Operación Exitosa. por favor actualice",
-                JOptionPane.INFORMATION_MESSAGE);
-           
-        }else{
-        
-        JOptionPane.showMessageDialog(null, "No se ha podido realizar la operacion\n"
-                + "Inténtelo nuevamente.", "Error en la operación",
-                JOptionPane.ERROR_MESSAGE);
-        
-        }
-    }   catch(SQLException e){  
-        System.out.println(e.getMessage());
-            }
-    
-        }
-    
-    }
-    
+  
     
     public void buscarU(String nombre, String correo) throws SQLException{
         E_ubuscar u= new E_ubuscar();
@@ -110,88 +80,13 @@ public class Clase_Metodos {
         
     }
     
-    public void eliminarPSM(String tcodigoPSM,String tdesPSM,String tdisPSM,String tconPSM)throws SQLException{ 
-    int confirmar = JOptionPane.showConfirmDialog(null, "¿esta seguro que desea eliminar un dato?");
-    if(confirmar == JOptionPane.YES_OPTION){
-    try( Connection con = Clase_MyConnection.getConnection();
-            PreparedStatement ps = con.prepareStatement("delete from PSM where codigo = ?")){
-            ps.setString(1, tcodigoPSM);
-            if(ps.executeUpdate()> 0){
-        
-        JOptionPane.showMessageDialog(null, "El registro se elimino con éxito, por favor actualice", "Operación Exitosa. ",
-                JOptionPane.INFORMATION_MESSAGE);
-                
-        }else{
-        
-        JOptionPane.showMessageDialog(null, "No se ha podido realizar la operacion\n"
-                + "Inténtelo nuevamente.", "Error en la operación",
-                JOptionPane.ERROR_MESSAGE);
-        
-        }
-    }   catch(SQLException e){  
-        System.out.println(e.getMessage());
-            }
+
     
-        }
-    }
+   
     
-    public void eliminarREQ(String fechatxt,String dptotxt,String reqtxt,String tcantidadtxt,String unidadtxt,String descripciontxt)throws SQLException{ 
-    int confirmar = JOptionPane.showConfirmDialog(null, "¿esta seguro que desea eliminar un dato?");
-    if(confirmar == JOptionPane.YES_OPTION){
-    try( Connection con = Clase_MyConnection.getConnection();
-            PreparedStatement ps = con.prepareStatement("delete from REQUISICIONES where Rreq = ?")){
-            ps.setString(1, reqtxt);
-            if(ps.executeUpdate()> 0){
-        
-        JOptionPane.showMessageDialog(null, "El registro se elimino con éxito, por favor actualice", "Operación Exitosa. ",
-                JOptionPane.INFORMATION_MESSAGE);
-                
-        }else{
-        
-        JOptionPane.showMessageDialog(null, "No se ha podido realizar la operacion\n"
-                + "Inténtelo nuevamente.", "Error en la operación",
-                JOptionPane.ERROR_MESSAGE);
-        
-        }
-    }   catch(SQLException e){  
-        System.out.println(e.getMessage());
-            }
     
-        }
-    }
     
-    public void nuevoREQ(String fechatxt,String dptotxt,Object departamentotxt,String reqtxt,String tcantidadtxt,Object estatustxt,String unidadtxt,String descripciontxt)throws SQLException{ 
-    int confirmar = JOptionPane.showConfirmDialog(null, "¿Desea agregar un nuevo dato de requicicion?");
-    if(confirmar == JOptionPane.YES_OPTION){
-        
-    try( Connection con = Clase_MyConnection.getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO REQUISICIONES " + "VALUES (?,?,?,?,?,?,?,?)")){
-    ps.setString(1, fechatxt);
-    ps.setString(2, dptotxt);
-    ps.setObject(3, departamentotxt);
-    ps.setString(4, reqtxt);
-    ps.setString(5, tcantidadtxt);
-    ps.setObject(6, estatustxt);
-    ps.setString(7, unidadtxt);
-    ps.setString(8, descripciontxt);
-    if(ps.executeUpdate()> 0){
-        
-        JOptionPane.showMessageDialog(null, "El registro de requicicion se realizó con éxito!!, por favor actualice", "Operación Exitosa. ",
-                JOptionPane.INFORMATION_MESSAGE);
-                
-        }else{
-        
-        JOptionPane.showMessageDialog(null, "No se ha podido realizar la operacion\n"
-                + "Inténtelo nuevamente.", "Error en la operación",
-                JOptionPane.ERROR_MESSAGE);
-        
-        }
-    }   catch(SQLException e){  
-        System.out.println(e.getMessage());
-            }
     
-        }
     
-    }
 }
 //"select * from usuarios where nombre = ?"

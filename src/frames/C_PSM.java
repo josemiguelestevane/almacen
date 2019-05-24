@@ -5,25 +5,14 @@
  */
 package frames;
 
-import Clases.Clase_Metodos;
-import Clases.Clase_MyConnection;
-import java.awt.Point;
+import Base_de_datos.BD_PSM;
+import Clases.Clase_PSM;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.RowFilter;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -71,9 +60,10 @@ public class C_PSM extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        comboFiltro = new javax.swing.JComboBox<>();
+        comboFiltro = new javax.swing.JComboBox<String>();
         txtFiltro = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        btnactualizar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -265,7 +255,7 @@ public class C_PSM extends javax.swing.JFrame {
         comboFiltro.setBackground(new java.awt.Color(255, 255, 255));
         comboFiltro.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         comboFiltro.setForeground(new java.awt.Color(102, 102, 102));
-        comboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CODIGO", "DESCRIPCION", "DISPONIBLE", " " }));
+        comboFiltro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CODIGO", "DESCRIPCION", "DISPONIBLE", " " }));
         comboFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboFiltroActionPerformed(evt);
@@ -305,6 +295,13 @@ public class C_PSM extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        btnactualizar.setText("MODIFICAR");
+        btnactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnactualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -318,9 +315,11 @@ public class C_PSM extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(btnnuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(110, 110, 110)
-                        .addComponent(btnelimiar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(btnactualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnelimiar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
                         .addComponent(btnlimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -335,7 +334,8 @@ public class C_PSM extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnnuevo)
                     .addComponent(btnelimiar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnlimpar))
+                    .addComponent(btnlimpar)
+                    .addComponent(btnactualizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
@@ -409,13 +409,17 @@ public class C_PSM extends javax.swing.JFrame {
     }//GEN-LAST:event_btnregresarActionPerformed
 
     private void btnmostarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmostarActionPerformed
-        mostrar();
+       
+        BD_PSM m =new BD_PSM();
+        m.mostrarPSM();
     }//GEN-LAST:event_btnmostarActionPerformed
 
     private void btnelimiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnelimiarActionPerformed
-        Clase_Metodos m =new Clase_Metodos();
+        BD_PSM m =new BD_PSM();
+        Clase_PSM mpsm;
         try {
-            m.eliminarPSM(tcodigoPSM.getText(), tdesPSM.getText(), tdisPSM.getText(), tconPSM.getText());
+            //mpsm=new Clase_PSM();// Cuando es un valor solo hacemos esto 
+            m.eliminarPSM(tcodigoPSM.getText());
         } catch (SQLException ex) {
             Logger.getLogger(C_PSM.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -429,13 +433,16 @@ public class C_PSM extends javax.swing.JFrame {
     }//GEN-LAST:event_tablas1MouseClicked
 
     private void tdesPSMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdesPSMActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_tdesPSMActionPerformed
 
     private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
-        Clase_Metodos m =new Clase_Metodos();
+        BD_PSM m =new BD_PSM();
+        Clase_PSM mpsm;
         try {
-            m.nuevoPSM(tcodigoPSM.getText(),tdesPSM.getText(),tdisPSM.getText(),tconPSM.getText());
+            mpsm=new Clase_PSM(tcodigoPSM.getText(),tdesPSM.getText(),tdisPSM.getText(),tconPSM.getText());
+ 
+            m.nuevoPSM(mpsm);
         } catch (SQLException ex) {
             Logger.getLogger(C_PSM.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -463,6 +470,19 @@ public class C_PSM extends javax.swing.JFrame {
         trsFiltro = new TableRowSorter(tablas1.getModel());
         tablas1.setRowSorter(trsFiltro);
     }//GEN-LAST:event_txtFiltroKeyTyped
+
+    private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
+        BD_PSM m =new BD_PSM();
+        Clase_PSM mpsm;
+        try {
+            mpsm=new Clase_PSM(tcodigoPSM.getText(),tdesPSM.getText(),tdisPSM.getText(),tconPSM.getText());
+ 
+            m.actualizarPSM(mpsm);
+        } catch (SQLException ex) {
+            Logger.getLogger(C_PSM.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }//GEN-LAST:event_btnactualizarActionPerformed
     
    public void filtro() {
         int columnaABuscar = 0;
@@ -477,30 +497,7 @@ public class C_PSM extends javax.swing.JFrame {
         }
         trsFiltro.setRowFilter(RowFilter.regexFilter(txtFiltro.getText(), columnaABuscar));
     }
-    
-    
-    
-    public void mostrar() {        
-        DefaultTableModel modelo = new DefaultTableModel();               
-        ResultSet rs = Clase_MyConnection.getTabla("select codigo,descripcion,fisico, dif from PSM");
-        modelo.setColumnIdentifiers(new Object[]{"CODIGO", "DESCRIPION","DISPONIBLE","CONTEO"});
-        try {
-            while (rs.next()) {
-                // añade los resultado a al modelo de tabla
-                modelo.addRow(new Object[]{rs.getString("codigo"), rs.getString("descripcion")
-                , rs.getString("fisico"), rs.getString("dif")});
-            }            
-            // asigna el modelo a la tabla
-            tablas1.setModel(modelo);
-            
-                        
-        } catch (Exception e) {
-            System.out.println(e);
-        }
 
-    }
-    
-   
     /**
      * @param args the command line arguments
      */
@@ -544,6 +541,7 @@ public class C_PSM extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton btnactualizar;
     private javax.swing.JButton btnelimiar;
     private javax.swing.JButton btnlimpar;
     private javax.swing.JButton btnmostar;
@@ -563,7 +561,7 @@ public class C_PSM extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablas1;
+    public static javax.swing.JTable tablas1;
     public static javax.swing.JTextField tcodigoPSM;
     public static javax.swing.JTextField tconPSM;
     public static javax.swing.JTextField tdesPSM;

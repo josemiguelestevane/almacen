@@ -5,7 +5,7 @@
  */
 package frames;
 
-import Clases.Clase_MyConnection;
+import Base_de_datos.Clase_MyConnection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;

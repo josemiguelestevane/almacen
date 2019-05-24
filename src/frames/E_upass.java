@@ -1,6 +1,6 @@
 package frames;
 
-import Clases.Clase_MyConnection;
+import Base_de_datos.Clase_MyConnection;
 import static frames.E_uregistro.tcontrasena;
 
 /*

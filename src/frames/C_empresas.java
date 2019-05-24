@@ -5,6 +5,8 @@
  */
 package frames;
 
+import Base_de_datos.BD_PSM;
+
 /**
  *
  * @author Estevane
@@ -178,7 +180,8 @@ public class C_empresas extends javax.swing.JFrame {
     private void btnPSMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPSMActionPerformed
         C_PSM p= new C_PSM();
         p.setVisible(true);
-        p.mostrar();
+        BD_PSM m =new BD_PSM();
+        m.mostrarPSM();
         
     }//GEN-LAST:event_btnPSMActionPerformed
 

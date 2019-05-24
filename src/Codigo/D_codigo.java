@@ -478,10 +478,8 @@ public class D_codigo extends javax.swing.JFrame {
             JRDataSource jrDataSource = new JREmptyDataSource();
 
             JasperPrint jp=JasperFillManager.fillReport(report,parametros,jrDataSource);
-            
-            
+
             JasperViewer jv= new JasperViewer(jp);
-            
             jv.setVisible(true);
             jv.setTitle("codigo");
             }catch (Exception e) {
