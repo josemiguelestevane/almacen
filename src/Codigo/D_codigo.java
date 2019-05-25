@@ -455,8 +455,8 @@ public class D_codigo extends javax.swing.JFrame {
     }
     
     public void generaretiqyeta() throws JRException, FileNotFoundException{
-        
-        
+         
+            
             Object [] opciones = {"Aceptar", "Cancelar"};
             int eleccion = JOptionPane.showOptionDialog(null,"Se generaran las etiquetas", "Desea continuar?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"aceptar");
             
@@ -468,10 +468,12 @@ public class D_codigo extends javax.swing.JFrame {
             parametros.put("parameter3", calmacen.getSelectedItem());
             parametros.put("parameter4", tlocalidad.getText());
             parametros.put("parameter5", tunidad.getSelectedItem());
-            parametros.put("parameter6", tcodigo.getText());
+            parametros.put("parameter6", tcodigo.getText());  
+            
+            parametros.put("parameter7", this.getClass().getClassLoader().getResourceAsStream("/Users/appleapple/NetBeansProjects/almacen/src/icn/Etiqueta.png"));
             JasperReport report; // Instaciamos el objeto reporte
             
-            FileInputStream fos=new FileInputStream("/Users/Estevane/NetBeansProjects/almacen/src/Codigo/newReport.jasper");
+            FileInputStream fos=new FileInputStream("/Users/appleapple/NetBeansProjects/almacen/src/Codigo/newReport.jasper");
             try{
             report=(JasperReport)JRLoader.loadObject(fos);
             

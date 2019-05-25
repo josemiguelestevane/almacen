@@ -10,16 +10,27 @@ package Clases;
  * @author Estevane
  */
 public class Clase_Usuarios {
-private int id;
+private String id;
 private String nombre;
-private String departamento;
+private String correo;
+private Object departamento;
 private String pass;
 
-    public Clase_Usuarios(int id, String nombre, String departamento, String pass) {
+    public Clase_Usuarios(String id, String nombre, String correo, Object departamento, String pass) {
         this.id = id;
         this.nombre = nombre;
+        this.correo = correo;
         this.departamento = departamento;
         this.pass = pass;
+    }
+
+  
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -30,11 +41,19 @@ private String pass;
         this.nombre = nombre;
     }
 
-    public String getDepartamento() {
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public Object getDepartamento() {
         return departamento;
     }
 
-    public void setDepartamento(String departamento) {
+    public void setDepartamento(Object departamento) {
         this.departamento = departamento;
     }
 
@@ -45,16 +64,8 @@ private String pass;
     public void setPass(String pass) {
         this.pass = pass;
     }
-
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
     
+    
+   
 }
     

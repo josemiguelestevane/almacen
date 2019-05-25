@@ -7,7 +7,7 @@ package Frames;
  */
 
 
-import Base_de_datos.Clase_MyConnection;
+import Base_de_datos.BD_MyConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -198,7 +198,7 @@ public class A01_login extends javax.swing.JFrame {
         String query = "SELECT * FROM `usuarios` WHERE `nombre` =? AND `contrasena` =?";
         
             try {
-                ps = Clase_MyConnection.getConnection().prepareStatement(query);
+                ps = BD_MyConnection.getConnection().prepareStatement(query);
             } catch (SQLException ex) {
                 Logger.getLogger(A01_login.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -261,7 +261,7 @@ public class A_mainmenu extends javax.swing.JFrame {
     private void btncuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncuentaActionPerformed
         E_umenu um= new E_umenu();
         um.setVisible(true);
-        um.mostrarusuarios();
+        
     }//GEN-LAST:event_btncuentaActionPerformed
 
     private void btncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncerrarActionPerformed

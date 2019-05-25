@@ -5,7 +5,8 @@
  */
 package frames;
 
-import Base_de_datos.Clase_MyConnection;
+import Base_de_datos.BD_MyConnection;
+import Base_de_datos.BD_USUARIOS;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -39,8 +40,6 @@ public class E_umenu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btnminimizar = new javax.swing.JButton();
         btnregresar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablausuarios = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -52,10 +51,9 @@ public class E_umenu extends javax.swing.JFrame {
         txtmdepartamento = new javax.swing.JTextField();
         btncambiarpass = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         btnuregistro = new javax.swing.JButton();
         btnubuscar = new javax.swing.JButton();
-        btnueditar = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -105,30 +103,6 @@ public class E_umenu extends javax.swing.JFrame {
                     .addComponent(btnminimizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
-
-        tablausuarios.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tablausuarios.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null}
-            },
-            new String [] {
-                "USUARIOS", "DEPARTAMENTO"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tablausuarios.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tablausuarios);
-        if (tablausuarios.getColumnModel().getColumnCount() > 0) {
-            tablausuarios.getColumnModel().getColumn(0).setResizable(false);
-            tablausuarios.getColumnModel().getColumn(1).setResizable(false);
-        }
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 0)));
@@ -220,53 +194,15 @@ public class E_umenu extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnuregistro.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnuregistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/001-add-button.png"))); // NOI18N
-        btnuregistro.setText("NUEVO");
-        btnuregistro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnuregistroActionPerformed(evt);
-            }
-        });
-
-        btnubuscar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnubuscar.setText("BUSCAR");
-        btnubuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnubuscarActionPerformed(evt);
-            }
-        });
-
-        btnueditar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnueditar.setText("EDITAR");
-        btnueditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnueditarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnubuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnuregistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnueditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(52, Short.MAX_VALUE))
+            .addGap(0, 189, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnuregistro)
-                .addGap(18, 18, 18)
-                .addComponent(btnubuscar)
-                .addGap(17, 17, 17)
-                .addComponent(btnueditar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 153, 0));
@@ -282,6 +218,26 @@ public class E_umenu extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
+        btnuregistro.setBackground(new java.awt.Color(255, 255, 255));
+        btnuregistro.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnuregistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/001-add-button.png"))); // NOI18N
+        btnuregistro.setText("NUEVO");
+        btnuregistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnuregistroActionPerformed(evt);
+            }
+        });
+
+        btnubuscar.setBackground(new java.awt.Color(255, 255, 255));
+        btnubuscar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnubuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/003-magnifying-glass-icon.png"))); // NOI18N
+        btnubuscar.setText("BUSCAR");
+        btnubuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnubuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -289,25 +245,30 @@ public class E_umenu extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
+                    .addComponent(btnuregistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnubuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(35, 35, 35)
+                        .addComponent(btnuregistro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnubuscar)
+                        .addGap(132, 132, 132)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -339,12 +300,9 @@ public class E_umenu extends javax.swing.JFrame {
     private void btnubuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnubuscarActionPerformed
         E_ubuscar ub=new E_ubuscar();
         ub.setVisible(true);
+        BD_USUARIOS U= new BD_USUARIOS();
+        U.mostrarusuarios();
     }//GEN-LAST:event_btnubuscarActionPerformed
-
-    private void btnueditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnueditarActionPerformed
-        E_ueditar ud=new E_ueditar();
-        ud.setVisible(true);
-    }//GEN-LAST:event_btnueditarActionPerformed
 
     private void btncambiarpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncambiarpassActionPerformed
         E_upass l2= new E_upass();
@@ -356,25 +314,9 @@ public class E_umenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnregresarActionPerformed
 
     private void txtmnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmnombreActionPerformed
-        Clase_MyConnection.getConnection();
+        BD_MyConnection.getConnection();
     }//GEN-LAST:event_txtmnombreActionPerformed
-    public void mostrarusuarios() { 
-        
-        DefaultTableModel modelo = new DefaultTableModel();               
-        ResultSet rs = Clase_MyConnection.getTabla("select nombre,departamento from usuarios");
-        modelo.setColumnIdentifiers(new Object[]{"USUARIOS","DEPARTAMENTO"});
-        try {
-            while (rs.next()) {
-                // añade los resultado a al modelo de tabla
-                modelo.addRow(new Object[]{rs.getString("nombre"),rs.getString("departamento")});
-            }            
-            // asigna el modelo a la tabla
-            tablausuarios.setModel(modelo);            
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-    }
+    
     /**
      * @param args the command line arguments
      */
@@ -418,7 +360,6 @@ public class E_umenu extends javax.swing.JFrame {
     private javax.swing.JButton btnminimizar;
     private javax.swing.JButton btnregresar;
     private javax.swing.JButton btnubuscar;
-    private javax.swing.JButton btnueditar;
     private javax.swing.JButton btnuregistro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -430,8 +371,6 @@ public class E_umenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable tablausuarios;
     private javax.swing.JTextField txtmdepartamento;
     private javax.swing.JTextField txtmnombre;
     private javax.swing.JTextField txtmusuario;

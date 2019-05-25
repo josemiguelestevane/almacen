@@ -24,7 +24,7 @@ public class BD_REQ {
     int confirmar = JOptionPane.showConfirmDialog(null, "¿Desea agregar un nuevo dato de requicicion?");
     if(confirmar == JOptionPane.YES_OPTION){
         
-    try( Connection con = Clase_MyConnection.getConnection();
+    try( Connection con = BD_MyConnection.getConnection();
             PreparedStatement ps = con.prepareStatement("INSERT INTO REQUISICIONES " + "VALUES (?,?,?,?,?,?,?,?)")){
     ps.setString(1, req.getFecha());
     ps.setString(2, req.getDpto());
@@ -58,7 +58,7 @@ public class BD_REQ {
     public void eliminarREQ(String req)throws SQLException{ 
     int confirmar = JOptionPane.showConfirmDialog(null, "¿esta seguro que desea eliminar un dato?");
     if(confirmar == JOptionPane.YES_OPTION){
-    try( Connection con = Clase_MyConnection.getConnection();
+    try( Connection con = BD_MyConnection.getConnection();
             PreparedStatement ps = con.prepareStatement("delete from REQUISICIONES where Rreq = ?")){
             ps.setString(1, req);
             if(ps.executeUpdate()> 0){
@@ -82,7 +82,7 @@ public class BD_REQ {
     
         public void mostrarREQ() {        
         DefaultTableModel modelo = new DefaultTableModel();               
-        ResultSet rs = Clase_MyConnection.getTabla("select Rfecha,Rdpto,Rdepartamento,Rreq,"
+        ResultSet rs = BD_MyConnection.getTabla("select Rfecha,Rdpto,Rdepartamento,Rreq,"
                 + "Rcan,Restatus,Runidad, Rdescripcion from REQUISICIONES");
         modelo.setColumnIdentifiers(new Object[]{"FECHA REQ", "DPTO","DEPARTAMENTO","REQ","CAN","ESTATUS","U.M","DESCRIPCION"});
         try {
@@ -105,7 +105,7 @@ public class BD_REQ {
         public void actualizarREQ(Clase_REQ req)throws SQLException{ 
         int confirmar = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea actualizar una Requisicion?");
         if(confirmar == JOptionPane.YES_OPTION){
-         try( Connection con = Clase_MyConnection.getConnection();
+         try( Connection con = BD_MyConnection.getConnection();
             PreparedStatement ps = con.prepareStatement("UPDATE REQUISICIONES Set Rfecha=?,Rdpto=?,Rdepartamento=?,Rcan=?,Restatus=?,Runidad=?,Rdescripcion=? where Rreq=?")){
           //"UPDATE from PSM where codigo = ?"
              ps.setString(1,req.getFecha());

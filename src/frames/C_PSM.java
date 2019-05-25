@@ -60,7 +60,7 @@ public class C_PSM extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        comboFiltro = new javax.swing.JComboBox<String>();
+        comboFiltro = new javax.swing.JComboBox<>();
         txtFiltro = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         btnactualizar = new javax.swing.JButton();
@@ -212,14 +212,14 @@ public class C_PSM extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
-                        .addGap(405, 460, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(38, 38, 38)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tdesPSM, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 146, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(tdisPSM, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
@@ -255,7 +255,7 @@ public class C_PSM extends javax.swing.JFrame {
         comboFiltro.setBackground(new java.awt.Color(255, 255, 255));
         comboFiltro.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         comboFiltro.setForeground(new java.awt.Color(102, 102, 102));
-        comboFiltro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CODIGO", "DESCRIPCION", "DISPONIBLE", " " }));
+        comboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CODIGO", "DESCRIPCION", "DISPONIBLE", " " }));
         comboFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboFiltroActionPerformed(evt);
@@ -295,6 +295,10 @@ public class C_PSM extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        btnactualizar.setBackground(new java.awt.Color(255, 255, 255));
+        btnactualizar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnactualizar.setForeground(new java.awt.Color(255, 153, 0));
+        btnactualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/001-reload.png"))); // NOI18N
         btnactualizar.setText("MODIFICAR");
         btnactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -315,9 +319,9 @@ public class C_PSM extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(btnnuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnactualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnactualizar)
+                        .addGap(18, 18, 18)
                         .addComponent(btnelimiar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
                         .addComponent(btnlimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))

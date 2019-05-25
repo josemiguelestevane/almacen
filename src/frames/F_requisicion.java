@@ -43,7 +43,7 @@ public class F_requisicion extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        comboFiltroreq = new javax.swing.JComboBox<String>();
+        comboFiltroreq = new javax.swing.JComboBox<>();
         txtFiltro = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         btnmostar = new javax.swing.JButton();
@@ -56,7 +56,7 @@ public class F_requisicion extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         fechatxt = new javax.swing.JTextField();
-        estatustxt = new javax.swing.JComboBox<String>();
+        estatustxt = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -65,7 +65,7 @@ public class F_requisicion extends javax.swing.JFrame {
         dptotxt = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         descripciontxt = new javax.swing.JTextArea();
-        departamentotxt = new javax.swing.JComboBox<String>();
+        departamentotxt = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         btnnuevo = new javax.swing.JButton();
@@ -120,7 +120,7 @@ public class F_requisicion extends javax.swing.JFrame {
         comboFiltroreq.setBackground(new java.awt.Color(255, 255, 255));
         comboFiltroreq.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         comboFiltroreq.setForeground(new java.awt.Color(102, 102, 102));
-        comboFiltroreq.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "FECHA", "DPTO", "DEPARTAMENTO", "REQ", "CANTIDAD", "ESTATUS", "UNIDAD", "DESCRIPCION" }));
+        comboFiltroreq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FECHA", "DPTO", "DEPARTAMENTO", "REQ", "CANTIDAD", "ESTATUS", "UNIDAD", "DESCRIPCION" }));
         comboFiltroreq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboFiltroreqActionPerformed(evt);
@@ -128,6 +128,11 @@ public class F_requisicion extends javax.swing.JFrame {
         });
 
         txtFiltro.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFiltroActionPerformed(evt);
+            }
+        });
         txtFiltro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtFiltroKeyTyped(evt);
@@ -261,7 +266,7 @@ public class F_requisicion extends javax.swing.JFrame {
         });
 
         estatustxt.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        estatustxt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ABIERTA", "CERRADA" }));
+        estatustxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ABIERTA", "CERRADA" }));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
@@ -287,7 +292,7 @@ public class F_requisicion extends javax.swing.JFrame {
         descripciontxt.setRows(5);
         jScrollPane2.setViewportView(descripciontxt);
 
-        departamentotxt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "EXP", "PB", "SEG", "MM", "RH", "COM", " " }));
+        departamentotxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EXP", "PB", "SEG", "MM", "RH", "COM", " " }));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
@@ -403,6 +408,10 @@ public class F_requisicion extends javax.swing.JFrame {
             }
         });
 
+        btnmodificar.setBackground(new java.awt.Color(255, 255, 255));
+        btnmodificar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnmodificar.setForeground(new java.awt.Color(255, 153, 0));
+        btnmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/001-reload.png"))); // NOI18N
         btnmodificar.setText("MODIFICAR");
         btnmodificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -420,7 +429,7 @@ public class F_requisicion extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnnuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51)
-                        .addComponent(btnmodificar)
+                        .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnelimiar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
@@ -612,6 +621,10 @@ public class F_requisicion extends javax.swing.JFrame {
             Logger.getLogger(C_PSM.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnmodificarActionPerformed
+
+    private void txtFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFiltroActionPerformed
     
     public void filtro() {
         int columnaABuscar = 0;

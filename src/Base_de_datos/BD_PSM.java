@@ -7,7 +7,6 @@ package Base_de_datos;
 
 import Clases.Clase_PSM;
 import static frames.C_PSM.tablas1;
-import static frames.C_PSM.tcodigoPSM;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,7 +28,7 @@ public class BD_PSM {
     int confirmar = JOptionPane.showConfirmDialog(null, "¿Desea agregar un nuevo dato?");
     if(confirmar == JOptionPane.YES_OPTION){
         
-    try( Connection con = Clase_MyConnection.getConnection();
+    try( Connection con = BD_MyConnection.getConnection();
             PreparedStatement ps = con.prepareStatement("INSERT INTO PSM " + "VALUES (?,?,?,?)")){
     ps.setString(1, mpsm.getCodigo());
     ps.setString(2, mpsm.getDescripcion());
@@ -58,7 +57,7 @@ public class BD_PSM {
     public void eliminarPSM(String tcodigoPSM)throws SQLException{ 
     int confirmar = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar un dato?");
     if(confirmar == JOptionPane.YES_OPTION){
-    try( Connection con = Clase_MyConnection.getConnection();
+    try( Connection con = BD_MyConnection.getConnection();
             PreparedStatement ps = con.prepareStatement("delete from PSM where codigo = ?")){
             ps.setString(1, tcodigoPSM);
             if(ps.executeUpdate()> 0){
@@ -83,7 +82,7 @@ public class BD_PSM {
     public void actualizarPSM(Clase_PSM mpsm)throws SQLException{ 
     int confirmar = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea actualizar un registro?");
     if(confirmar == JOptionPane.YES_OPTION){
-         try( Connection con = Clase_MyConnection.getConnection();
+         try( Connection con = BD_MyConnection.getConnection();
             PreparedStatement ps = con.prepareStatement("UPDATE PSM Set descripcion=?,fisico=?,dif=? where codigo=?")){
           //"UPDATE from PSM where codigo = ?"
              ps.setString(1,mpsm.getDescripcion());
@@ -112,7 +111,7 @@ public class BD_PSM {
     
     public void mostrarPSM() {        
         DefaultTableModel modelo = new DefaultTableModel();               
-        ResultSet rs = Clase_MyConnection.getTabla("select codigo,descripcion,fisico, dif from PSM");
+        ResultSet rs = BD_MyConnection.getTabla("select codigo,descripcion,fisico, dif from PSM");
         modelo.setColumnIdentifiers(new Object[]{"CODIGO", "DESCRIPION","DISPONIBLE","CONTEO"});
         try {
             while (rs.next()) {
