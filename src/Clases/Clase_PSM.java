@@ -14,12 +14,14 @@ public class Clase_PSM {
     private String descripcion;
     private String disponible;
     private String conteo;
+    private Object estatus;
 
-    public Clase_PSM(String codigo, String descripcion, String disponible, String conteo) {
+    public Clase_PSM(String codigo, String descripcion, String disponible, String conteo, Object estatus) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.disponible = disponible;
         this.conteo = conteo;
+        this.estatus = estatus;
     }
 
     public String getCodigo() {
@@ -54,6 +56,15 @@ public class Clase_PSM {
         this.conteo = conteo;
     }
 
+    public Object getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(Object estatus) {
+        this.estatus = estatus;
+    }
+
+   
    
     
 }

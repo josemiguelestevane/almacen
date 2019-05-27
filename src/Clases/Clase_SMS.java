@@ -10,8 +10,58 @@ package Clases;
  * @author Estevane
  */
 public class Clase_SMS {
-    private int codigo;
+    private String codigo;
     private String descripcion;
-    private int disponible;
-    private int conteo;
+    private String disponible;
+    private String conteo;
+    private Object estatus;
+
+    public Clase_SMS(String codigo, String descripcion, String disponible, String conteo, Object estatus) {
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.disponible = disponible;
+        this.conteo = conteo;
+        this.estatus = estatus;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(String disponible) {
+        this.disponible = disponible;
+    }
+
+    public String getConteo() {
+        return conteo;
+    }
+
+    public void setConteo(String conteo) {
+        this.conteo = conteo;
+    }
+
+    public Object getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(Object estatus) {
+        this.estatus = estatus;
+    }
+   
 }

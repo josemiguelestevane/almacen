@@ -6,6 +6,7 @@
 package frames;
 
 import Base_de_datos.BD_PSM;
+import Base_de_datos.BD_SMS;
 
 /**
  *
@@ -100,6 +101,11 @@ public class C_empresas extends javax.swing.JFrame {
 
         btnSMS.setBackground(new java.awt.Color(255, 255, 255));
         btnSMS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/SMS.png"))); // NOI18N
+        btnSMS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSMSActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -184,6 +190,13 @@ public class C_empresas extends javax.swing.JFrame {
         m.mostrarPSM();
         
     }//GEN-LAST:event_btnPSMActionPerformed
+
+    private void btnSMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMSActionPerformed
+        C_SMS p= new C_SMS();
+        p.setVisible(true);
+        BD_SMS m =new BD_SMS();
+        m.mostrarSMS();
+    }//GEN-LAST:event_btnSMSActionPerformed
 
     /**
      * @param args the command line arguments

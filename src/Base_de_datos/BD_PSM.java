@@ -29,16 +29,17 @@ public class BD_PSM {
     if(confirmar == JOptionPane.YES_OPTION){
         
     try( Connection con = BD_MyConnection.getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO PSM " + "VALUES (?,?,?,?)")){
+            PreparedStatement ps = con.prepareStatement("INSERT INTO PSM " + "VALUES (?,?,?,?,?)")){
     ps.setString(1, mpsm.getCodigo());
     ps.setString(2, mpsm.getDescripcion());
     ps.setString(3, mpsm.getDisponible());
     ps.setString(4, mpsm.getDisponible());
+    ps.setObject(5, mpsm.getEstatus());
     if(ps.executeUpdate()> 0){
         
-        JOptionPane.showMessageDialog(null, "El registro se realizó con éxito", "Operación Exitosa. por favor actualice",
+        JOptionPane.showMessageDialog(null, "El registro se realizó con éxito", "Operación Exitosa.",
                 JOptionPane.INFORMATION_MESSAGE);
-           
+           mostrarPSM();
         }else{
         
         JOptionPane.showMessageDialog(null, "No se ha podido realizar la operacion\n"
@@ -62,9 +63,9 @@ public class BD_PSM {
             ps.setString(1, tcodigoPSM);
             if(ps.executeUpdate()> 0){
         
-        JOptionPane.showMessageDialog(null, "El registro se elimino con éxito, por favor actualice", "Operación Exitosa. ",
+        JOptionPane.showMessageDialog(null, "El registro se elimino con éxito.", "Operación Exitosa. ",
                 JOptionPane.INFORMATION_MESSAGE);
-                
+                mostrarPSM();
         }else{
         
         JOptionPane.showMessageDialog(null, "No se ha podido realizar la operacion\n"
@@ -83,17 +84,19 @@ public class BD_PSM {
     int confirmar = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea actualizar un registro?");
     if(confirmar == JOptionPane.YES_OPTION){
          try( Connection con = BD_MyConnection.getConnection();
-            PreparedStatement ps = con.prepareStatement("UPDATE PSM Set descripcion=?,fisico=?,dif=? where codigo=?")){
+            PreparedStatement ps = con.prepareStatement("UPDATE PSM Set descripcion=?,fisico=?,dif=?,estatus=? where codigo=?")){
           //"UPDATE from PSM where codigo = ?"
              ps.setString(1,mpsm.getDescripcion());
              ps.setString(2,mpsm.getDisponible());
              ps.setString(3,mpsm.getConteo());
-             ps.setString(4,mpsm.getCodigo());
+             ps.setObject(4,mpsm.getEstatus());
+             ps.setString(5,mpsm.getCodigo());
+             
        if(ps.executeUpdate()> 0){
         
-        JOptionPane.showMessageDialog(null, "El registro se modifico, por favor actualice", "Operación Exitosa. ",
+        JOptionPane.showMessageDialog(null, "El registro se modifico.", "Operación Exitosa. ",
                 JOptionPane.INFORMATION_MESSAGE);
-                
+                mostrarPSM();
         }else{
         
         JOptionPane.showMessageDialog(null, "No se ha podido realizar la operacion\n"
@@ -111,13 +114,13 @@ public class BD_PSM {
     
     public void mostrarPSM() {        
         DefaultTableModel modelo = new DefaultTableModel();               
-        ResultSet rs = BD_MyConnection.getTabla("select codigo,descripcion,fisico, dif from PSM");
-        modelo.setColumnIdentifiers(new Object[]{"CODIGO", "DESCRIPION","DISPONIBLE","CONTEO"});
+        ResultSet rs = BD_MyConnection.getTabla("select codigo,descripcion,fisico, dif, estatus from PSM");
+        modelo.setColumnIdentifiers(new Object[]{"CODIGO", "DESCRIPION","DISPONIBLE","CONTEO","ESTATUS"});
         try {
             while (rs.next()) {
                 // añade los resultado a al modelo de tabla
                 modelo.addRow(new Object[]{rs.getString("codigo"), rs.getString("descripcion")
-                , rs.getString("fisico"), rs.getString("dif")});
+                , rs.getString("fisico"), rs.getString("dif"), rs.getString("estatus")});
             }            
             // asigna el modelo a la tabla
             tablas1.setModel(modelo);

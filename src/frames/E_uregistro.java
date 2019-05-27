@@ -85,9 +85,19 @@ public class E_uregistro extends javax.swing.JFrame {
         tnombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         tcorreo.setFont(new java.awt.Font("Andale Mono", 1, 14)); // NOI18N
+        tcorreo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tcorreoMouseClicked(evt);
+            }
+        });
 
         tcontrasena.setForeground(new java.awt.Color(255, 153, 0));
         tcontrasena.setText("jPasswordField1");
+        tcontrasena.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tcontrasenaMouseClicked(evt);
+            }
+        });
 
         btnregistrar.setBackground(new java.awt.Color(255, 255, 255));
         btnregistrar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -110,6 +120,11 @@ public class E_uregistro extends javax.swing.JFrame {
 
         tcontrasena2.setForeground(new java.awt.Color(255, 153, 0));
         tcontrasena2.setText("jPasswordField1");
+        tcontrasena2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tcontrasena2MouseClicked(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
@@ -286,6 +301,18 @@ public class E_uregistro extends javax.swing.JFrame {
     private void tdepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdepartamentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tdepartamentoActionPerformed
+
+    private void tcontrasenaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tcontrasenaMouseClicked
+        tcontrasena.setText("");
+    }//GEN-LAST:event_tcontrasenaMouseClicked
+
+    private void tcontrasena2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tcontrasena2MouseClicked
+        tcontrasena2.setText("");
+    }//GEN-LAST:event_tcontrasena2MouseClicked
+
+    private void tcorreoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tcorreoMouseClicked
+        
+    }//GEN-LAST:event_tcorreoMouseClicked
     
         
     public static void main(String args[]) {

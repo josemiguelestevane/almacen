@@ -1,4 +1,4 @@
-package Frames;
+package frames;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -208,12 +208,13 @@ public class A01_login extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(A01_login.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         try {
             ps.setString(2, pass);
         } catch (SQLException ex) {
             Logger.getLogger(A01_login.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
+    
         try {
             rs = ps.executeQuery();
         } catch (SQLException ex) {
@@ -227,6 +228,7 @@ public class A01_login extends javax.swing.JFrame {
                 mf.setVisible(true);
                 mf.pack();
                 mf.setLocationRelativeTo(null);
+                
                 
                 
                 this.dispose();
@@ -245,7 +247,7 @@ public class A01_login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtpassActionPerformed
 
     private void txtusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusuarioActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtusuarioActionPerformed
 
     /**

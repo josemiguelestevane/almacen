@@ -7,7 +7,6 @@ package frames;
 
 import Base_de_datos.BD_USUARIOS;
 import Clases.Clase_Usuarios;
-import static frames.F_requisicion.jTable1;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
@@ -223,15 +222,18 @@ public class E_ubuscar extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(126, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(144, 144, 144))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(275, 275, 275)
-                .addComponent(btnmostar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(275, 275, 275)
+                        .addComponent(btnmostar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -240,8 +242,8 @@ public class E_ubuscar extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnmostar)
                 .addGap(10, 10, 10))
         );
@@ -264,6 +266,12 @@ public class E_ubuscar extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
         jLabel11.setText("DEPARTAMENTO");
+
+        correotxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                correotxtMouseClicked(evt);
+            }
+        });
 
         btnactualizarU.setBackground(new java.awt.Color(255, 255, 255));
         btnactualizarU.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -476,6 +484,10 @@ public class E_ubuscar extends javax.swing.JFrame {
        BD_USUARIOS U= new BD_USUARIOS();
         U.mostrarusuarios();
     }//GEN-LAST:event_btnmostarActionPerformed
+
+    private void correotxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correotxtMouseClicked
+        correotxt.setText("@excellonresources.com");
+    }//GEN-LAST:event_correotxtMouseClicked
    public void filtro() {
         int columnaABuscar = 0;
         if (comboFiltroreq2.getSelectedItem() == "N.EMPLEADO") {
@@ -537,9 +549,9 @@ public class E_ubuscar extends javax.swing.JFrame {
     private javax.swing.JButton btnmostar;
     private javax.swing.JButton btnregresar;
     private javax.swing.JComboBox<String> comboFiltroreq2;
-    private javax.swing.JTextField correotxt;
-    private javax.swing.JComboBox<String> depatxt;
-    private javax.swing.JTextField idtxt;
+    public static javax.swing.JTextField correotxt;
+    public static javax.swing.JComboBox<String> depatxt;
+    public static javax.swing.JTextField idtxt;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -555,7 +567,7 @@ public class E_ubuscar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     public static javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField nombretxt;
+    public static javax.swing.JTextField nombretxt;
     public static javax.swing.JTable tablabuscarU;
     private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables

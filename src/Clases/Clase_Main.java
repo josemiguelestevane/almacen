@@ -6,7 +6,7 @@ package Clases;
  * and open the template in the editor.
  */
 
-import Frames.A01_login;
+import frames.A01_login;
 
 /**
  *
