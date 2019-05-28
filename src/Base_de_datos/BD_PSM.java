@@ -19,10 +19,10 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Estevane
  */
-public class BD_PSM {
+public class BD_PSM extends BD_MyConnection {
     
-    Connection con;
-    Statement sent;
+    //Connection con;
+    //Statement sent;
     
     public void nuevoPSM(Clase_PSM mpsm)throws SQLException{ 
     int confirmar = JOptionPane.showConfirmDialog(null, "¿Desea agregar un nuevo dato?");

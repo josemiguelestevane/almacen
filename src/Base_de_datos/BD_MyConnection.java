@@ -17,12 +17,12 @@ import java.sql.Statement;
  */
 public class BD_MyConnection {
     
-    
+      
     public static Connection getConnection(){
      
         Connection con = null;
         try {
-            String url = "jdbc:sqlite:/Users/appleapple/Desktop/sql/spr.db";
+            String url = "jdbc:sqlite:/Users/Estevane/Desktop/sql/spr.db";
             // crea la coneccion con la base de datos
             con = DriverManager.getConnection(url);
             

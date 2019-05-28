@@ -46,7 +46,7 @@ public class E_uregistro extends javax.swing.JFrame {
         tcorreo = new javax.swing.JTextField();
         tcontrasena = new javax.swing.JPasswordField();
         btnregistrar = new javax.swing.JButton();
-        tdepartamento = new javax.swing.JComboBox<>();
+        tdepartamento = new javax.swing.JComboBox<String>();
         tcontrasena2 = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -111,7 +111,7 @@ public class E_uregistro extends javax.swing.JFrame {
         });
 
         tdepartamento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tdepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COMPRAS Y ALMACEN", "CONTABILIDAD", "EXPLORACION", "SEGURIDAD" }));
+        tdepartamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "COMPRAS Y ALMACEN", "CONTABILIDAD", "EXPLORACION", "SEGURIDAD" }));
         tdepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tdepartamentoActionPerformed(evt);
@@ -139,10 +139,6 @@ public class E_uregistro extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(245, 245, 245)
-                .addComponent(btnregistrar)
-                .addContainerGap(171, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
@@ -161,8 +157,12 @@ public class E_uregistro extends javax.swing.JFrame {
                             .addComponent(tcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tdepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(netxt, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 92, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(245, 245, 245)
+                .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
