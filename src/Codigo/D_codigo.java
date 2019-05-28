@@ -163,6 +163,7 @@ public class D_codigo extends javax.swing.JFrame {
         btnlimpiar.setBackground(new java.awt.Color(255, 255, 255));
         btnlimpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btnlimpiar.setForeground(new java.awt.Color(255, 153, 0));
+        btnlimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/rubber.png"))); // NOI18N
         btnlimpiar.setText("LIMPIAR");
         btnlimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,6 +286,7 @@ public class D_codigo extends javax.swing.JFrame {
         btngenerar.setBackground(new java.awt.Color(255, 255, 255));
         btngenerar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btngenerar.setForeground(new java.awt.Color(255, 170, 0));
+        btngenerar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/007-export-file.png"))); // NOI18N
         btngenerar.setText("GENERAR");
         btngenerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -328,8 +330,8 @@ public class D_codigo extends javax.swing.JFrame {
                         .addGap(95, 95, 95)
                         .addComponent(btngenerar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(121, 121, 121))))
+                        .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(112, 112, 112))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -1,6 +1,10 @@
 package frames;
 
 import Base_de_datos.BD_MyConnection;
+import Base_de_datos.BD_USUARIOS;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -39,10 +43,10 @@ public class E_upass extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        tuser = new javax.swing.JTextField();
+        tid = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        passu = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        pass1 = new javax.swing.JPasswordField();
+        pass2 = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,7 +101,7 @@ public class E_upass extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("USUARIO");
+        jLabel1.setText("N. EMPLEADO");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
@@ -107,17 +111,17 @@ public class E_upass extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
         jLabel3.setText("NUEVA CONTRASEÑA");
 
-        passu.setText("jPasswordField1");
-        passu.addMouseListener(new java.awt.event.MouseAdapter() {
+        pass1.setText("jPasswordField1");
+        pass1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                passuMouseClicked(evt);
+                pass1MouseClicked(evt);
             }
         });
 
-        jPasswordField2.setText("jPasswordField2");
-        jPasswordField2.addMouseListener(new java.awt.event.MouseAdapter() {
+        pass2.setText("jPasswordField2");
+        pass2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPasswordField2MouseClicked(evt);
+                pass2MouseClicked(evt);
             }
         });
 
@@ -147,9 +151,9 @@ public class E_upass extends javax.swing.JFrame {
                         .addGap(47, 47, 47)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(passu)
-                                .addComponent(tuser))
-                            .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(pass1)
+                                .addComponent(tid))
+                            .addComponent(pass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(190, 190, 190)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -161,15 +165,15 @@ public class E_upass extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(tuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(passu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pass1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
@@ -215,19 +219,24 @@ public class E_upass extends javax.swing.JFrame {
     }//GEN-LAST:event_btnregresarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String valorPassU = new String(passu.getPassword());
+        String valorPassU = new String(pass1.getPassword());
+        String valorPass2 = new String(pass2.getPassword());
         BD_MyConnection.getConnection();
-        BD_MyConnection m = new BD_MyConnection();
-        m.actualizarDatos(tuser.getText(),valorPassU);
+        BD_USUARIOS m = new BD_USUARIOS();
+        try {
+            m.actualizarContraseña(tid.getText(),valorPassU,valorPass2);
+        } catch (SQLException ex) {
+            Logger.getLogger(E_upass.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void passuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passuMouseClicked
-        passu.setText("");
-    }//GEN-LAST:event_passuMouseClicked
+    private void pass1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pass1MouseClicked
+        pass1.setText("");
+    }//GEN-LAST:event_pass1MouseClicked
 
-    private void jPasswordField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField2MouseClicked
-        jPasswordField2.setText("");
-    }//GEN-LAST:event_jPasswordField2MouseClicked
+    private void pass2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pass2MouseClicked
+        pass2.setText("");
+    }//GEN-LAST:event_pass2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -278,8 +287,8 @@ public class E_upass extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPasswordField jPasswordField2;
-    public static javax.swing.JPasswordField passu;
-    public static javax.swing.JTextField tuser;
+    public static javax.swing.JPasswordField pass1;
+    private javax.swing.JPasswordField pass2;
+    public static javax.swing.JTextField tid;
     // End of variables declaration//GEN-END:variables
 }

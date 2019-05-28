@@ -166,10 +166,10 @@
                               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="passu" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="tuser" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="pass1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tid" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="jPasswordField2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pass2" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -187,17 +187,17 @@
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tuser" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tid" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="passu" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pass1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPasswordField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pass2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" pref="51" max="-2" attributes="0"/>
@@ -215,7 +215,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="66" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="USUARIO"/>
+                <Property name="text" type="java.lang.String" value="N. EMPLEADO"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
@@ -229,7 +229,7 @@
                 <Property name="text" type="java.lang.String" value="ANTIGUA CONTRASE&#xd1;A"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tuser">
+            <Component class="javax.swing.JTextField" name="tid">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
@@ -245,23 +245,23 @@
                 <Property name="text" type="java.lang.String" value="NUEVA CONTRASE&#xd1;A"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="passu">
+            <Component class="javax.swing.JPasswordField" name="pass1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jPasswordField1"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="passuMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pass1MouseClicked"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="jPasswordField2">
+            <Component class="javax.swing.JPasswordField" name="pass2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jPasswordField2"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPasswordField2MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pass2MouseClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton2">

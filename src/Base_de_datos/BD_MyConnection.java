@@ -62,21 +62,6 @@ public class BD_MyConnection {
     }    
     
     
-    public boolean actualizarDatos(String user, String pass){
-        Connection cn=getConnection();
-        Statement st;
-        boolean realizado;
-        try{
-            st=cn.createStatement();
-            st.execute("UPDATE usuarios SET contrasena='"+pass+"' WHERE nombre="+user+";");
-            realizado = true;
-            
-        }catch (SQLException e) {
-            realizado=false;
-            System.out.println(e.getMessage());
-        }
-        return realizado;
-    }
 }
 /*
     Connection con = null;

@@ -115,7 +115,7 @@ public class BD_USUARIOS {
     if(confirmar == JOptionPane.YES_OPTION){
          try( Connection con = BD_MyConnection.getConnection();
             PreparedStatement ps = con.prepareStatement("UPDATE usuarios Set nombre=?,correo=?,departamento=? where id_NE=?")){
-          //"UPDATE from PSM where codigo = ?"
+          
              ps.setString(1,CU2);
              ps.setString(2,CU3);
              ps.setObject(3,CU4);
@@ -140,7 +140,36 @@ public class BD_USUARIOS {
         }
 
     }  
-       
-       
-       
-}
+  public void actualizarContraseña(String id,String pass,String newpass)throws SQLException{ 
+    int confirmar = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea actualizar su contraseña?");
+    if(confirmar == JOptionPane.YES_OPTION){
+         try( Connection con = BD_MyConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement("UPDATE usuarios SET contrasena=? WHERE id_NE=?")){
+          
+             ps.setString(1,newpass);
+             ps.setString(2,id);
+             
+       if(ps.executeUpdate()> 0){
+        
+        JOptionPane.showMessageDialog(null, "La contraseña se actualizo", "Operación Exitosa. ",
+                JOptionPane.INFORMATION_MESSAGE);
+                BD_USUARIOS U= new BD_USUARIOS();
+                U.mostrarusuarios();
+        }else{
+        
+        JOptionPane.showMessageDialog(null, "No se ha podido realizar la operacion\n"
+                + "Inténtelo nuevamente.", "Error en la operación",
+                JOptionPane.ERROR_MESSAGE);
+        
+        }
+            }   catch(SQLException e){  
+        System.out.println(e.getMessage());
+            }
+    
+        }
+
+    }  
+}   
+    //SET PASSWORD FOR user = PASSWORD('some password') | 
+//OLD_PASSWORD('some password') | 'encrypted password'  
+
