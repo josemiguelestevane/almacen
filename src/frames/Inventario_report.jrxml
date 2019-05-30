@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="93ac7284-75d3-492e-9b42-26ace4f194d9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="parameter1" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="parameter2" class="java.lang.String"/>
+	<parameter name="parameter3" class="java.lang.String"/>
+	<parameter name="parameter4" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="175" y="12" width="199" height="26" uuid="7a663608-16fc-4a34-a3f1-42affc2adfd3"/>
+				<textElement>
+					<font size="18" isBold="true" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Inventario ciclíco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="57" width="225" height="22" uuid="a2d8487d-2b4f-47fb-b680-0dee8dea107d"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SAN PEDRO RESOURCES S.A. DE C.V.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="23" width="100" height="20" uuid="812d791b-a7be-4631-9af9-4ae2ec9c1473"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LINEA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="23" width="100" height="20" uuid="f63f2943-4692-4f3d-8138-97ee9f22912b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="75" y="23" width="100" height="20" uuid="e9d81677-57fb-445c-9f87-d0af988a8f00"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="406" y="23" width="100" height="20" uuid="ac1e24c2-1ef4-4eeb-9ff3-ccc0df35d8a2"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="687" splitType="Stretch">
+			<staticText>
+				<reportElement x="75" y="43" width="100" height="20" uuid="801466a5-32c2-48b5-8066-f1f4bece467b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="43" width="100" height="20" uuid="f034c088-9e26-4d4e-b430-4a9db0cd68d4"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[CONTEO]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="33" y="34" width="100" height="20" uuid="eb4b2c18-07f1-42e6-9124-1d8a72224907"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Conteo fisico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="387" y="34" width="100" height="20" uuid="063b8a4e-e2c8-417a-820b-6eebee93f0a4"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Supervisó]]></text>
+			</staticText>
+			<line>
+				<reportElement x="12" y="0" width="149" height="1" uuid="e2a7ef7e-d15d-49e9-9e87-87d0f85199c3"/>
+			</line>
+			<line>
+				<reportElement x="357" y="1" width="149" height="1" uuid="e64a5112-2fd8-49a9-816a-8341dfed5ea2"/>
+			</line>
+			<textField>
+				<reportElement x="523" y="34" width="32" height="20" uuid="5db47543-4e4b-44a3-ae97-a4c997042046"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="33" y="14" width="100" height="20" uuid="29e4d38d-a980-4811-ba2f-1bf3b7172fe9"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="14" width="100" height="20" uuid="6d805c00-3463-472c-8a31-86df20e4bf91"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{parameter4}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
