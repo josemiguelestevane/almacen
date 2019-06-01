@@ -4,71 +4,22 @@
  * and open the template in the editor.
  */
 package Base_de_datos;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 /**
  *
  * @author Estevane
  */
 public class BD_MyConnection {
-    
-      
-    public static Connection getConnection(){
-     
-        Connection con = null;
-        try {
-            String url = "jdbc:sqlite:/Users/Estevane/Desktop/sql/spr.db";
-            // crea la coneccion con la base de datos
-            con = DriverManager.getConnection(url);
-            
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        public static Connection getConnection() {
+                Connection con = null;
+                try {
+                        String url = "jdbc:sqlite:/Users/appleapple/Desktop/sql/spr.db";
+                        // crea la coneccion con la base de datos
+                        con = DriverManager.getConnection( url );
+                } catch ( Exception ex ) {
+                        System.out.println( ex.getMessage() );
+                }
+                return con;
         }
-        
-        return con;
-    }
-    
-    
-    public static ResultSet getTabla(String Consulta){
-        Connection cn=getConnection();
-        Statement st;
-        ResultSet datos=null;
-        try{
-            st=cn.createStatement();
-            datos=st.executeQuery(Consulta);
-                        
-        }
-        catch(Exception e){ System.out.print(e.toString());}
-        return datos;
-    } 
-    
-    
-    public static ResultSet getUser(String Consulta){
-        Connection cn=getConnection();
-        Statement st;
-        ResultSet usuarios=null;
-        try{
-            st=cn.createStatement();
-            usuarios=st.executeQuery(Consulta); 
-            
-        }
-        catch(Exception e){ System.out.print(e.toString());}
-        return usuarios;
-    }    
-    
-    
 }
-/*
-    Connection con = null;
-PreparedStatement pst = con.prepareStatement("...query... "); 
-
-pst.executeQuery();
-pst.close();
-con.close();
-
-*/

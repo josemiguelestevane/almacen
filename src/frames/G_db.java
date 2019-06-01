@@ -195,7 +195,7 @@ public class G_db extends javax.swing.JFrame {
             }
         } 
     }//GEN-LAST:event_btnrespaldarActionPerformed
-   
+ 
     /**
      * @param args the command line arguments
      */

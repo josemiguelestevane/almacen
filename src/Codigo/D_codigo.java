@@ -1,12 +1,8 @@
 
 package Codigo;
 
-import com.spire.barcode.BarcodeSettings;
-import java.awt.Color;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -15,22 +11,16 @@ import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
-
-
-
-
 /**
  *
  * @author appleapple
  */
 public class D_codigo extends javax.swing.JFrame {
-
     /**
      * Creates new form codigo
      */
@@ -39,7 +29,6 @@ public class D_codigo extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -456,40 +445,40 @@ public class D_codigo extends javax.swing.JFrame {
             }
         });
     }
+    public void generaretiqyeta() throws JRException, FileNotFoundException {
+        String ruta = ( "/folder/save.png" );
+        Object[] opciones = {
+                "Aceptar",
+                "Cancelar"
+        };
+        int eleccion = JOptionPane.showOptionDialog( null, "Se generaran las etiquetas", "Desea continuar?",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, "aceptar" );
+        if ( eleccion == JOptionPane.YES_OPTION ) {
+                Map < String, Object > parametros = new HashMap < > ();
+                parametros.put( "parameter1", tdescripcion.getText() );
+                parametros.put( "parameter2", tcodigo.getText() );
+                parametros.put( "parameter3", calmacen.getSelectedItem() );
+                parametros.put( "parameter4", tlocalidad.getText() );
+                parametros.put( "parameter5", tunidad.getSelectedItem() );
+                parametros.put( "parameter6", tcodigo.getText() );
+                parametros.put( "parameter7", this.getClass().getClassLoader().getResourceAsStream( ruta ) );
+                JasperReport report; // Instaciamos el objeto reporte
+                FileInputStream fos = new FileInputStream(
+                        "/Users/appleapple/NetBeansProjects/almacen/src/Codigo/newReport.jasper" );
+                try {
+                        report = ( JasperReport ) JRLoader.loadObject( fos );
+                        JRDataSource jrDataSource = new JREmptyDataSource();
+                        JasperPrint jp = JasperFillManager.fillReport( report, parametros, jrDataSource );
+                        JasperViewer jv = new JasperViewer( jp );
+                        jv.setVisible( true );
+                        jv.setTitle( "codigo" );
+                }
+                catch ( Exception e ) {
+                        System.out.println( "NO SE PUEDE CREAR" );
+                }
+        }
+}
     
-    public void generaretiqyeta() throws JRException, FileNotFoundException{
-         
-            String ruta=("/folder/save.png");
-            Object [] opciones = {"Aceptar", "Cancelar"};
-            int eleccion = JOptionPane.showOptionDialog(null,"Se generaran las etiquetas", "Desea continuar?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"aceptar");
-            
-            if(eleccion ==JOptionPane.YES_OPTION){
-            
-            Map<String, Object> parametros = new HashMap<>();
-            parametros.put("parameter1", tdescripcion.getText());
-            parametros.put("parameter2", tcodigo.getText());
-            parametros.put("parameter3", calmacen.getSelectedItem());
-            parametros.put("parameter4", tlocalidad.getText());
-            parametros.put("parameter5", tunidad.getSelectedItem());
-            parametros.put("parameter6", tcodigo.getText());  
-            parametros.put("parameter7", this.getClass().getClassLoader().getResourceAsStream(ruta));
-            JasperReport report; // Instaciamos el objeto reporte
-            
-            FileInputStream fos=new FileInputStream("/Users/appleapple/NetBeansProjects/almacen/src/Codigo/newReport.jasper");
-            try{
-            report=(JasperReport)JRLoader.loadObject(fos);
-            
-            JRDataSource jrDataSource = new JREmptyDataSource();
-
-            JasperPrint jp=JasperFillManager.fillReport(report,parametros,jrDataSource);
-
-            JasperViewer jv= new JasperViewer(jp);
-            jv.setVisible(true);
-            jv.setTitle("codigo");
-            }catch (Exception e) {
-               System.out.println("NO SE PUEDE CREAR");
-             }
-    }}
     
    
     
