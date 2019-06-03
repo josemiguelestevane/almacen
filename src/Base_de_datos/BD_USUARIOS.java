@@ -5,6 +5,7 @@
  */
 package Base_de_datos;
 import static Base_de_datos.BD_MyConnection.getConnection;
+import static Base_de_datos.FuncionesBD.Cifrado;
 import Clases.Clase_Usuarios;
 import static frames.E_ubuscar.tablabuscarU;
 import java.sql.Connection;
@@ -24,6 +25,7 @@ public class BD_USUARIOS {
         public void Nuevousuario( Clase_Usuarios u ) throws SQLException {
                 int confirmar = JOptionPane.showConfirmDialog( null, "¿DESEA AGREGAR UN NUEVO USUARIO?" );
                 if ( confirmar == JOptionPane.YES_OPTION ) {
+                    String passencr=Cifrado(u.getPass());
                         try ( Connection con = BD_MyConnection.getConnection(); PreparedStatement ps = con.prepareStatement(
                                 "insert into usuarios (id_NE,nombre, correo, departamento, contrasena)" +
                                 "values(?,?,?,?,?)" ) ) {
@@ -31,7 +33,7 @@ public class BD_USUARIOS {
                                 ps.setString( 2, u.getNombre() );
                                 ps.setString( 3, u.getCorreo() );
                                 ps.setObject( 4, u.getDepartamento() );
-                                ps.setString( 5, u.getPass() );
+                                ps.setString( 5, passencr);
                                 if ( ps.executeUpdate() > 0 ) {
                                         JOptionPane.showMessageDialog( null,
                                                 "SE HA REGISTRADO UN NUEVO USUARIO",
@@ -121,12 +123,13 @@ public class BD_USUARIOS {
                 }
         }
         public void actualizarContraseña( String id, String pass, String newpass ) throws SQLException {
-                int confirmar = JOptionPane.showConfirmDialog( null,
+                String SS=Cifrado(newpass);
+            int confirmar = JOptionPane.showConfirmDialog( null,
                         "¿Esta seguro que desea actualizar su contraseña?" );
                 if ( confirmar == JOptionPane.YES_OPTION ) {
                         try ( Connection con = BD_MyConnection.getConnection(); PreparedStatement ps = con.prepareStatement(
                                 "UPDATE usuarios SET contrasena=? WHERE id_NE=?" ) ) {
-                                ps.setString( 1, newpass );
+                                ps.setString( 1, SS );
                                 ps.setString( 2, id );
                                 if ( ps.executeUpdate() > 0 ) {
                                         JOptionPane.showMessageDialog( null, "La contraseña se actualizo",
@@ -156,4 +159,6 @@ public class BD_USUARIOS {
                 }
                 return datos;
         }
+        
+        
 }

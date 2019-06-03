@@ -3,6 +3,7 @@ package Codigo;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -446,7 +447,9 @@ public class D_codigo extends javax.swing.JFrame {
         });
     }
     public void generaretiqyeta() throws JRException, FileNotFoundException {
-        String ruta = ( "/folder/save.png" );
+        String ruta = ( "c:\\sqlite\\Etiqueta.png" );
+        InputStream imagen = this.getClass().getResourceAsStream(ruta);
+
         Object[] opciones = {
                 "Aceptar",
                 "Cancelar"
@@ -454,17 +457,18 @@ public class D_codigo extends javax.swing.JFrame {
         int eleccion = JOptionPane.showOptionDialog( null, "Se generaran las etiquetas", "Desea continuar?",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, "aceptar" );
         if ( eleccion == JOptionPane.YES_OPTION ) {
+            
                 Map < String, Object > parametros = new HashMap < > ();
                 parametros.put( "parameter1", tdescripcion.getText() );
                 parametros.put( "parameter2", tcodigo.getText() );
                 parametros.put( "parameter3", calmacen.getSelectedItem() );
                 parametros.put( "parameter4", tlocalidad.getText() );
                 parametros.put( "parameter5", tunidad.getSelectedItem() );
-                parametros.put( "parameter6", tcodigo.getText() );
-                parametros.put( "parameter7", this.getClass().getClassLoader().getResourceAsStream( ruta ) );
+                parametros.put( "parameter6", tcodigo.getText() );         
+                parametros.put( "parameter7", imagen );
                 JasperReport report; // Instaciamos el objeto reporte
                 FileInputStream fos = new FileInputStream(
-                        "/Users/appleapple/NetBeansProjects/almacen/src/Codigo/newReport.jasper" );
+                        "c:\\sqlite\\newReport.jasper" );
                 try {
                         report = ( JasperReport ) JRLoader.loadObject( fos );
                         JRDataSource jrDataSource = new JREmptyDataSource();

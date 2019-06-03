@@ -8,6 +8,7 @@ package frames;
 
 
 import Base_de_datos.BD_MyConnection;
+import static Base_de_datos.FuncionesBD.Cifrado;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -195,6 +196,8 @@ public class A01_login extends javax.swing.JFrame {
         ResultSet rs = null;
         String uname = txtusuario.getText();
         String pass = String.valueOf(txtpass.getPassword());
+        String passencrp=Cifrado(pass);
+        
         String query = "SELECT * FROM `usuarios` WHERE `nombre` =? AND `contrasena` =?";
         
             try {
@@ -210,7 +213,7 @@ public class A01_login extends javax.swing.JFrame {
         }
         
         try {
-            ps.setString(2, pass);
+            ps.setString(2, passencrp);
         } catch (SQLException ex) {
             Logger.getLogger(A01_login.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -228,10 +231,8 @@ public class A01_login extends javax.swing.JFrame {
                 mf.setVisible(true);
                 mf.pack();
                 mf.setLocationRelativeTo(null);
-                
-                
-                
                 this.dispose();
+                ps.close();
             }
             else{
                 JOptionPane.showMessageDialog(null, "Usuario o Contrasena incorrecta"+"\n\n"+"Recuerda Mayusculas y Minusculas", "Acceso Denegado", 2);
