@@ -164,6 +164,8 @@ public class G_db extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
+        frames.A_mainmenu mf = new frames.A_mainmenu();
+        mf.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnregresarActionPerformed
 

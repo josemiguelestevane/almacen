@@ -215,6 +215,8 @@ public class E_upass extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
+        E_umenu um= new E_umenu();
+        um.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnregresarActionPerformed
 

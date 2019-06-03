@@ -267,17 +267,19 @@ public class A_mainmenu extends javax.swing.JFrame {
     private void btnseguridadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnseguridadActionPerformed
         C_empresas e=new C_empresas();
         e.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnseguridadActionPerformed
 
     private void btninventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btninventarioActionPerformed
         B_inventario i = new B_inventario();
         i.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btninventarioActionPerformed
 
     private void btncuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncuentaActionPerformed
         E_umenu um= new E_umenu();
         um.setVisible(true);
-        
+        this.dispose();
     }//GEN-LAST:event_btncuentaActionPerformed
 
     private void btncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncerrarActionPerformed
@@ -292,19 +294,25 @@ public class A_mainmenu extends javax.swing.JFrame {
     private void btncodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncodigoActionPerformed
         D_codigo c= new D_codigo();
         c.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btncodigoActionPerformed
 
     private void btnrequiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrequiActionPerformed
-
+        
         F_requisicion r=new F_requisicion();
         r.setVisible(true);
+        this.dispose();
         BD_REQ m =new BD_REQ();
         m.mostrarREQ();
+        
     }//GEN-LAST:event_btnrequiActionPerformed
 
     private void btnBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBDActionPerformed
+        
         G_db b=new G_db();
+        this.dispose();
         b.setVisible(true);
+        
     }//GEN-LAST:event_btnBDActionPerformed
     
     /**

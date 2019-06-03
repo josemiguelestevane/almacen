@@ -152,7 +152,7 @@ public class D_codigo extends javax.swing.JFrame {
         );
 
         btnlimpiar.setBackground(new java.awt.Color(255, 255, 255));
-        btnlimpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnlimpiar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnlimpiar.setForeground(new java.awt.Color(255, 153, 0));
         btnlimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/rubber.png"))); // NOI18N
         btnlimpiar.setText("LIMPIAR");
@@ -275,7 +275,7 @@ public class D_codigo extends javax.swing.JFrame {
         );
 
         btngenerar.setBackground(new java.awt.Color(255, 255, 255));
-        btngenerar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btngenerar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btngenerar.setForeground(new java.awt.Color(255, 170, 0));
         btngenerar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/007-export-file.png"))); // NOI18N
         btngenerar.setText("GENERAR");
@@ -319,9 +319,9 @@ public class D_codigo extends javax.swing.JFrame {
                         .addContainerGap(81, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
-                        .addComponent(btngenerar)
+                        .addComponent(btngenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(112, 112, 112))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -363,6 +363,8 @@ public class D_codigo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnregresarActionPerformed
 
     private void btnregresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresar1ActionPerformed
+        frames.A_mainmenu mf = new frames.A_mainmenu();
+        mf.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnregresar1ActionPerformed
 

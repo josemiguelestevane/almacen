@@ -131,7 +131,7 @@ public class B_inventario extends javax.swing.JFrame {
         jLabel5.setText("Fecha");
 
         btnlimpiar.setBackground(new java.awt.Color(255, 255, 255));
-        btnlimpiar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnlimpiar.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         btnlimpiar.setForeground(new java.awt.Color(255, 153, 0));
         btnlimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/refresh-button.png"))); // NOI18N
         btnlimpiar.setText("NUEVO");
@@ -156,7 +156,7 @@ public class B_inventario extends javax.swing.JFrame {
         jScrollPane4.setViewportView(txt2);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 153, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/007-export-file.png"))); // NOI18N
         jButton1.setText("REPORTE");
@@ -278,7 +278,7 @@ public class B_inventario extends javax.swing.JFrame {
         jScrollPane2.setViewportView(codigo);
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 153, 0));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/tally-marks.png"))); // NOI18N
         jButton3.setText("AGREGAR");
@@ -300,7 +300,7 @@ public class B_inventario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap(14, Short.MAX_VALUE)
+                        .addContainerGap(34, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -557,6 +557,8 @@ public class B_inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_scanner
 
     private void btnregresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresar1ActionPerformed
+        frames.A_mainmenu mf = new frames.A_mainmenu();
+        mf.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnregresar1ActionPerformed
 

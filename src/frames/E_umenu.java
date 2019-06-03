@@ -258,6 +258,7 @@ public class E_umenu extends javax.swing.JFrame {
     private void btnuregistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnuregistroActionPerformed
         E_uregistro ur=new E_uregistro();
         ur.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnuregistroActionPerformed
 
     private void btnubuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnubuscarActionPerformed
@@ -265,14 +266,18 @@ public class E_umenu extends javax.swing.JFrame {
         ub.setVisible(true);
         BD_USUARIOS U= new BD_USUARIOS();
         U.mostrarusuarios();
+        this.dispose();
     }//GEN-LAST:event_btnubuscarActionPerformed
 
     private void btncambiarpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncambiarpassActionPerformed
         E_upass l2= new E_upass();
         l2.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btncambiarpassActionPerformed
 
     private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
+        frames.A_mainmenu mf = new frames.A_mainmenu();
+        mf.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnregresarActionPerformed
     

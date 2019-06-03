@@ -46,7 +46,7 @@ public class E_uregistro extends javax.swing.JFrame {
         tcorreo = new javax.swing.JTextField();
         tcontrasena = new javax.swing.JPasswordField();
         btnregistrar = new javax.swing.JButton();
-        tdepartamento = new javax.swing.JComboBox<String>();
+        tdepartamento = new javax.swing.JComboBox<>();
         tcontrasena2 = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -111,7 +111,7 @@ public class E_uregistro extends javax.swing.JFrame {
         });
 
         tdepartamento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tdepartamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "COMPRAS Y ALMACEN", "CONTABILIDAD", "EXPLORACION", "SEGURIDAD" }));
+        tdepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COMPRAS Y ALMACEN", "CONTABILIDAD", "EXPLORACION", "SEGURIDAD" }));
         tdepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tdepartamentoActionPerformed(evt);
@@ -161,7 +161,7 @@ public class E_uregistro extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(245, 245, 245)
-                .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -296,6 +296,9 @@ public class E_uregistro extends javax.swing.JFrame {
 
     private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
         this.dispose();
+        E_umenu um= new E_umenu();
+        um.setVisible(true);
+        
     }//GEN-LAST:event_btnregresarActionPerformed
 
     private void tdepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdepartamentoActionPerformed
