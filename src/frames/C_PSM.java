@@ -9,11 +9,30 @@ import Base_de_datos.BD_PSM;
 import Clases.Clase_PSM;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -45,7 +64,7 @@ public class C_PSM extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablas1 = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
-        btnmostar = new javax.swing.JButton();
+        btnreporte = new javax.swing.JButton();
         btnlimpar = new javax.swing.JButton();
         btnnuevo = new javax.swing.JButton();
         btnelimiar = new javax.swing.JButton();
@@ -130,15 +149,15 @@ public class C_PSM extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 0), 2));
 
-        btnmostar.setBackground(new java.awt.Color(255, 255, 255));
-        btnmostar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnmostar.setForeground(new java.awt.Color(255, 153, 0));
-        btnmostar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/refresh-button.png"))); // NOI18N
-        btnmostar.setText("ACTUALIZAR");
-        btnmostar.setToolTipText("");
-        btnmostar.addActionListener(new java.awt.event.ActionListener() {
+        btnreporte.setBackground(new java.awt.Color(255, 255, 255));
+        btnreporte.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnreporte.setForeground(new java.awt.Color(255, 153, 0));
+        btnreporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/009-export.png"))); // NOI18N
+        btnreporte.setText("Reporte");
+        btnreporte.setToolTipText("");
+        btnreporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnmostarActionPerformed(evt);
+                btnreporteActionPerformed(evt);
             }
         });
 
@@ -335,7 +354,7 @@ public class C_PSM extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(btnmostar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnreporte, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(191, 191, 191)
                         .addComponent(jLabel4))
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -365,7 +384,7 @@ public class C_PSM extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(btnmostar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnreporte, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23))
         );
 
@@ -432,12 +451,52 @@ public class C_PSM extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnregresarActionPerformed
 
-    private void btnmostarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmostarActionPerformed
-       
-        BD_PSM m =new BD_PSM();
-        m.mostrarPSM();
-    }//GEN-LAST:event_btnmostarActionPerformed
+    private void btnreporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreporteActionPerformed
 
+        Object[] opciones = {
+                "Aceptar",
+                "Cancelar"
+        };
+        int eleccion = JOptionPane.showOptionDialog( null, "Se generaran las etiquetas", "Desea continuar?",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, "aceptar" );
+        if ( eleccion == JOptionPane.YES_OPTION ) {
+   
+        Clase_PSM em;// Instaciamos la clase empleado
+        List <Clase_PSM>lista = new ArrayList<>(); //Creamos una lista de empleados con ArrayList para obtener cada empleado
+        DefaultTableModel modelo = new DefaultTableModel();
+        for(int i=0; i<modelo.getRowCount(); i++){ // Iterena cada fila de la tabla
+            em = new Clase_PSM(
+                    modelo.getValueAt(i,0).toString(),
+                    modelo.getValueAt(i,1).toString(), //Tomamos de la tabla el valor de cada columna y creamos un objeto empleado
+                    modelo.getValueAt(i,2).toString(),
+                    modelo.getValueAt(i,3).toString(),
+                    modelo.getValueAt(i,4).toString());
+            
+            lista.add(em); //Agregamos el objeto empleado a la lista
+        
+                JasperReport report; // Instaciamos el objeto reporte
+                FileInputStream fos;
+            try {
+                fos = new FileInputStream(
+                        "/Users/appleapple/NetBeansProjects/almacen/src/frames/PSM_report.jasper" );
+                report = ( JasperReport ) JRLoader.loadObject( fos );
+       
+                        JasperPrint jp = JasperFillManager.fillReport(fos, null,new JRBeanCollectionDataSource(lista ) );
+                        JasperViewer jv = new JasperViewer( jp );
+                        jv.setVisible( true );
+                        jv.setTitle( "codigo" );
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(C_PSM.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (JRException ex) {
+                Logger.getLogger(C_PSM.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        }
+         // Instaciamos el objeto reporte
+        // FileInputStream fos = new FileInputStream("/Users/appleapple/NetBeansProjects/almacen/src/frames/PSM_report.jasper");
+
+        //JRBeanCollectionDataSource(lista   
+    }//GEN-LAST:event_btnreporteActionPerformed
+    }
     private void btnelimiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnelimiarActionPerformed
         BD_PSM m =new BD_PSM();
         Clase_PSM mpsm;
@@ -525,7 +584,9 @@ public class C_PSM extends javax.swing.JFrame {
         }
         trsFiltro.setRowFilter(RowFilter.regexFilter(txtFiltro.getText(), columnaABuscar));
     }
-
+   
+   
+ 
     /**
      * @param args the command line arguments
      */
@@ -572,9 +633,9 @@ public class C_PSM extends javax.swing.JFrame {
     public static javax.swing.JButton btnactualizar;
     private javax.swing.JButton btnelimiar;
     private javax.swing.JButton btnlimpar;
-    private javax.swing.JButton btnmostar;
     private javax.swing.JButton btnnuevo;
     private javax.swing.JButton btnregresar;
+    private javax.swing.JButton btnreporte;
     private javax.swing.JComboBox<String> comboFiltro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

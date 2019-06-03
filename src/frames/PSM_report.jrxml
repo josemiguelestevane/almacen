@@ -3,33 +3,40 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="parameter1" class="java.io.InputStream"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
-	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch"/>
-	</columnHeader>
-	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="132" y="0" width="236" height="79" uuid="21d99d16-a87c-4c45-ac80-8af143e4a2ae"/>
+				<text><![CDATA[PRESTADORA DE SERVICIOS MIGUEL AUZA S.A. DE C.V.	
+C. FELIPE ANGELES N° EXT. 55	
+C.P. 98330 MIGUEL AUZA, ZACATECAS, MEX.	
+RFC: PSM0612137W4	
+TEL: (433) 984-22-20	
+EMAIL: spr_abastecimiento@excellonresources.com	]]></text>
+			</staticText>
 			<image>
-				<reportElement x="49" y="13" width="456" height="83" uuid="9cf80d9e-8007-41d3-a029-5d2a4a984423"/>
-				<imageExpression><![CDATA["/Users/appleapple/NetBeansProjects/almacen/src/icn/excellon.png"]]></imageExpression>
+				<reportElement x="0" y="0" width="116" height="79" uuid="a2fe5be1-fbd8-4249-aa9b-7efc551d1a75"/>
+				<imageExpression><![CDATA["/Users/appleapple/Desktop/sqliteReport/PSM.png"]]></imageExpression>
 			</image>
 		</band>
-	</detail>
+	</title>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="723">
+			<textField>
+				<reportElement x="527" y="703" width="28" height="20" uuid="fa92c96c-422d-44e1-9f1c-dd7708f60e8f"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="210" y="13" width="100" height="20" uuid="7cb5ef16-9e84-4868-919a-60296467df17"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[INVENTARIO]]></text>
+			</staticText>
+		</band>
 	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>
