@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class BD_REQ {
         public void nuevoREQ( Clase_REQ req ) throws SQLException {
                 int confirmar = JOptionPane.showConfirmDialog( null,
-                        "¿Desea agregar un nuevo dato de requicicion?" );
+                        "¿Desea agregar un nuevo dato de requisicion?" );
                 if ( confirmar == JOptionPane.YES_OPTION ) {
                         try ( Connection con = BD_MyConnection.getConnection(); PreparedStatement ps = con.prepareStatement(
                                 "INSERT INTO REQUISICIONES " + "VALUES (?,?,?,?,?,?,?,?)" ) ) {
@@ -35,8 +35,9 @@ public class BD_REQ {
                                 ps.setString( 8, req.getDescripcion() );
                                 if ( ps.executeUpdate() > 0 ) {
                                         JOptionPane.showMessageDialog( null,
-                                                "El registro de requicicion se realizó con éxito!!, por favor actualice",
+                                                "El registro de requisicion se realizó con éxito!!",
                                                 "Operación Exitosa. ", JOptionPane.INFORMATION_MESSAGE );
+                                        mostrarREQ();
                                 } else {
                                         JOptionPane.showMessageDialog( null,
                                                 "No se ha podido realizar la operacion\n" +
@@ -56,8 +57,9 @@ public class BD_REQ {
                                 ps.setString( 1, req );
                                 if ( ps.executeUpdate() > 0 ) {
                                         JOptionPane.showMessageDialog( null,
-                                                "El registro se elimino con éxito, por favor actualice",
+                                                "El registro se elimino con éxito",
                                                 "Operación Exitosa. ", JOptionPane.INFORMATION_MESSAGE );
+                                        mostrarREQ();
                                 } else {
                                         JOptionPane.showMessageDialog( null,
                                                 "No se ha podido realizar la operacion\n" +
@@ -118,8 +120,9 @@ public class BD_REQ {
                                 ps.setString( 8, req.getReq() );
                                 if ( ps.executeUpdate() > 0 ) {
                                         JOptionPane.showMessageDialog( null,
-                                                "El registro se modifico, por favor actualice",
+                                                "El registro se modifico",
                                                 "Operación Exitosa. ", JOptionPane.INFORMATION_MESSAGE );
+                                        mostrarREQ();
                                 } else {
                                         JOptionPane.showMessageDialog( null,
                                                 "No se ha podido realizar la operacion\n" +

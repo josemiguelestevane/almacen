@@ -154,7 +154,7 @@ public class C_PSM extends javax.swing.JFrame {
         btnreporte.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnreporte.setForeground(new java.awt.Color(255, 153, 0));
         btnreporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/009-export.png"))); // NOI18N
-        btnreporte.setText("Reporte");
+        btnreporte.setText("REPORTE");
         btnreporte.setToolTipText("");
         btnreporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -568,7 +568,7 @@ public class C_PSM extends javax.swing.JFrame {
                 JasperPrint jp = JasperFillManager.fillReport( report,null, new JRBeanCollectionDataSource(lista) );
                         JasperViewer jv = new JasperViewer( jp,false );
                         jv.setVisible( true );
-                        jv.setTitle( "codigo" );
+                        jv.setTitle( "INVENTARIO PSM" );
             }catch( Exception e ){
             
             }

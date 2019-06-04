@@ -3,13 +3,25 @@ package frames;
 
 import Base_de_datos.BD_REQ;
 import Clases.Clase_REQ;
+import Clases.Clase_SMS;
+import static frames.C_SMS.tablaSMS;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -168,8 +180,8 @@ public class F_requisicion extends javax.swing.JFrame {
         btnmostar.setBackground(new java.awt.Color(255, 255, 255));
         btnmostar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnmostar.setForeground(new java.awt.Color(255, 153, 0));
-        btnmostar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/refresh-button.png"))); // NOI18N
-        btnmostar.setText("ACTUALIZAR");
+        btnmostar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/009-export.png"))); // NOI18N
+        btnmostar.setText("REPORTE");
         btnmostar.setToolTipText("");
         btnmostar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -585,9 +597,12 @@ public class F_requisicion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnlimparActionPerformed
 
     private void btnmostarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmostarActionPerformed
-     
-        BD_REQ m =new BD_REQ();
-        m.mostrarREQ();
+        try {   
+            generarREQ();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(F_requisicion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnmostarActionPerformed
 
     private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
@@ -656,7 +671,34 @@ public class F_requisicion extends javax.swing.JFrame {
         }
         trsFiltro.setRowFilter(RowFilter.regexFilter(txtFiltro.getText(), columnaABuscar));
     }
-    
+      public void generarREQ() throws FileNotFoundException{
+       List lista = new ArrayList();
+       for(int i=0;i<jTable1.getRowCount();i++){
+           Clase_REQ R;
+           R = new Clase_REQ(
+                   jTable1.getValueAt(i,0).toString(),
+                   jTable1.getValueAt(i,1).toString(),
+                   jTable1.getValueAt(i,2),
+                   jTable1.getValueAt(i,3).toString(),
+                   jTable1.getValueAt(i,4).toString(),
+                   jTable1.getValueAt(i,5),
+                   jTable1.getValueAt(i,6).toString(),
+                   jTable1.getValueAt(i,7).toString());
+           lista.add(R);
+        }
+            JasperReport report;
+            FileInputStream fos = new FileInputStream(
+                        "/Users/appleapple/NetBeansProjects/almacen/src/frames/REQ_report.jasper" );
+            try{
+                report = ( JasperReport ) JRLoader.loadObject( fos );
+                JasperPrint jp = JasperFillManager.fillReport( report,null, new JRBeanCollectionDataSource(lista) );
+                        JasperViewer jv = new JasperViewer( jp,false );
+                        jv.setVisible( true );
+                        jv.setTitle( "REQUISICIONES" );
+            }catch( Exception e ){
+            
+            }
+    }
 
     /**
      * @param args the command line arguments

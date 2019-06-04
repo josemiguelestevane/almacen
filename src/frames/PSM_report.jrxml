@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c85002a2-f21d-4d5d-8e40-892bce78d533">
-	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="176"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="parameter1" class="java.io.InputStream"/>
 	<field name="codigo" class="java.lang.String"/>
@@ -10,7 +10,7 @@
 	<field name="conteo" class="java.lang.String"/>
 	<field name="estatus" class="java.lang.String"/>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="160" splitType="Stretch">
 			<staticText>
 				<reportElement x="132" y="0" width="236" height="79" uuid="21d99d16-a87c-4c45-ac80-8af143e4a2ae"/>
 				<text><![CDATA[PRESTADORA DE SERVICIOS MIGUEL AUZA S.A. DE C.V.	
@@ -24,6 +24,55 @@ EMAIL: spr_abastecimiento@excellonresources.com	]]></text>
 				<reportElement x="0" y="0" width="116" height="79" uuid="a2fe5be1-fbd8-4249-aa9b-7efc551d1a75"/>
 				<imageExpression><![CDATA["/Users/appleapple/Desktop/sqliteReport/PSM.png"]]></imageExpression>
 			</image>
+			<staticText>
+				<reportElement x="16" y="139" width="47" height="21" uuid="d0ac5ae8-9f62-479e-a663-d1f460f3dcf8"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="139" width="151" height="21" uuid="8ade9eef-dbe6-4810-8b65-26a4b68274f5"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="274" y="139" width="69" height="21" uuid="78821047-ab3e-4601-9e47-aa5da2bfe502"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DISPONIBLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="139" width="64" height="21" uuid="9b4ae0e7-3aa1-458f-8099-9d80d347623d"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTEO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="139" width="47" height="21" uuid="404a552a-b94c-481a-8d1d-edf20dfca7b9"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTATUS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="79" width="100" height="20" uuid="400e9183-4bcf-4915-8e8f-76746e25d00a"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[INVENTARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="99" width="36" height="19" uuid="b469760c-ecbb-43f3-b6e2-f1769195d2ab"/>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="52" y="117" width="100" height="1" uuid="c4431d4f-a594-46f6-bf20-c8ebd36f38b4"/>
+			</line>
 		</band>
 	</title>
 	<detail>
@@ -68,4 +117,12 @@ EMAIL: spr_abastecimiento@excellonresources.com	]]></text>
 			</line>
 		</band>
 	</detail>
+	<pageFooter>
+		<band height="20">
+			<textField>
+				<reportElement x="527" y="0" width="28" height="20" uuid="48adad60-e060-44bb-ad47-0b519752b42e"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
 </jasperReport>

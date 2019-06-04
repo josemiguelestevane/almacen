@@ -195,7 +195,7 @@ public class D_codigo extends javax.swing.JFrame {
 
         tunidad.setBackground(new java.awt.Color(255, 255, 255));
         tunidad.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tunidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PIEZA", "LITRO", "METRO", "PULGADA", "GALON", "BOTE", "CUBETA", "KILO", " " }));
+        tunidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PIEZA", "LITRO", "KILO", "METRO", " " }));
         tunidad.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 tunidadItemStateChanged(evt);
@@ -451,7 +451,7 @@ public class D_codigo extends javax.swing.JFrame {
     public void generaretiqyeta() throws JRException, FileNotFoundException {
         String ruta = ( "c:\\sqlite\\Etiqueta.png" );
         InputStream imagen = this.getClass().getResourceAsStream(ruta);
-
+      
         Object[] opciones = {
                 "Aceptar",
                 "Cancelar"
@@ -461,16 +461,16 @@ public class D_codigo extends javax.swing.JFrame {
         if ( eleccion == JOptionPane.YES_OPTION ) {
             
                 Map < String, Object > parametros = new HashMap < > ();
+  
                 parametros.put( "parameter1", tdescripcion.getText() );
                 parametros.put( "parameter2", tcodigo.getText() );
                 parametros.put( "parameter3", calmacen.getSelectedItem() );
                 parametros.put( "parameter4", tlocalidad.getText() );
-                parametros.put( "parameter5", tunidad.getSelectedItem() );
-                parametros.put( "parameter6", tcodigo.getText() );         
+                parametros.put( "parameter5", tunidad.getSelectedItem() );      
                 parametros.put( "parameter7", imagen );
                 JasperReport report; // Instaciamos el objeto reporte
                 FileInputStream fos = new FileInputStream(
-                        "c:\\sqlite\\newReport.jasper" );
+                        "/Users/appleapple/NetBeansProjects/almacen/src/Codigo/newReport.jasper" );
                 try {
                         report = ( JasperReport ) JRLoader.loadObject( fos );
                         JRDataSource jrDataSource = new JREmptyDataSource();
@@ -482,10 +482,10 @@ public class D_codigo extends javax.swing.JFrame {
                 catch ( Exception e ) {
                         System.out.println( "NO SE PUEDE CREAR" );
                 }
-        }
+        
 }
     
-    
+    }   
    
     
 

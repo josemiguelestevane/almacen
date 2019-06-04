@@ -6,12 +6,31 @@
  */
 package frames;
 
+import Clases.Clase_INV;
+import Clases.Clase_REQ;
+import static frames.F_requisicion.jTable1;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -58,7 +77,7 @@ public class B_inventario extends javax.swing.JFrame {
         txt1 = new javax.swing.JTextPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         txt2 = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
+        btnreporte = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         btnregresar1 = new javax.swing.JButton();
@@ -155,11 +174,16 @@ public class B_inventario extends javax.swing.JFrame {
         txt2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jScrollPane4.setViewportView(txt2);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 153, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/007-export-file.png"))); // NOI18N
-        jButton1.setText("REPORTE");
+        btnreporte.setBackground(new java.awt.Color(255, 255, 255));
+        btnreporte.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        btnreporte.setForeground(new java.awt.Color(255, 153, 0));
+        btnreporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icn/007-export-file.png"))); // NOI18N
+        btnreporte.setText("REPORTE");
+        btnreporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnreporteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -170,7 +194,7 @@ public class B_inventario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(91, 91, 91)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnreporte, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -216,7 +240,7 @@ public class B_inventario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnreporte, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
         );
 
@@ -589,6 +613,46 @@ public class B_inventario extends javax.swing.JFrame {
         cb.setContents(texto, texto); // TODO add your handling code here:
     }//GEN-LAST:event_CopiarActionPerformed
 
+    private void btnreporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreporteActionPerformed
+        try {        
+            generarINV();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(B_inventario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnreporteActionPerformed
+    
+    public void generarINV() throws FileNotFoundException{
+       List lista = new ArrayList();
+       for(int i=0;i<jtablecodigos.getRowCount();i++){
+           Clase_INV I;
+           I = new Clase_INV(
+                   jtablecodigos.getValueAt(i,0),
+                   jtablecodigos.getValueAt(i,1));
+           lista.add(I);
+           
+           
+        }
+            Map < String, Object > parametros = new HashMap < > ();
+           parametros.put( "parameter1", jComboBoxlineas.getSelectedItem());
+           parametros.put( "parameter2", jDateChooser1.getDate().toString());
+           parametros.put( "parameter3", txt1.getText());
+           parametros.put( "parameter4", txt2.getText());
+           
+            JasperReport report;
+            FileInputStream fos = new FileInputStream(
+                        "/Users/appleapple/NetBeansProjects/almacen/src/frames/Inventario_report.jasper" );
+            try{
+                report = ( JasperReport ) JRLoader.loadObject( fos );
+                JRDataSource jrDataSource = new JREmptyDataSource();
+                JasperPrint jp = JasperFillManager.fillReport( report,parametros, new JRBeanCollectionDataSource(lista) );
+                        JasperViewer jv = new JasperViewer( jp,false );
+                        jv.setVisible( true );
+                        jv.setTitle( "REQUISICIONES" );
+            }catch( Exception e ){
+            
+            }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -659,8 +723,8 @@ public class B_inventario extends javax.swing.JFrame {
     private javax.swing.JMenuItem Copiar;
     private javax.swing.JButton btnlimpiar;
     private javax.swing.JButton btnregresar1;
+    private javax.swing.JButton btnreporte;
     private javax.swing.JTextPane codigo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBoxlineas;
@@ -678,7 +742,7 @@ public class B_inventario extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jtablecodigos;
+    public static javax.swing.JTable jtablecodigos;
     private javax.swing.JTextPane txt1;
     private javax.swing.JTextPane txt2;
     // End of variables declaration//GEN-END:variables

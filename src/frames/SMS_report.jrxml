@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d2d7fba8-aa44-46e2-9371-c5f953911f46">
-	<property name="ireport.zoom" value="1.0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c85002a2-f21d-4d5d-8e40-892bce78d533">
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="parameter1" class="java.lang.String"/>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
+	<parameter name="parameter1" class="java.io.InputStream"/>
+	<field name="codigo" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="disponible" class="java.lang.String"/>
+	<field name="conteo" class="java.lang.String"/>
+	<field name="estatus" class="java.lang.String"/>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="160" splitType="Stretch">
 			<staticText>
-				<reportElement x="144" y="0" width="248" height="79" uuid="522e3996-d9d0-4027-a73a-654d44d261dd"/>
+				<reportElement x="132" y="0" width="236" height="79" uuid="21d99d16-a87c-4c45-ac80-8af143e4a2ae"/>
 				<text><![CDATA[SERVICIOS MINEROS SAN PEDRO S.A. DE C.V.	
 C. FELIPE ANGELES N° EXT. 55	
 C.P. 98330 MIGUEL AUZA, ZACATECAS, MEX.	
@@ -18,24 +20,108 @@ RFC: SMS041018Q27
 TEL: (433) 984-22-20	]]></text>
 			</staticText>
 			<image>
-				<reportElement x="0" y="0" width="129" height="79" uuid="f147ec2a-2dbb-429f-9872-8167d4d3a9e0"/>
+				<reportElement x="0" y="0" width="116" height="79" uuid="a2fe5be1-fbd8-4249-aa9b-7efc551d1a75"/>
 				<imageExpression><![CDATA["/Users/appleapple/Desktop/sqliteReport/SMS.png"]]></imageExpression>
 			</image>
-		</band>
-	</title>
-	<columnFooter>
-		<band height="723" splitType="Stretch">
-			<textField>
-				<reportElement x="529" y="703" width="26" height="20" uuid="b60d1815-5395-4520-87a5-294c6a353067"/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="232" y="18" width="100" height="20" uuid="0eea98a9-56ec-4522-990b-c90215a50cdc"/>
+				<reportElement x="16" y="139" width="47" height="21" uuid="d0ac5ae8-9f62-479e-a663-d1f460f3dcf8"/>
 				<textElement>
-					<font size="14" isBold="true" isItalic="true"/>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="139" width="151" height="21" uuid="8ade9eef-dbe6-4810-8b65-26a4b68274f5"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="274" y="139" width="69" height="21" uuid="78821047-ab3e-4601-9e47-aa5da2bfe502"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DISPONIBLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="139" width="64" height="21" uuid="9b4ae0e7-3aa1-458f-8099-9d80d347623d"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTEO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="139" width="47" height="21" uuid="404a552a-b94c-481a-8d1d-edf20dfca7b9"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTATUS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="79" width="100" height="20" uuid="400e9183-4bcf-4915-8e8f-76746e25d00a"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[INVENTARIO]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="16" y="99" width="36" height="19" uuid="b469760c-ecbb-43f3-b6e2-f1769195d2ab"/>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="52" y="117" width="100" height="1" uuid="c4431d4f-a594-46f6-bf20-c8ebd36f38b4"/>
+			</line>
 		</band>
-	</columnFooter>
+	</title>
+	<detail>
+		<band height="14" splitType="Immediate">
+			<textField>
+				<reportElement x="16" y="0" width="47" height="10" uuid="ee990c2d-cc15-4725-8368-5eaabaa07875"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="274" y="0" width="58" height="10" uuid="3651d31f-670a-4252-ac7c-daf0677ae402"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{disponible}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="0" width="64" height="10" uuid="2d11006c-f0d0-457b-ad6b-3ea55dd724fd"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{conteo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="10" uuid="5ece622b-9d7d-4cfd-941b-33c3e1fab331"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estatus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="81" y="0" width="151" height="10" uuid="61549f47-6b48-4245-9f93-6ddcb39e0162"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="13" width="555" height="1" uuid="678a0ae5-e343-4c04-ad83-9e4c3f000df1"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20">
+			<textField>
+				<reportElement x="527" y="0" width="28" height="20" uuid="48adad60-e060-44bb-ad47-0b519752b42e"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
 </jasperReport>
