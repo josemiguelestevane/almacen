@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c85002a2-f21d-4d5d-8e40-892bce78d533">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="176"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="parameter1" class="java.io.InputStream"/>
 	<field name="codigo" class="java.lang.String"/>
@@ -9,9 +9,6 @@
 	<field name="disponible" class="java.lang.String"/>
 	<field name="conteo" class="java.lang.String"/>
 	<field name="estatus" class="java.lang.String"/>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
@@ -29,35 +26,46 @@ EMAIL: spr_abastecimiento@excellonresources.com	]]></text>
 			</image>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="723">
-			<staticText>
-				<reportElement x="233" y="13" width="100" height="20" uuid="7cb5ef16-9e84-4868-919a-60296467df17"/>
-				<textElement>
-					<font size="14" isBold="true" isItalic="true"/>
-				</textElement>
-				<text><![CDATA[INVENTARIO]]></text>
-			</staticText>
+	<detail>
+		<band height="14" splitType="Immediate">
 			<textField>
-				<reportElement x="23" y="33" width="68" height="20" uuid="63c5c940-99ab-469d-ac5a-f264363c8ca8"/>
+				<reportElement x="16" y="0" width="47" height="10" uuid="ee990c2d-cc15-4725-8368-5eaabaa07875"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="116" y="33" width="100" height="20" uuid="9c80ed5c-4146-44ea-bdb5-7bad12dcb072"/>
-				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="233" y="33" width="100" height="20" uuid="8c38eeea-4267-4644-bcc5-29bd4aa46853"/>
+				<reportElement x="274" y="0" width="58" height="10" uuid="3651d31f-670a-4252-ac7c-daf0677ae402"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{disponible}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="351" y="33" width="71" height="20" uuid="db34978e-e750-4c42-883a-6ab7183a5e59"/>
+				<reportElement x="368" y="0" width="64" height="10" uuid="2d11006c-f0d0-457b-ad6b-3ea55dd724fd"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{conteo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="455" y="33" width="84" height="20" uuid="65a45cb3-3abe-4808-95e6-961bb85fdd33"/>
+				<reportElement x="455" y="0" width="100" height="10" uuid="5ece622b-9d7d-4cfd-941b-33c3e1fab331"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{estatus}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="81" y="0" width="151" height="10" uuid="61549f47-6b48-4245-9f93-6ddcb39e0162"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="13" width="555" height="1" uuid="678a0ae5-e343-4c04-ad83-9e4c3f000df1"/>
+			</line>
 		</band>
-	</pageHeader>
+	</detail>
 </jasperReport>
