@@ -468,13 +468,13 @@ public class C_PSM extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         for(int i=0; i<modelo.getRowCount(); i++){ // Iterena cada fila de la tabla
             em = new Clase_PSM(
-                    modelo.getValueAt(i,0).toString(),
-                    modelo.getValueAt(i,1).toString(), //Tomamos de la tabla el valor de cada columna y creamos un objeto empleado
-                    modelo.getValueAt(i,2).toString(),
-                    modelo.getValueAt(i,3).toString(),
-                    modelo.getValueAt(i,4).toString());
+                   (String) modelo.getValueAt(i,0),
+                   (String) modelo.getValueAt(i,1), //Tomamos de la tabla el valor de cada columna y creamos un objeto empleado
+                   (String) modelo.getValueAt(i,2),
+                   (String) modelo.getValueAt(i,3),
+                   (String) modelo.getValueAt(i,4));
             
-            lista.add(em); //Agregamos el objeto empleado a la lista
+            lista.add(em);} //Agregamos el objeto empleado a la lista
         
                 JasperReport report; // Instaciamos el objeto reporte
                 FileInputStream fos;
@@ -492,7 +492,7 @@ public class C_PSM extends javax.swing.JFrame {
             } catch (JRException ex) {
                 Logger.getLogger(C_PSM.class.getName()).log(Level.SEVERE, null, ex);
             } 
-        }
+        
          // Instaciamos el objeto reporte
         // FileInputStream fos = new FileInputStream("/Users/appleapple/NetBeansProjects/almacen/src/frames/PSM_report.jasper");
 
