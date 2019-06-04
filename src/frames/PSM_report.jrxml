@@ -4,6 +4,11 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="parameter1" class="java.io.InputStream"/>
+	<field name="codigo" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="disponible" class="java.lang.String"/>
+	<field name="conteo" class="java.lang.String"/>
+	<field name="estatus" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -24,19 +29,35 @@ EMAIL: spr_abastecimiento@excellonresources.com	]]></text>
 			</image>
 		</band>
 	</title>
-	<columnFooter>
+	<pageHeader>
 		<band height="723">
-			<textField>
-				<reportElement x="527" y="703" width="28" height="20" uuid="fa92c96c-422d-44e1-9f1c-dd7708f60e8f"/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="210" y="13" width="100" height="20" uuid="7cb5ef16-9e84-4868-919a-60296467df17"/>
+				<reportElement x="233" y="13" width="100" height="20" uuid="7cb5ef16-9e84-4868-919a-60296467df17"/>
 				<textElement>
 					<font size="14" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[INVENTARIO]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="23" y="33" width="68" height="20" uuid="63c5c940-99ab-469d-ac5a-f264363c8ca8"/>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="116" y="33" width="100" height="20" uuid="9c80ed5c-4146-44ea-bdb5-7bad12dcb072"/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="33" width="100" height="20" uuid="8c38eeea-4267-4644-bcc5-29bd4aa46853"/>
+				<textFieldExpression><![CDATA[$F{disponible}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="351" y="33" width="71" height="20" uuid="db34978e-e750-4c42-883a-6ab7183a5e59"/>
+				<textFieldExpression><![CDATA[$F{conteo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="33" width="84" height="20" uuid="65a45cb3-3abe-4808-95e6-961bb85fdd33"/>
+				<textFieldExpression><![CDATA[$F{estatus}]]></textFieldExpression>
+			</textField>
 		</band>
-	</columnFooter>
+	</pageHeader>
 </jasperReport>

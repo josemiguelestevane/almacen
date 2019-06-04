@@ -475,7 +475,7 @@ public class D_codigo extends javax.swing.JFrame {
                         report = ( JasperReport ) JRLoader.loadObject( fos );
                         JRDataSource jrDataSource = new JREmptyDataSource();
                         JasperPrint jp = JasperFillManager.fillReport( report, parametros, jrDataSource );
-                        JasperViewer jv = new JasperViewer( jp );
+                        JasperViewer jv = new JasperViewer( jp,false );
                         jv.setVisible( true );
                         jv.setTitle( "codigo" );
                 }

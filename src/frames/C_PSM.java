@@ -27,6 +27,7 @@ import javax.swing.table.TableRowSorter;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRField;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -454,51 +455,15 @@ public class C_PSM extends javax.swing.JFrame {
     }//GEN-LAST:event_btnregresarActionPerformed
 
     private void btnreporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreporteActionPerformed
-
-        Object[] opciones = {
-                "Aceptar",
-                "Cancelar"
-        };
-        int eleccion = JOptionPane.showOptionDialog( null, "Se generaran las etiquetas", "Desea continuar?",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, "aceptar" );
-        if ( eleccion == JOptionPane.YES_OPTION ) {
-   
-        Clase_PSM em;// Instaciamos la clase empleado
-        List <Clase_PSM>lista = new ArrayList<>(); //Creamos una lista de empleados con ArrayList para obtener cada empleado
-        DefaultTableModel modelo = new DefaultTableModel();
-        for(int i=0; i<modelo.getRowCount(); i++){ // Iterena cada fila de la tabla
-            em = new Clase_PSM(
-                   (String) modelo.getValueAt(i,0),
-                   (String) modelo.getValueAt(i,1), //Tomamos de la tabla el valor de cada columna y creamos un objeto empleado
-                   (String) modelo.getValueAt(i,2),
-                   (String) modelo.getValueAt(i,3),
-                   (String) modelo.getValueAt(i,4));
-            
-            lista.add(em);} //Agregamos el objeto empleado a la lista
-        
-                JasperReport report; // Instaciamos el objeto reporte
-                FileInputStream fos;
-            try {
-                fos = new FileInputStream(
-                        "/Users/appleapple/NetBeansProjects/almacen/src/frames/PSM_report.jasper" );
-                report = ( JasperReport ) JRLoader.loadObject( fos );
-       
-                        JasperPrint jp = JasperFillManager.fillReport(fos, null,new JRBeanCollectionDataSource(lista ) );
-                        JasperViewer jv = new JasperViewer( jp );
-                        jv.setVisible( true );
-                        jv.setTitle( "codigo" );
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(C_PSM.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (JRException ex) {
-                Logger.getLogger(C_PSM.class.getName()).log(Level.SEVERE, null, ex);
-            } 
-        
-         // Instaciamos el objeto reporte
-        // FileInputStream fos = new FileInputStream("/Users/appleapple/NetBeansProjects/almacen/src/frames/PSM_report.jasper");
-
-        //JRBeanCollectionDataSource(lista   
+        try {
+            generar();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(C_PSM.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnreporteActionPerformed
-    }
+
+    // );
+    
     private void btnelimiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnelimiarActionPerformed
         BD_PSM m =new BD_PSM();
         Clase_PSM mpsm;
@@ -587,6 +552,27 @@ public class C_PSM extends javax.swing.JFrame {
         trsFiltro.setRowFilter(RowFilter.regexFilter(txtFiltro.getText(), columnaABuscar));
     }
    
+   public void generar() throws FileNotFoundException{
+       List lista = new ArrayList();
+       for(int i=0;i<tablas1.getRowCount();i++){
+           Clase_PSM P;
+           P = new Clase_PSM(tablas1.getValueAt(i,0).toString(),tablas1.getValueAt(i,1).toString(),tablas1.getValueAt(i,2).toString(),
+           tablas1.getValueAt(i,3).toString(),tablas1.getValueAt(i,4));
+           lista.add(P);
+        }
+            JasperReport report;
+            FileInputStream fos = new FileInputStream(
+                        "/Users/appleapple/NetBeansProjects/almacen/src/frames/PSM_report.jasper" );
+            try{
+                report = ( JasperReport ) JRLoader.loadObject( fos );
+                JasperPrint jp = JasperFillManager.fillReport( report,null, new JRBeanCollectionDataSource(lista) );
+                        JasperViewer jv = new JasperViewer( jp,false );
+                        jv.setVisible( true );
+                        jv.setTitle( "codigo" );
+            }catch( Exception e ){
+            
+            }
+   }
    
  
     /**
