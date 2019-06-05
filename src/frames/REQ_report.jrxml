@@ -23,7 +23,7 @@ C.P. 98330 MIGUEL AUZA, ZACATECAS, MEX.
 			</staticText>
 			<image>
 				<reportElement x="0" y="0" width="190" height="40" uuid="a2fe5be1-fbd8-4249-aa9b-7efc551d1a75"/>
-				<imageExpression><![CDATA["/Users/appleapple/Desktop/sqliteReport/excellon.png"]]></imageExpression>
+				<imageExpression><![CDATA["c:\\Program Files\\AlmacenToolKit\\excellon.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="5" y="139" width="47" height="21" uuid="d0ac5ae8-9f62-479e-a663-d1f460f3dcf8"/>

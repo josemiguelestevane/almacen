@@ -557,7 +557,8 @@ public class C_SMS extends javax.swing.JFrame {
         }
             JasperReport report;
             FileInputStream fos = new FileInputStream(
-                        "/Users/appleapple/NetBeansProjects/almacen/src/frames/SMS_report.jasper" );
+                    "c:\\Program Files\\AlmacenToolKit\\SMS_report.jasper");    
+                    //"/Users/appleapple/NetBeansProjects/almacen/src/frames/SMS_report.jasper" );
             try{
                 report = ( JasperReport ) JRLoader.loadObject( fos );
                 JasperPrint jp = JasperFillManager.fillReport( report,null, new JRBeanCollectionDataSource(lista) );

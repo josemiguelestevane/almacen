@@ -14,39 +14,39 @@
 		<band height="786" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="0" width="167" height="263" uuid="b3e14205-9a27-41d3-be0b-d42eaa87ce6b"/>
-				<imageExpression><![CDATA["c:\\sqlite\\Etiqueta.png"]]></imageExpression>
+				<imageExpression><![CDATA["c:\\Program Files\\AlmacenToolKit\\Etiqueta.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="0" y="249" width="167" height="263" uuid="7bc497bf-d1ba-4fbe-a025-df63f04fe857"/>
-				<imageExpression><![CDATA["c:\\sqlite\\Etiqueta.png"]]></imageExpression>
+				<imageExpression><![CDATA["c:\\Program Files\\AlmacenToolKit\\Etiqueta.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="0" y="496" width="167" height="263" uuid="4937a68f-4029-49f2-b2ec-0685ab2528cf"/>
-				<imageExpression><![CDATA["c:\\sqlite\\Etiqueta.png"]]></imageExpression>
+				<imageExpression><![CDATA["c:\\Program Files\\AlmacenToolKit\\Etiqueta.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="167" y="0" width="167" height="263" uuid="cd0e79cd-7377-4352-ae69-96ccf0377936"/>
-				<imageExpression><![CDATA["c:\\sqlite\\Etiqueta.png"]]></imageExpression>
+				<imageExpression><![CDATA["c:\\Program Files\\AlmacenToolKit\\Etiqueta.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="334" y="0" width="167" height="263" uuid="d81398ce-b61b-4a41-955b-3e2c958f7b1f"/>
-				<imageExpression><![CDATA["c:\\sqlite\\Etiqueta.png"]]></imageExpression>
+				<imageExpression><![CDATA["c:\\Program Files\\AlmacenToolKit\\Etiqueta.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="167" y="249" width="167" height="263" uuid="9ad17ed8-776e-4420-8f95-35d4dd96985d"/>
-				<imageExpression><![CDATA["c:\\sqlite\\Etiqueta.png"]]></imageExpression>
+				<imageExpression><![CDATA["c:\\Program Files\\AlmacenToolKit\\Etiqueta.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="334" y="249" width="167" height="263" uuid="cf1324ef-545f-43d1-a9ad-adf5dfb57853"/>
-				<imageExpression><![CDATA["c:\\sqlite\\Etiqueta.png"]]></imageExpression>
+				<imageExpression><![CDATA["c:\\Program Files\\AlmacenToolKit\\Etiqueta.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="167" y="496" width="167" height="263" uuid="7facb3cb-cb15-4b49-b809-ddb3cce0439c"/>
-				<imageExpression><![CDATA["c:\\sqlite\\Etiqueta.png"]]></imageExpression>
+				<imageExpression><![CDATA["c:\\Program Files\\AlmacenToolKit\\Etiqueta.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="334" y="496" width="167" height="263" uuid="a0889023-24a5-497a-b4d3-b9ad050a0004"/>
-				<imageExpression><![CDATA["c:\\sqlite\\Etiqueta.png"]]></imageExpression>
+				<imageExpression><![CDATA["c:\\Program Files\\AlmacenToolKit\\Etiqueta.png"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="10" y="58" width="147" height="20" uuid="b10910b1-c783-4561-83a8-f1c4527d5aae"/>

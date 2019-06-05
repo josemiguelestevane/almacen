@@ -688,7 +688,8 @@ public class F_requisicion extends javax.swing.JFrame {
         }
             JasperReport report;
             FileInputStream fos = new FileInputStream(
-                        "/Users/appleapple/NetBeansProjects/almacen/src/frames/REQ_report.jasper" );
+                      "c:\\Program Files\\AlmacenToolKit\\REQ_report.jasper");
+                       // "/Users/appleapple/NetBeansProjects/almacen/src/frames/REQ_report.jasper" );
             try{
                 report = ( JasperReport ) JRLoader.loadObject( fos );
                 JasperPrint jp = JasperFillManager.fillReport( report,null, new JRBeanCollectionDataSource(lista) );

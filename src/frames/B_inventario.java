@@ -640,7 +640,8 @@ public class B_inventario extends javax.swing.JFrame {
            
             JasperReport report;
             FileInputStream fos = new FileInputStream(
-                        "/Users/appleapple/NetBeansProjects/almacen/src/frames/Inventario_report.jasper" );
+                          "c:\\Program Files\\AlmacenToolKit\\Inventario_report.jasper");
+                        //"/Users/appleapple/NetBeansProjects/almacen/src/frames/Inventario_report.jasper" );
             try{
                 report = ( JasperReport ) JRLoader.loadObject( fos );
                 JRDataSource jrDataSource = new JREmptyDataSource();

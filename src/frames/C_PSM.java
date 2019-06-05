@@ -562,7 +562,8 @@ public class C_PSM extends javax.swing.JFrame {
         }
             JasperReport report;
             FileInputStream fos = new FileInputStream(
-                        "/Users/appleapple/NetBeansProjects/almacen/src/frames/PSM_report.jasper" );
+                      "c:\\Program Files\\AlmacenToolKit\\PSM_report.jasper");  
+                    //"/Users/appleapple/NetBeansProjects/almacen/src/frames/PSM_report.jasper" );
             try{
                 report = ( JasperReport ) JRLoader.loadObject( fos );
                 JasperPrint jp = JasperFillManager.fillReport( report,null, new JRBeanCollectionDataSource(lista) );

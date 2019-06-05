@@ -50,7 +50,7 @@
 			</staticText>
 			<image>
 				<reportElement x="0" y="0" width="133" height="79" uuid="a8ef9cf0-b350-459f-8e7d-ddbc27efde66"/>
-				<imageExpression><![CDATA["/Users/appleapple/Desktop/sqliteReport/spr.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["c:\\Program Files\\AlmacenToolKit\\spr.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>

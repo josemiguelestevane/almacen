@@ -182,7 +182,7 @@ public class G_db extends javax.swing.JFrame {
         if (retrival == JFileChooser.APPROVE_OPTION) {
             try {
                 String toFile = chooser.getSelectedFile()+".db";
-                String fromFile= "/Users/Estevane/Desktop/sql/spr.db";
+                String fromFile= "c:\\Program Files\\AlmacenToolKit\\spr.db";
                
                     boolean result = javaIOUtils.backupBD(fromFile, toFile);
                     if(result=true){

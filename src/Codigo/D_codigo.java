@@ -449,7 +449,7 @@ public class D_codigo extends javax.swing.JFrame {
         });
     }
     public void generaretiqyeta() throws JRException, FileNotFoundException {
-        String ruta = ( "c:\\sqlite\\Etiqueta.png" );
+        String ruta = ( "c:\\Program Files\\AlmacenToolKit\\Etiqueta.png" );
         InputStream imagen = this.getClass().getResourceAsStream(ruta);
       
         Object[] opciones = {
@@ -470,7 +470,8 @@ public class D_codigo extends javax.swing.JFrame {
                 parametros.put( "parameter7", imagen );
                 JasperReport report; // Instaciamos el objeto reporte
                 FileInputStream fos = new FileInputStream(
-                        "/Users/appleapple/NetBeansProjects/almacen/src/Codigo/newReport.jasper" );
+                        "c:\\Program Files\\AlmacenToolKit\\newReport.jasper");
+                        //"/Users/appleapple/NetBeansProjects/almacen/src/Codigo/newReport.jasper" );
                 try {
                         report = ( JasperReport ) JRLoader.loadObject( fos );
                         JRDataSource jrDataSource = new JREmptyDataSource();
